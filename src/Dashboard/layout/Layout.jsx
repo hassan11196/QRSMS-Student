@@ -56,10 +56,10 @@ class DashboardLayout extends React.Component {
           }}
         />
         <div className="main-content" ref="mainContent">
-          <AdminNavbar
+          {/* <AdminNavbar
             {...this.props}
             brandText={this.getBrandText(this.props.location.pathname)}
-          />
+          /> */}
           <Switch>{this.getRoutes(routes)}</Switch>
           <Container fluid>
             <AdminFooter />

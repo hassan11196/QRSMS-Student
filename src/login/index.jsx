@@ -19,7 +19,7 @@ import React from 'react';
 import Cookies from 'js-cookie';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
-
+import { connect } from 'react-redux';
 // reactstrap components
 import {
   Button,
@@ -71,18 +71,11 @@ class FacultyLogin extends React.Component {
     );
   }
   handlelogin(e) {
-    console.log('Start mein set hone se pehle');
-    console.log(this.state.loading);
-
     this.setState({
       loading: true,
       csrf_token: Cookies.get('csrftoken'),
     });
-    console.log('Start mein set hone k baad');
 
-    console.log(this.state.loading);
-
-    console.log('login function start horaha hai');
     // console.log(this.state)
     e.preventDefault();
     var formd = new FormData();
@@ -96,12 +89,15 @@ class FacultyLogin extends React.Component {
         //   {status:res.data.status,
         //     teacherdata:res.data}
         //   )
-        console.log('login horaha hai');
+        // console.log('login horaha hai');
         axios.get(this.state.home_jsonURL).then((response) => {
           console.log(response.data);
           if (response.data.status === 'success') {
-            console.log(response.data);
-
+            localStorage.setItem(
+              'data',
+              JSON.stringify(response.data.student_data[0].uid)
+            );
+            this.props.changeid(response.data);
             console.log(this.props);
             this.setState({
               status: response.data.status,
@@ -111,11 +107,7 @@ class FacultyLogin extends React.Component {
         });
       })
       .finally((response) => {
-        console.log('end mein set hone se pehle');
         this.setState({ loading: false });
-        console.log('end mein set hone k baad');
-
-        console.log(this.state.loading);
       });
   }
   get_csrf_token() {
@@ -229,5 +221,16 @@ class FacultyLogin extends React.Component {
     );
   }
 }
-
-export default FacultyLogin;
+const mapDispatchToProps = (dispatch) => {
+  return {
+    changeid: (s) => {
+      dispatch({ type: 'ChangeId', payload: { s } });
+    },
+  };
+};
+const mapStateToProps = (state) => {
+  return {
+    student: state.studentinfo,
+  };
+};
+export default connect(mapStateToProps, mapDispatchToProps)(FacultyLogin);
