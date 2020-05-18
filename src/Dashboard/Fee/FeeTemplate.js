@@ -73,14 +73,14 @@ class ChallanTemplate extends Component {
         });
       }
     });
-    // const input = document.getElementById('challan');
-    // html2canvas(input, { scale: 1.335 }).then((canvas) => {
-    //   const imgData = canvas.toDataURL('image/png');
-    //   const pdf = new jsPDF("p", "mm", "a3", true);
-    //   pdf.addImage(imgData, 'JPEG', , , '', '', '', 'SLOW');
-    //   pdf.output('dataurlnewwindow');
-    //   pdf.save("download.pdf");
-    // });
+    const input = document.getElementById('challan');
+    html2canvas(input, { scale: 1.335 }).then((canvas) => {
+      const imgData = canvas.toDataURL('image/png');
+      const pdf = new jsPDF('p', 'mm', 'a3', true);
+      pdf.addImage(imgData, 'JPEG', '', '', '', 'SLOW');
+      pdf.output('dataurlnewwindow');
+      pdf.save('download.pdf');
+    });
   }
   render() {
     if (this.props.student === null) {
