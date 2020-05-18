@@ -50,6 +50,7 @@ class ChallanTemplate extends Component {
     form.append('code', 'FALL2019_BS(CS)_ComputerSciences_MainCampus_Karachi');
 
     axios.post('/student/getChallan/', form).then((response) => {
+      console.log(response);
       if (response.data !== 'No Challan') {
         this.setState({
           dueDate: response.data.due_date,
