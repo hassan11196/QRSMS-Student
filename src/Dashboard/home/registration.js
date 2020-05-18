@@ -14,12 +14,11 @@ import {
   Breadcrumb,
 } from 'react-bootstrap';
 import axios from 'axios';
-// import credential from '../credentials.js';
-import Cookies from 'js-cookie';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 import Axios from 'axios';
+import Cookies from 'js-cookie';
+
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
 
@@ -39,16 +38,6 @@ class Registration extends Component {
     };
     this.toggle = this.toggle.bind(this);
   }
-  //   componentWillReceiveProps(newprops) {
-  //     this.setState(
-  //       {
-  //         student: this.props.student,
-  //       },
-  //       () => {
-  //         console.log(this.state.student, 'registration');
-  //       }
-  //     );
-  //   }
   toggle() {
     this.setState({ popoverOpen: !this.state.popoverOpen });
   }
@@ -80,7 +69,6 @@ class Registration extends Component {
       this.setState({
         CourseInfo: Array(response.data.regular_courses[0].courses_offered),
       });
-      console.log('Weird Table');
       let nodey = [];
       this.state.CourseInfo[0].forEach((element) => {
         nodey.push(this.registrationTable(element));
@@ -90,17 +78,6 @@ class Registration extends Component {
       this.setState({
         courses_nodes: nodey,
       });
-      console.log('courses k lye render');
-      console.log(this.state.CourseInfo);
-      console.log('render k ander');
-
-      console.log(this.state.student);
-
-      // console.log(this.state.CourseInfo);
-      // this.state.CourseInfo[0].forEach(element => {
-      //     console.log('Array Bhai');
-      //     console.log(element);
-      // });
     });
 
     axios
@@ -123,15 +100,12 @@ class Registration extends Component {
     </div>
   );
   registrationTable(c) {
-    console.log('registration table k ander');
-    console.log(c);
     return (
-      // <li key={"listKey" + c.course_code} style={{listStyle:'none'}}>
       <tr>
         <td key={'rowCol' + c.course.course_name}>{c.course.course_name}</td>
         <td>{c.course.credit_hour}</td>
         <td>{c.course.course_type === 1 ? 'Core' : 'Elective'}</td>
-        <td>'Register! 5-New Offered Course new (Recommended)'</td>
+        <td>Register! 5-New Offered Course new (Recommended)</td>
         {c.status === 'R' ? (
           <td>
             <Button
@@ -188,9 +162,6 @@ class Registration extends Component {
       },
     })
       .then((response) => {
-        console.log('After Put');
-        console.log(response.data);
-        console.log(course_offered);
         if (course_option === 'R') {
           alert('Course :' + course_name + ' Registered!');
         } else {
@@ -376,7 +347,7 @@ class Registration extends Component {
                                 tag="h5"
                                 className="text-uppercase text-muted mb-0"
                               >
-                                Credit Hours Earned
+                                Cr. Hrs. Earned
                               </CardTitle>
                               <span className="h2 font-weight-bold mb-0">67</span>
                             </div>
@@ -401,7 +372,7 @@ class Registration extends Component {
                                 tag="h5"
                                 className="text-uppercase text-muted mb-0"
                               >
-                                Credit Hours Limit
+                                Cr. Hrs. Limit
                               </CardTitle>
                               <span className="h2 font-weight-bold mb-0">19</span>
                             </div>
@@ -418,11 +389,6 @@ class Registration extends Component {
                 </div>
               </Container>
             </div>
-            {/* <h3 style={{ textAlign: 'left' }}>
-            <span style={{ fontWeight: 'bold', color: 'black' }}>Course</span>{' '}
-            <span>| Registration</span>
-          </h3> */}
-            {/* <br /> */}
             <Card>
               <Card.Body
                 style={{
@@ -477,9 +443,9 @@ class Registration extends Component {
                   </thead>
                   <tbody>{this.state.courses_nodes}</tbody>
                 </Table>
-                {/* </MuiThemeProvider> */}
               </Card.Body>
             </Card>
+            {/* {console.log(this.state.CourseInfo)} */}
           </Container>
         </div>
       );
