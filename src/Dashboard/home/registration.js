@@ -35,6 +35,7 @@ class Registration extends Component {
       CourseInfo: [],
       nodey: [],
       force_update: 0,
+      csrf_token: 0,
     };
     this.toggle = this.toggle.bind(this);
   }
@@ -52,6 +53,12 @@ class Registration extends Component {
     this.setState({ popoverOpen: !this.state.popoverOpen });
   }
   componentDidMount() {
+    axios.get('/management/get_csrf').then((response) => {
+      Cookies.set('csrftoken', response.data.csrfToken);
+      this.setState((oldState) => ({
+        csrf_token: Cookies.get('csrftoken'),
+      }))
+    });
     console.log(this.props);
     console.log(this.props.student.user_data, 'Component did mount');
     this.setState(
@@ -142,21 +149,21 @@ class Registration extends Component {
             </Button>
           </td>
         ) : (
-          <td>
-            <Button
-              onClick={() =>
-                this.register_or_drop_course(
-                  c,
-                  c.course.url,
-                  'R',
-                  c.course.course_name
-                )
-              }
-            >
-              Register
+            <td>
+              <Button
+                onClick={() =>
+                  this.register_or_drop_course(
+                    c,
+                    c.course.url,
+                    'R',
+                    c.course.course_name
+                  )
+                }
+              >
+                Register
             </Button>
-          </td>
-        )}
+            </td>
+          )}
         {c.status === 'R' ? <td>{c.section}</td> : <td></td>}
       </tr>
       // </li>

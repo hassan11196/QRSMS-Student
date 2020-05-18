@@ -47,6 +47,8 @@ class ChallanTemplate extends Component {
 
     let form = new FormData();
     form.append('csrfmiddlewaretoken', Cookies.get('csrftoken'));
+    form.append('code', '');
+
     form.append('code', 'FALL2019_BS(CS)_ComputerSciences_MainCampus_Karachi');
 
     axios.post('/student/getChallan/', form).then((response) => {
