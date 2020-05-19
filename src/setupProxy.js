@@ -5,16 +5,16 @@ module.exports = function (app) {
     target: 'http://qrsms-v1.herokuapp.com', // target host
     changeOrigin: true, // needed for virtual hosted sites
     ws: true, // proxy websockets
-    pathRewrite: {
-      '^/bts/': '/', // rewrite path
-    },
+    //pathRewrite: {
+    //   '^/bts/': '/', // rewrite path
+    // },
     router: {
-      when request.headers.host == 'dev.localhost:3000',
-      override target 'http://www.example.org' to 'http://localhost:8000'
+      //   // when request.headers.host == 'dev.localhost:3000',
+      //   // override target 'http://www.example.org' to 'http://localhost:8000'
       'localhost:3000': 'http://localhost:8000',
-      'localhost:3001': 'http://localhost:8000',
-      'localhost:3000': 'http://172.16.71.12/'
-        'localhost:3000': 'http://180.149.217.63/'
+      //   // 'localhost:3001': 'http://localhost:8000',
+      //   // 'localhost:3000': 'http://172.16.71.12/'
+      //   // 'localhost:3000': 'http://180.149.217.63/'
     },
   };
 

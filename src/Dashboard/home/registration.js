@@ -35,6 +35,7 @@ class Registration extends Component {
       nodey: [],
       force_update: 0,
       csrf_token: 0,
+      semester: '',
     };
     this.toggle = this.toggle.bind(this);
   }
@@ -42,6 +43,12 @@ class Registration extends Component {
     this.setState({ popoverOpen: !this.state.popoverOpen });
   }
   componentDidMount() {
+    axios.get('/management/getCurrentSemester/').then(response => {
+      this.setState({
+        semester: response.data
+      })
+    })
+
     axios.get('/management/get_csrf').then((response) => {
       Cookies.set('csrftoken', response.data.csrfToken);
       this.setState((oldState) => ({
@@ -181,7 +188,7 @@ class Registration extends Component {
         form.append('admission_fee', '');
         form.append(
           'semester',
-          'FALL2019_BS(CS)_ComputerSciences_MainCampus_Karachi'
+          this.state.semester
         );
         form.append('action', value);
         axios.post('/student/updateChallan/', form).then((response) => {

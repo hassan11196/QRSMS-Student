@@ -128,7 +128,7 @@ class Home extends React.Component {
           </Navbar.Collapse>
         </Navbar>
         {/* Page content */}
-        <Container className="mt-7" fluid>
+        <Container className="mt-7" fluid style={{ paddingBottom: '3rem' }}>
           <Row>
             <Col className="order-xl-2 mb-5 mb-xl-0" xl="4">
               <Card className="card-profile shadow">
@@ -204,14 +204,6 @@ class Home extends React.Component {
                       <i className="ni education_hat mr-2" />
                       FAST NUCES Karachi
                     </div>
-                    {/* <hr className="my-4" />
-                    <p>
-                      Ryan — the name taken by Melbourne-raised, Brooklyn-based Nick
-                      Murphy — writes, performs and records all of his own music.
-                    </p>
-                    <a href="#pablo" onClick={(e) => e.preventDefault()}>
-                      Show more
-                    </a> */}
                   </div>
                 </CardBody>
               </Card>
@@ -223,7 +215,7 @@ class Home extends React.Component {
                     <Col xs="8">
                       <h3 className="mb-0">My profile</h3>
                     </Col>
-                    <Col className="text-right" xs="4">
+                    {/* <Col className="text-right" xs="4">
                       <Button
                         color="primary"
                         href="#pablo"
@@ -232,7 +224,7 @@ class Home extends React.Component {
                       >
                         Settings
                       </Button>
-                    </Col>
+                    </Col> */}
                   </Row>
                 </CardHeader>
                 <CardBody>
@@ -333,22 +325,6 @@ class Home extends React.Component {
                       </Col>
                     </Row>
                   </div>
-                  <hr className="my-4" />
-                  {/* Description */}
-                  {/* <h6 className="heading-small text-muted mb-4">About me</h6>
-                    <div className="pl-lg-4">
-                      <FormGroup>
-                        <label>About Me</label>
-                        <Input
-                          className="form-control-alternative"
-                          placeholder="A few words about you ..."
-                          rows="4"
-                          defaultValue="A beautiful Dashboard for Bootstrap 4. It is Free and
-                          Open Source."
-                          type="textarea"
-                        />
-                      </FormGroup>
-                    </div> */}
                 </CardBody>
               </Card>
             </Col>
