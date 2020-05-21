@@ -16,6 +16,7 @@
 
 */
 import Index from 'views/Index.jsx';
+import FeeDetails from './Dashboard/Fee/FeeDetais.jsx';
 import Registration from './Dashboard/home/registration';
 import Profile from 'views/examples/Profile.jsx';
 import Maps from 'views/examples/Maps.jsx';
@@ -58,18 +59,25 @@ var routes = [
   //   component: Index,
   //   layout: '/admin',
   // },
-  // {
-  //   path: '/icons',
-  //   name: 'Icons',
-  //   icon: 'ni ni-planet text-blue',
-  //   component: Icons,
-  //   layout: '/admin',
-  // },
+  {
+    path: '/icons',
+    name: 'Icons',
+    icon: 'ni ni-planet text-blue',
+    component: Icons,
+    layout: '/admin',
+  },
   {
     path: '/fee-challan',
     name: 'Fee Challan',
     icon: 'ni ni-tv-2 text-primary',
     component: FeeChallan,
+    layout: '/admin',
+  },
+  {
+    path: '/fee-details',
+    name: 'Fee Details',
+    icon: 'ni ni-tv-2 text-primary',
+    component: FeeDetails,
     layout: '/admin',
   },
   // {

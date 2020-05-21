@@ -15,9 +15,9 @@
 * The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
 
 */
-import React from "react";
+import React from 'react';
 // react component that copies the given text inside your clipboard
-import { CopyToClipboard } from "react-copy-to-clipboard";
+import { CopyToClipboard } from 'react-copy-to-clipboard';
 // reactstrap components
 import {
   Card,
@@ -26,10 +26,10 @@ import {
   Container,
   Row,
   Col,
-  UncontrolledTooltip
-} from "reactstrap";
+  UncontrolledTooltip,
+} from 'reactstrap';
 // core components
-import Header from "components/Headers/Header.jsx";
+import Header from 'components/Headers/Header.jsx';
 
 class Icons extends React.Component {
   state = {};
@@ -37,9 +37,7 @@ class Icons extends React.Component {
     return (
       <>
         <Header />
-        {/* Page content */}
         <Container className=" mt--7" fluid>
-          {/* Table */}
           <Row>
             <div className=" col">
               <Card className=" shadow">
@@ -50,10 +48,8 @@ class Icons extends React.Component {
                   <Row className=" icon-examples">
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"active-40"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "active-40" })
-                        }
+                        text={'active-40'}
+                        onCopy={() => this.setState({ copiedText: 'active-40' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -71,17 +67,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip982655500"
                       >
-                        {this.state.copiedText === "active-40"
-                          ? "Copied"
-                          : "Copy To Clipboard"}
+                        {this.state.copiedText === 'active-40'
+                          ? 'Copied'
+                          : 'Copy To Clipboard'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"air-baloon"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "air-baloon" })
-                        }
+                        text={'air-baloon'}
+                        onCopy={() => this.setState({ copiedText: 'air-baloon' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -100,15 +94,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip47550434"
                       >
-                        {this.state.copiedText === "air-baloon"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'air-baloon'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"album-2"}
-                        onCopy={() => this.setState({ copiedText: "album-2" })}
+                        text={'album-2'}
+                        onCopy={() => this.setState({ copiedText: 'album-2' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -127,17 +121,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip945481346"
                       >
-                        {this.state.copiedText === "album-2"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'album-2'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"align-center"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "align-center" })
-                        }
+                        text={'align-center'}
+                        onCopy={() => this.setState({ copiedText: 'align-center' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -156,17 +148,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip662352101"
                       >
-                        {this.state.copiedText === "align-center"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'align-center'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"left-2"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "align-left-2" })
-                        }
+                        text={'left-2'}
+                        onCopy={() => this.setState({ copiedText: 'align-left-2' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -185,17 +175,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip125499785"
                       >
-                        {this.state.copiedText === "align-left-2"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'align-left-2'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"ambulance"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "ambulance" })
-                        }
+                        text={'ambulance'}
+                        onCopy={() => this.setState({ copiedText: 'ambulance' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -214,15 +202,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip382136785"
                       >
-                        {this.state.copiedText === "ambulance"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'ambulance'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"asdasdsafsdsad"}
-                        onCopy={() => this.setState({ copiedText: "app" })}
+                        text={'asdasdsafsdsad'}
+                        onCopy={() => this.setState({ copiedText: 'app' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -241,17 +229,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip3354607"
                       >
-                        {this.state.copiedText === "app"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'app'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"archive-2"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "archive-2" })
-                        }
+                        text={'archive-2'}
+                        onCopy={() => this.setState({ copiedText: 'archive-2' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -270,15 +256,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip949558633"
                       >
-                        {this.state.copiedText === "archive-2"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'archive-2'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"atom"}
-                        onCopy={() => this.setState({ copiedText: "atom" })}
+                        text={'atom'}
+                        onCopy={() => this.setState({ copiedText: 'atom' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -297,15 +283,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip742747005"
                       >
-                        {this.state.copiedText === "atom"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'atom'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"badge"}
-                        onCopy={() => this.setState({ copiedText: "badge" })}
+                        text={'badge'}
+                        onCopy={() => this.setState({ copiedText: 'badge' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -324,15 +310,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip488565068"
                       >
-                        {this.state.copiedText === "badge"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'badge'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"bag-17"}
-                        onCopy={() => this.setState({ copiedText: "bag-17" })}
+                        text={'bag-17'}
+                        onCopy={() => this.setState({ copiedText: 'bag-17' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -351,15 +337,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip163626790"
                       >
-                        {this.state.copiedText === "bag-17"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'bag-17'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"basket"}
-                        onCopy={() => this.setState({ copiedText: "basket" })}
+                        text={'basket'}
+                        onCopy={() => this.setState({ copiedText: 'basket' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -378,15 +364,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip387253692"
                       >
-                        {this.state.copiedText === "basket"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'basket'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"bell-55"}
-                        onCopy={() => this.setState({ copiedText: "bell-55" })}
+                        text={'bell-55'}
+                        onCopy={() => this.setState({ copiedText: 'bell-55' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -405,17 +391,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip126752761"
                       >
-                        {this.state.copiedText === "bell-55"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'bell-55'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"bold-down"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "bold-down" })
-                        }
+                        text={'bold-down'}
+                        onCopy={() => this.setState({ copiedText: 'bold-down' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -434,17 +418,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip819281856"
                       >
-                        {this.state.copiedText === "bold-down"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'bold-down'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"bold-left"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "bold-left" })
-                        }
+                        text={'bold-left'}
+                        onCopy={() => this.setState({ copiedText: 'bold-left' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -463,17 +445,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip881699027"
                       >
-                        {this.state.copiedText === "bold-left"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'bold-left'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"bold-right"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "bold-right" })
-                        }
+                        text={'bold-right'}
+                        onCopy={() => this.setState({ copiedText: 'bold-right' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -492,15 +472,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip208507461"
                       >
-                        {this.state.copiedText === "bold-right"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'bold-right'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"bold-up"}
-                        onCopy={() => this.setState({ copiedText: "bold-up" })}
+                        text={'bold-up'}
+                        onCopy={() => this.setState({ copiedText: 'bold-up' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -519,15 +499,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip105289310"
                       >
-                        {this.state.copiedText === "bold-up"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'bold-up'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"bold"}
-                        onCopy={() => this.setState({ copiedText: "bold" })}
+                        text={'bold'}
+                        onCopy={() => this.setState({ copiedText: 'bold' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -546,17 +526,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip832362262"
                       >
-                        {this.state.copiedText === "bold"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'bold'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"book-bookmark"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "book-bookmark" })
-                        }
+                        text={'book-bookmark'}
+                        onCopy={() => this.setState({ copiedText: 'book-bookmark' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -575,15 +553,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip606002875"
                       >
-                        {this.state.copiedText === "book-bookmark"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'book-bookmark'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"books"}
-                        onCopy={() => this.setState({ copiedText: "books" })}
+                        text={'books'}
+                        onCopy={() => this.setState({ copiedText: 'books' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -602,15 +580,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip484529730"
                       >
-                        {this.state.copiedText === "books"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'books'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"box-2"}
-                        onCopy={() => this.setState({ copiedText: "box-2" })}
+                        text={'box-2'}
+                        onCopy={() => this.setState({ copiedText: 'box-2' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -629,17 +607,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip509205883"
                       >
-                        {this.state.copiedText === "box-2"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'box-2'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"briefcase-24"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "briefcase-24" })
-                        }
+                        text={'briefcase-24'}
+                        onCopy={() => this.setState({ copiedText: 'briefcase-24' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -658,15 +634,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip147778056"
                       >
-                        {this.state.copiedText === "briefcase-24"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'briefcase-24'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"building"}
-                        onCopy={() => this.setState({ copiedText: "building" })}
+                        text={'building'}
+                        onCopy={() => this.setState({ copiedText: 'building' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -685,15 +661,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip157423388"
                       >
-                        {this.state.copiedText === "building"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'building'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"bulb-61"}
-                        onCopy={() => this.setState({ copiedText: "bulb-61" })}
+                        text={'bulb-61'}
+                        onCopy={() => this.setState({ copiedText: 'bulb-61' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -712,15 +688,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip126210465"
                       >
-                        {this.state.copiedText === "bulb-61"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'bulb-61'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"list-67"}
-                        onCopy={() => this.setState({ copiedText: "list-67" })}
+                        text={'list-67'}
+                        onCopy={() => this.setState({ copiedText: 'list-67' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -739,17 +715,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip672244852"
                       >
-                        {this.state.copiedText === "list-67"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'list-67'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"bus-front-12"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "bus-front-12" })
-                        }
+                        text={'bus-front-12'}
+                        onCopy={() => this.setState({ copiedText: 'bus-front-12' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -768,17 +742,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip17383590"
                       >
-                        {this.state.copiedText === "bus-front-12"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'bus-front-12'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"button-pause"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "button-pause" })
-                        }
+                        text={'button-pause'}
+                        onCopy={() => this.setState({ copiedText: 'button-pause' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -797,17 +769,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip721295259"
                       >
-                        {this.state.copiedText === "button-pause"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'button-pause'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"button-play"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "button-play" })
-                        }
+                        text={'button-play'}
+                        onCopy={() => this.setState({ copiedText: 'button-play' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -826,17 +796,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip397403700"
                       >
-                        {this.state.copiedText === "button-play"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'button-play'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"button-power"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "button-power" })
-                        }
+                        text={'button-power'}
+                        onCopy={() => this.setState({ copiedText: 'button-power' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -855,16 +823,16 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip286478188"
                       >
-                        {this.state.copiedText === "button-power"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'button-power'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"calendar-grid-58"}
+                        text={'calendar-grid-58'}
                         onCopy={() =>
-                          this.setState({ copiedText: "calendar-grid-58" })
+                          this.setState({ copiedText: 'calendar-grid-58' })
                         }
                       >
                         <button
@@ -884,16 +852,16 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip332635506"
                       >
-                        {this.state.copiedText === "calendar-grid-58"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'calendar-grid-58'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"camera-compact"}
+                        text={'camera-compact'}
                         onCopy={() =>
-                          this.setState({ copiedText: "camera-compact" })
+                          this.setState({ copiedText: 'camera-compact' })
                         }
                       >
                         <button
@@ -913,17 +881,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip872817724"
                       >
-                        {this.state.copiedText === "camera-compact"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'camera-compact'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"caps-small"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "caps-small" })
-                        }
+                        text={'caps-small'}
+                        onCopy={() => this.setState({ copiedText: 'caps-small' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -942,15 +908,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip108271146"
                       >
-                        {this.state.copiedText === "caps-small"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'caps-small'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"cart"}
-                        onCopy={() => this.setState({ copiedText: "cart" })}
+                        text={'cart'}
+                        onCopy={() => this.setState({ copiedText: 'cart' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -969,17 +935,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip315375170"
                       >
-                        {this.state.copiedText === "cart"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'cart'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"chart-bar-32"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "chart-bar-32" })
-                        }
+                        text={'chart-bar-32'}
+                        onCopy={() => this.setState({ copiedText: 'chart-bar-32' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -998,17 +962,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip906739900"
                       >
-                        {this.state.copiedText === "chart-bar-32"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'chart-bar-32'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"chart-pie-35"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "chart-pie-35" })
-                        }
+                        text={'chart-pie-35'}
+                        onCopy={() => this.setState({ copiedText: 'chart-pie-35' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -1027,17 +989,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip211198935"
                       >
-                        {this.state.copiedText === "chart-pie-35"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'chart-pie-35'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"chat-round"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "chat-round" })
-                        }
+                        text={'chat-round'}
+                        onCopy={() => this.setState({ copiedText: 'chat-round' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -1056,17 +1016,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip452799920"
                       >
-                        {this.state.copiedText === "chat-round"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'chat-round'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"check-bold"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "check-bold" })
-                        }
+                        text={'check-bold'}
+                        onCopy={() => this.setState({ copiedText: 'check-bold' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -1085,17 +1043,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip204269497"
                       >
-                        {this.state.copiedText === "check-bold"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'check-bold'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"circle-08"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "circle-08" })
-                        }
+                        text={'circle-08'}
+                        onCopy={() => this.setState({ copiedText: 'circle-08' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -1114,16 +1070,16 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip63796078"
                       >
-                        {this.state.copiedText === "circle-08"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'circle-08'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"cloud-download-95"}
+                        text={'cloud-download-95'}
                         onCopy={() =>
-                          this.setState({ copiedText: "cloud-download-95" })
+                          this.setState({ copiedText: 'cloud-download-95' })
                         }
                       >
                         <button
@@ -1143,16 +1099,16 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip171823822"
                       >
-                        {this.state.copiedText === "cloud-download-95"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'cloud-download-95'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"cloud-upload-96"}
+                        text={'cloud-upload-96'}
                         onCopy={() =>
-                          this.setState({ copiedText: "cloud-upload-96" })
+                          this.setState({ copiedText: 'cloud-upload-96' })
                         }
                       >
                         <button
@@ -1172,17 +1128,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip603641354"
                       >
-                        {this.state.copiedText === "cloud-upload-96"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'cloud-upload-96'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"compass-04"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "compass-04" })
-                        }
+                        text={'compass-04'}
+                        onCopy={() => this.setState({ copiedText: 'compass-04' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -1201,17 +1155,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip138747611"
                       >
-                        {this.state.copiedText === "compass-04"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'compass-04'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"controller"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "controller" })
-                        }
+                        text={'controller'}
+                        onCopy={() => this.setState({ copiedText: 'controller' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -1230,17 +1182,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip477306514"
                       >
-                        {this.state.copiedText === "controller"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'controller'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"credit-card"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "credit-card" })
-                        }
+                        text={'credit-card'}
+                        onCopy={() => this.setState({ copiedText: 'credit-card' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -1259,17 +1209,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip672313572"
                       >
-                        {this.state.copiedText === "credit-card"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'credit-card'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"curved-next"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "curved-next" })
-                        }
+                        text={'curved-next'}
+                        onCopy={() => this.setState({ copiedText: 'curved-next' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -1288,17 +1236,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip228405488"
                       >
-                        {this.state.copiedText === "curved-next"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'curved-next'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"delivery-fast"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "delivery-fast" })
-                        }
+                        text={'delivery-fast'}
+                        onCopy={() => this.setState({ copiedText: 'delivery-fast' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -1317,15 +1263,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip405559"
                       >
-                        {this.state.copiedText === "delivery-fast"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'delivery-fast'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"diamond"}
-                        onCopy={() => this.setState({ copiedText: "diamond" })}
+                        text={'diamond'}
+                        onCopy={() => this.setState({ copiedText: 'diamond' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -1344,15 +1290,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip842334307"
                       >
-                        {this.state.copiedText === "diamond"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'diamond'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"email-83"}
-                        onCopy={() => this.setState({ copiedText: "email-83" })}
+                        text={'email-83'}
+                        onCopy={() => this.setState({ copiedText: 'email-83' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -1371,15 +1317,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip695661232"
                       >
-                        {this.state.copiedText === "email-83"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'email-83'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"fat-add"}
-                        onCopy={() => this.setState({ copiedText: "fat-add" })}
+                        text={'fat-add'}
+                        onCopy={() => this.setState({ copiedText: 'fat-add' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -1398,17 +1344,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip112280005"
                       >
-                        {this.state.copiedText === "fat-add"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'fat-add'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"fat-delete"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "fat-delete" })
-                        }
+                        text={'fat-delete'}
+                        onCopy={() => this.setState({ copiedText: 'fat-delete' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -1427,17 +1371,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip361927124"
                       >
-                        {this.state.copiedText === "fat-delete"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'fat-delete'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"fat-remove"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "fat-remove" })
-                        }
+                        text={'fat-remove'}
+                        onCopy={() => this.setState({ copiedText: 'fat-remove' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -1456,17 +1398,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip451275187"
                       >
-                        {this.state.copiedText === "fat-remove"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'fat-remove'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"favourite-28"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "favourite-28" })
-                        }
+                        text={'favourite-28'}
+                        onCopy={() => this.setState({ copiedText: 'favourite-28' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -1485,17 +1425,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip893689512"
                       >
-                        {this.state.copiedText === "favourite-28"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'favourite-28'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"folder-17"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "folder-17" })
-                        }
+                        text={'folder-17'}
+                        onCopy={() => this.setState({ copiedText: 'folder-17' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -1514,17 +1452,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip988458715"
                       >
-                        {this.state.copiedText === "folder-17"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'folder-17'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"glasses-2"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "glasses-2" })
-                        }
+                        text={'glasses-2'}
+                        onCopy={() => this.setState({ copiedText: 'glasses-2' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -1543,15 +1479,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip576477258"
                       >
-                        {this.state.copiedText === "glasses-2"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'glasses-2'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"hat-3"}
-                        onCopy={() => this.setState({ copiedText: "hat-3" })}
+                        text={'hat-3'}
+                        onCopy={() => this.setState({ copiedText: 'hat-3' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -1570,17 +1506,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip977228923"
                       >
-                        {this.state.copiedText === "hat-3"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'hat-3'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"headphones"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "headphones" })
-                        }
+                        text={'headphones'}
+                        onCopy={() => this.setState({ copiedText: 'headphones' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -1599,15 +1533,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip711983709"
                       >
-                        {this.state.copiedText === "headphones"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'headphones'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"html5"}
-                        onCopy={() => this.setState({ copiedText: "html5" })}
+                        text={'html5'}
+                        onCopy={() => this.setState({ copiedText: 'html5' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -1626,15 +1560,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip346497134"
                       >
-                        {this.state.copiedText === "html5"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'html5'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"istanbul"}
-                        onCopy={() => this.setState({ copiedText: "istanbul" })}
+                        text={'istanbul'}
+                        onCopy={() => this.setState({ copiedText: 'istanbul' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -1653,17 +1587,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip344591402"
                       >
-                        {this.state.copiedText === "istanbul"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'istanbul'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"circle-08"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "circle-08" })
-                        }
+                        text={'circle-08'}
+                        onCopy={() => this.setState({ copiedText: 'circle-08' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -1682,15 +1614,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip815029398"
                       >
-                        {this.state.copiedText === "circle-08"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'circle-08'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"key-25"}
-                        onCopy={() => this.setState({ copiedText: "key-25" })}
+                        text={'key-25'}
+                        onCopy={() => this.setState({ copiedText: 'key-25' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -1709,15 +1641,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip580511416"
                       >
-                        {this.state.copiedText === "key-25"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'key-25'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"laptop"}
-                        onCopy={() => this.setState({ copiedText: "laptop" })}
+                        text={'laptop'}
+                        onCopy={() => this.setState({ copiedText: 'laptop' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -1736,15 +1668,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip455996160"
                       >
-                        {this.state.copiedText === "laptop"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'laptop'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"like-2"}
-                        onCopy={() => this.setState({ copiedText: "like-2" })}
+                        text={'like-2'}
+                        onCopy={() => this.setState({ copiedText: 'like-2' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -1763,16 +1695,16 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip928932853"
                       >
-                        {this.state.copiedText === "like-2"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'like-2'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"lock-circle-open"}
+                        text={'lock-circle-open'}
                         onCopy={() =>
-                          this.setState({ copiedText: "lock-circle-open" })
+                          this.setState({ copiedText: 'lock-circle-open' })
                         }
                       >
                         <button
@@ -1792,15 +1724,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip634042199"
                       >
-                        {this.state.copiedText === "lock-circle-open"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'lock-circle-open'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"map-big"}
-                        onCopy={() => this.setState({ copiedText: "map-big" })}
+                        text={'map-big'}
+                        onCopy={() => this.setState({ copiedText: 'map-big' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -1819,17 +1751,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip615611081"
                       >
-                        {this.state.copiedText === "map-big"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'map-big'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"mobile-button"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "mobile-button" })
-                        }
+                        text={'mobile-button'}
+                        onCopy={() => this.setState({ copiedText: 'mobile-button' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -1848,17 +1778,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip426682279"
                       >
-                        {this.state.copiedText === "mobile-button"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'mobile-button'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"money-coins"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "money-coins" })
-                        }
+                        text={'money-coins'}
+                        onCopy={() => this.setState({ copiedText: 'money-coins' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -1877,15 +1805,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip198953665"
                       >
-                        {this.state.copiedText === "money-coins"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'money-coins'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"note-03"}
-                        onCopy={() => this.setState({ copiedText: "note-03" })}
+                        text={'note-03'}
+                        onCopy={() => this.setState({ copiedText: 'note-03' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -1904,16 +1832,16 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip909975995"
                       >
-                        {this.state.copiedText === "note-03"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'note-03'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"notification-70"}
+                        text={'notification-70'}
                         onCopy={() =>
-                          this.setState({ copiedText: "notification-70" })
+                          this.setState({ copiedText: 'notification-70' })
                         }
                       >
                         <button
@@ -1933,15 +1861,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip942089221"
                       >
-                        {this.state.copiedText === "notification-70"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'notification-70'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"palette"}
-                        onCopy={() => this.setState({ copiedText: "palette" })}
+                        text={'palette'}
+                        onCopy={() => this.setState({ copiedText: 'palette' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -1960,17 +1888,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip721048582"
                       >
-                        {this.state.copiedText === "palette"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'palette'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"paper-diploma"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "paper-diploma" })
-                        }
+                        text={'paper-diploma'}
+                        onCopy={() => this.setState({ copiedText: 'paper-diploma' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -1989,15 +1915,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip875782946"
                       >
-                        {this.state.copiedText === "paper-diploma"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'paper-diploma'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"pin-3"}
-                        onCopy={() => this.setState({ copiedText: "pin-3" })}
+                        text={'pin-3'}
+                        onCopy={() => this.setState({ copiedText: 'pin-3' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -2016,15 +1942,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip945087492"
                       >
-                        {this.state.copiedText === "pin-3"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'pin-3'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"planet"}
-                        onCopy={() => this.setState({ copiedText: "planet" })}
+                        text={'planet'}
+                        onCopy={() => this.setState({ copiedText: 'planet' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -2043,17 +1969,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip482139663"
                       >
-                        {this.state.copiedText === "planet"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'planet'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"ruler-pencil"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "ruler-pencil" })
-                        }
+                        text={'ruler-pencil'}
+                        onCopy={() => this.setState({ copiedText: 'ruler-pencil' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -2072,17 +1996,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip693938896"
                       >
-                        {this.state.copiedText === "ruler-pencil"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'ruler-pencil'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"satisfied"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "satisfied" })
-                        }
+                        text={'satisfied'}
+                        onCopy={() => this.setState({ copiedText: 'satisfied' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -2101,15 +2023,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip634575265"
                       >
-                        {this.state.copiedText === "satisfied"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'satisfied'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"scissors"}
-                        onCopy={() => this.setState({ copiedText: "scissors" })}
+                        text={'scissors'}
+                        onCopy={() => this.setState({ copiedText: 'scissors' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -2128,15 +2050,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip688473648"
                       >
-                        {this.state.copiedText === "scissors"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'scissors'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"send"}
-                        onCopy={() => this.setState({ copiedText: "send" })}
+                        text={'send'}
+                        onCopy={() => this.setState({ copiedText: 'send' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -2155,16 +2077,16 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip161268791"
                       >
-                        {this.state.copiedText === "send"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'send'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"settings-gear-65"}
+                        text={'settings-gear-65'}
                         onCopy={() =>
-                          this.setState({ copiedText: "settings-gear-65" })
+                          this.setState({ copiedText: 'settings-gear-65' })
                         }
                       >
                         <button
@@ -2184,15 +2106,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip487959296"
                       >
-                        {this.state.copiedText === "settings-gear-65"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'settings-gear-65'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"settings"}
-                        onCopy={() => this.setState({ copiedText: "settings" })}
+                        text={'settings'}
+                        onCopy={() => this.setState({ copiedText: 'settings' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -2211,17 +2133,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip156598208"
                       >
-                        {this.state.copiedText === "settings"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'settings'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"single-02"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "single-02" })
-                        }
+                        text={'single-02'}
+                        onCopy={() => this.setState({ copiedText: 'single-02' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -2240,16 +2160,16 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip487356467"
                       >
-                        {this.state.copiedText === "single-02"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'single-02'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"single-copy-04"}
+                        text={'single-copy-04'}
                         onCopy={() =>
-                          this.setState({ copiedText: "single-copy-04" })
+                          this.setState({ copiedText: 'single-copy-04' })
                         }
                       >
                         <button
@@ -2269,17 +2189,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip340498904"
                       >
-                        {this.state.copiedText === "single-copy-04"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'single-copy-04'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"sound-wave"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "sound-wave" })
-                        }
+                        text={'sound-wave'}
+                        onCopy={() => this.setState({ copiedText: 'sound-wave' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -2298,17 +2216,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip289156059"
                       >
-                        {this.state.copiedText === "sound-wave"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'sound-wave'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"spaceship"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "spaceship" })
-                        }
+                        text={'spaceship'}
+                        onCopy={() => this.setState({ copiedText: 'spaceship' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -2327,17 +2243,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip603604642"
                       >
-                        {this.state.copiedText === "spaceship"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'spaceship'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"square-pin"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "square-pin" })
-                        }
+                        text={'square-pin'}
+                        onCopy={() => this.setState({ copiedText: 'square-pin' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -2356,17 +2270,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip153036405"
                       >
-                        {this.state.copiedText === "square-pin"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'square-pin'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"support-16"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "support-16" })
-                        }
+                        text={'support-16'}
+                        onCopy={() => this.setState({ copiedText: 'support-16' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -2385,17 +2297,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip906422211"
                       >
-                        {this.state.copiedText === "support-16"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'support-16'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"tablet-button"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "tablet-button" })
-                        }
+                        text={'tablet-button'}
+                        onCopy={() => this.setState({ copiedText: 'tablet-button' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -2414,15 +2324,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip517579618"
                       >
-                        {this.state.copiedText === "tablet-button"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'tablet-button'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"tag"}
-                        onCopy={() => this.setState({ copiedText: "tag" })}
+                        text={'tag'}
+                        onCopy={() => this.setState({ copiedText: 'tag' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -2441,15 +2351,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip297195808"
                       >
-                        {this.state.copiedText === "tag"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'tag'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"tie-bow"}
-                        onCopy={() => this.setState({ copiedText: "tie-bow" })}
+                        text={'tie-bow'}
+                        onCopy={() => this.setState({ copiedText: 'tie-bow' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -2468,17 +2378,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip793084796"
                       >
-                        {this.state.copiedText === "tie-bow"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'tie-bow'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"time-alarm"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "time-alarm" })
-                        }
+                        text={'time-alarm'}
+                        onCopy={() => this.setState({ copiedText: 'time-alarm' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -2497,15 +2405,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip258891035"
                       >
-                        {this.state.copiedText === "time-alarm"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'time-alarm'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"trophy"}
-                        onCopy={() => this.setState({ copiedText: "trophy" })}
+                        text={'trophy'}
+                        onCopy={() => this.setState({ copiedText: 'trophy' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -2524,15 +2432,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip881235890"
                       >
-                        {this.state.copiedText === "trophy"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'trophy'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"tv-2"}
-                        onCopy={() => this.setState({ copiedText: "tv-2" })}
+                        text={'tv-2'}
+                        onCopy={() => this.setState({ copiedText: 'tv-2' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -2551,17 +2459,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip330279137"
                       >
-                        {this.state.copiedText === "tv-2"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'tv-2'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"umbrella-13"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "umbrella-13" })
-                        }
+                        text={'umbrella-13'}
+                        onCopy={() => this.setState({ copiedText: 'umbrella-13' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -2580,15 +2486,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip412313570"
                       >
-                        {this.state.copiedText === "umbrella-13"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'umbrella-13'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"user-run"}
-                        onCopy={() => this.setState({ copiedText: "user-run" })}
+                        text={'user-run'}
+                        onCopy={() => this.setState({ copiedText: 'user-run' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -2607,15 +2513,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip176201858"
                       >
-                        {this.state.copiedText === "user-run"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'user-run'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"vector"}
-                        onCopy={() => this.setState({ copiedText: "vector" })}
+                        text={'vector'}
+                        onCopy={() => this.setState({ copiedText: 'vector' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -2634,17 +2540,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip71164138"
                       >
-                        {this.state.copiedText === "vector"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'vector'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"watch-time"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "watch-time" })
-                        }
+                        text={'watch-time'}
+                        onCopy={() => this.setState({ copiedText: 'watch-time' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -2663,15 +2567,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip495578192"
                       >
-                        {this.state.copiedText === "watch-time"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'watch-time'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"world"}
-                        onCopy={() => this.setState({ copiedText: "world" })}
+                        text={'world'}
+                        onCopy={() => this.setState({ copiedText: 'world' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -2690,17 +2594,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip604848245"
                       >
-                        {this.state.copiedText === "world"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'world'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"zoom-split-in"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "zoom-split-in" })
-                        }
+                        text={'zoom-split-in'}
+                        onCopy={() => this.setState({ copiedText: 'zoom-split-in' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -2719,17 +2621,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip916423293"
                       >
-                        {this.state.copiedText === "zoom-split-in"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'zoom-split-in'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"collection"}
-                        onCopy={() =>
-                          this.setState({ copiedText: "collection" })
-                        }
+                        text={'collection'}
+                        onCopy={() => this.setState({ copiedText: 'collection' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -2748,15 +2648,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip142934658"
                       >
-                        {this.state.copiedText === "collection"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'collection'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"image"}
-                        onCopy={() => this.setState({ copiedText: "image" })}
+                        text={'image'}
+                        onCopy={() => this.setState({ copiedText: 'image' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -2775,15 +2675,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip842947283"
                       >
-                        {this.state.copiedText === "image"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'image'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"shop"}
-                        onCopy={() => this.setState({ copiedText: "shop" })}
+                        text={'shop'}
+                        onCopy={() => this.setState({ copiedText: 'shop' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -2802,15 +2702,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip531866818"
                       >
-                        {this.state.copiedText === "shop"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'shop'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"ungroup"}
-                        onCopy={() => this.setState({ copiedText: "ungroup" })}
+                        text={'ungroup'}
+                        onCopy={() => this.setState({ copiedText: 'ungroup' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -2829,15 +2729,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip470734151"
                       >
-                        {this.state.copiedText === "ungroup"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'ungroup'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"world-2"}
-                        onCopy={() => this.setState({ copiedText: "world-2" })}
+                        text={'world-2'}
+                        onCopy={() => this.setState({ copiedText: 'world-2' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -2856,15 +2756,15 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip932383030"
                       >
-                        {this.state.copiedText === "world-2"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'world-2'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                     <Col lg="3" md="6">
                       <CopyToClipboard
-                        text={"ui-04"}
-                        onCopy={() => this.setState({ copiedText: "ui-04" })}
+                        text={'ui-04'}
+                        onCopy={() => this.setState({ copiedText: 'ui-04' })}
                       >
                         <button
                           className=" btn-icon-clipboard"
@@ -2883,9 +2783,9 @@ class Icons extends React.Component {
                         trigger="hover focus"
                         target="tooltip9332484"
                       >
-                        {this.state.copiedText === "ui-04"
-                          ? "Copied"
-                          : "Copy To Clipbord"}
+                        {this.state.copiedText === 'ui-04'
+                          ? 'Copied'
+                          : 'Copy To Clipbord'}
                       </UncontrolledTooltip>
                     </Col>
                   </Row>

@@ -1,41 +1,22 @@
 import React, { Component } from 'react';
-import { BrowserRouter, Route, NavLink, Link, Switch } from 'react-router-dom';
+import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import ChallanTemplate from './FeeTemplate';
 import axios from 'axios';
 import Cookies from 'js-cookie';
 import NavbarPage from '../home/TopNav';
 import { Redirect } from 'react-router-dom';
-import { Card, Button, Container, Breadcrumb } from 'react-bootstrap';
+import { Card, Container, Breadcrumb } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { Table } from 'reactstrap';
-class FeeChallan extends Component {
+import { Table, Badge } from 'reactstrap';
+class FeeDetails extends Component {
   constructor(props) {
     super(props);
-    var utc = new Date().toJSON().slice(0, 10).replace(/-/g, '/');
     this.state = {
-      challan: [],
-      dueDate: '',
-      Name: '',
-      rollNo: '',
-      challanNo: '',
-      Discipline: '',
-      Semester: '',
-      admissionFee: '',
-      tutionFee: '',
-      Fine: '',
-      Other: '',
-      Arrears: '',
-      WithholdingTax: '',
-      Total: '',
-      Date: '',
-      Words: '',
-      finePerDay: '',
-      CDate: utc,
+      Details: [],
     };
+    this.getFeeDetails = this.getFeeDetails.bind(this);
   }
-  componentDidMount() {
-    var converter = require('number-to-words');
-
+  getFeeDetails() {
     axios.get('/management/get_csrf').then((response) => {
       Cookies.set('csrftoken', response.data.csrfToken);
     });
@@ -43,37 +24,21 @@ class FeeChallan extends Component {
       csrf_token: Cookies.get('csrftoken'),
     }));
     let newDate = new Date();
-    let date = newDate.getDate();
 
     let form = new FormData();
     form.append('csrfmiddlewaretoken', Cookies.get('csrftoken'));
-    form.append('code', 'FALL2019_BS(CS)_ComputerSciences_MainCampus_Karachi');
+    form.append('code', '');
 
     axios.post('/student/getChallan/', form).then((response) => {
-      console.log(response);
       if (response.data !== 'No Challan') {
         this.setState({
-          dueDate: response.data.due_date,
-          Name: response.data.name,
-          rollNo: response.data.roll_no,
-          challanNo: response.data.challan_no,
-          Discipline: response.data.discipline,
-          Semester: response.data.semester,
-          admissionFee: response.data.admission_fee,
-          tutionFee: response.data.tution_fee,
-          Fine: response.data.fine,
-          Others: response.data.other,
-          Arrears: response.data.arrears,
-          WithholdingTax: response.data.withholding,
-          Total: response.data.total_amount,
-          Date: response.data.due_date,
-          Words: converter.toWords(parseInt(response.data.total_amount)),
-          finePerDay: response.data.fine_per_day,
-          challanNo: response.data.challan_no,
-          challan: response.data,
+          Details: response.data,
         });
       }
     });
+  }
+  componentDidMount() {
+    this.getFeeDetails();
   }
   render() {
     if (this.props.student === undefined) {
@@ -91,7 +56,7 @@ class FeeChallan extends Component {
             <div style={{ width: 'auto', paddingBottom: '2rem' }}>
               <Breadcrumb>
                 <Breadcrumb.Item href="/dashboard/home">Home</Breadcrumb.Item>
-                <Breadcrumb.Item active>Fee Challan</Breadcrumb.Item>
+                <Breadcrumb.Item active>Fee Details</Breadcrumb.Item>
               </Breadcrumb>
             </div>
             <Card style={{ border: '1px solid black' }}>
@@ -100,42 +65,50 @@ class FeeChallan extends Component {
                   <h3
                     style={{ fontWeight: 'bold', marginTop: '-8px', color: 'white' }}
                   >
-                    Student Challan
+                    Fee Details
                   </h3>
                 </span>
               </Card.Header>
               <Card.Body>
-                {this.state.challan.length !== 0 ? (
+                {this.state.Details.length !== 0 ? (
                   <Table
                     className="align-items-center table-dark table-flush"
                     responsive
                   >
                     <thead className="thead-dark">
                       <tr>
+                        <th>S No.</th>
+                        <th>Semester</th>
                         <th>Challan No.</th>
                         <th>Amount</th>
                         <th>Due Date</th>
+                        <th>Payment Date</th>
                         <th>Status</th>
-                        <th>Details</th>
                       </tr>
                     </thead>
                     <tbody>
-                      <tr>
-                        <td>{this.state.challanNo}</td>
-                        <td>Rs. {this.state.Total}</td>
-                        <td>{this.state.dueDate}</td>
-                        <td>Paid</td>
-
-                        <td>
-                          <Button
-                            href="/challantemplate"
-                            variant="primary"
-                            size="sm"
-                          >
-                            Print Challan
-                          </Button>
-                        </td>
-                      </tr>
+                      {this.state.Details.length > 0
+                        ? this.state.Details.map((obj, i) => {
+                            let semester = obj.semester_id.split('_');
+                            return (
+                              <tr key={i}>
+                                <td>{i + 1}</td>
+                                <td>{semester[0]}</td>
+                                <td>{obj.challan_no}</td>
+                                <td>{obj.total_fee}</td>
+                                <td>{obj.due_date}</td>
+                                <td>{obj.payment_date}</td>
+                                <td>
+                                  {obj.status === true ? (
+                                    <Badge variant="success">Paid</Badge>
+                                  ) : (
+                                    <Badge variant="danger">Unpaid</Badge>
+                                  )}
+                                </td>
+                              </tr>
+                            );
+                          })
+                        : null}
                     </tbody>
                   </Table>
                 ) : null}
@@ -152,4 +125,4 @@ const mapStateToProps = (state) => {
     student: state.student,
   };
 };
-export default connect(mapStateToProps)(FeeChallan);
+export default connect(mapStateToProps)(FeeDetails);

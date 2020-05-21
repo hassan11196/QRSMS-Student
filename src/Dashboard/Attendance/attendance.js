@@ -97,7 +97,7 @@ class Attendance extends Component {
               </Breadcrumb>
             </div>
             <Card>
-              <Card.Header style={{ height: '6rem', backgroundColor: 'black' }}>
+              <Card.Header style={{ height: '3rem', backgroundColor: 'black' }}>
                 <Router>
                   <Navbar color="black" dark expand="md">
                     <NavbarToggler onClick={this.toggleCollapse} />
@@ -121,12 +121,11 @@ class Attendance extends Component {
                               className="btn"
                               key={i}
                               style={{
+                                marginTop: '-22px',
                                 maxHeight: '2rem',
                                 minHeight: '2rem',
-                                // height: '1rem',
                                 float: 'right',
                                 padding: '0',
-                                marginTop: 0,
                                 color: '#eee2dc',
                                 fontSize: '15px',
                                 backgroundColor: 'black',
