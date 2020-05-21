@@ -44,34 +44,36 @@ class ChallanTemplate extends Component {
     }));
     let newDate = new Date();
     let date = newDate.getDate();
+    axios.get('/management/getCurrentSemester').then((response) => {
+      let form = new FormData();
+      form.append('csrfmiddlewaretoken', Cookies.get('csrftoken'));
+      form.append('code', response.data);
 
-    let form = new FormData();
-    form.append('csrfmiddlewaretoken', Cookies.get('csrftoken'));
-    form.append('code', 'FALL2019_BS(CS)_ComputerSciences_MainCampus_Karachi');
+      axios.post('/student/getChallan/', form).then((response) => {
+        console.log(response);
+        if (response.data !== 'No Challan') {
+          this.setState({
+            dueDate: response.data.due_date,
+            Name: response.data.name,
+            rollNo: response.data.roll_no,
+            challanNo: response.data.challan_no,
+            Discipline: response.data.discipline,
+            Semester: response.data.semester,
+            admissionFee: response.data.admission_fee,
+            tutionFee: response.data.tution_fee,
+            Fine: response.data.fine,
+            Others: response.data.other,
+            Arrears: response.data.arrears,
+            WithholdingTax: response.data.withholding,
+            Total: response.data.total_amount,
+            Date: response.data.due_date,
+            Words: converter.toWords(parseInt(response.data.total_amount)),
+            finePerDay: response.data.fine_per_day,
+            challanNo: response.data.challan_no,
+          });
+        }
+      })
 
-    axios.post('/student/getChallan/', form).then((response) => {
-      console.log(response);
-      if (response.data !== 'No Challan') {
-        this.setState({
-          dueDate: response.data.due_date,
-          Name: response.data.name,
-          rollNo: response.data.roll_no,
-          challanNo: response.data.challan_no,
-          Discipline: response.data.discipline,
-          Semester: response.data.semester,
-          admissionFee: response.data.admission_fee,
-          tutionFee: response.data.tution_fee,
-          Fine: response.data.fine,
-          Others: response.data.other,
-          Arrears: response.data.arrears,
-          WithholdingTax: response.data.withholding,
-          Total: response.data.total_amount,
-          Date: response.data.due_date,
-          Words: converter.toWords(parseInt(response.data.total_amount)),
-          finePerDay: response.data.fine_per_day,
-          challanNo: response.data.challan_no,
-        });
-      }
     });
     const input = document.getElementById('challan');
     html2canvas(input, { scale: 1.335 }).then((canvas) => {

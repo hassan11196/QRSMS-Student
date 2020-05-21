@@ -17,6 +17,8 @@ import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Axios from 'axios';
+import Cookies from 'js-cookie';
+
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
 
@@ -32,6 +34,8 @@ class Registration extends Component {
       CourseInfo: [],
       nodey: [],
       force_update: 0,
+      csrf_token: 0,
+      semester: '',
     };
     this.toggle = this.toggle.bind(this);
   }
@@ -39,6 +43,20 @@ class Registration extends Component {
     this.setState({ popoverOpen: !this.state.popoverOpen });
   }
   componentDidMount() {
+    axios.get('/management/getCurrentSemester/').then(response => {
+      this.setState({
+        semester: response.data
+      })
+    })
+
+    axios.get('/management/get_csrf').then((response) => {
+      Cookies.set('csrftoken', response.data.csrfToken);
+      this.setState((oldState) => ({
+        csrf_token: Cookies.get('csrftoken'),
+      }))
+    });
+    console.log(this.props);
+    console.log(this.props.student.user_data, 'Component did mount');
     this.setState(
       {
         student: this.props.student.student_data[0],
@@ -112,21 +130,21 @@ class Registration extends Component {
             </Button>
           </td>
         ) : (
-          <td>
-            <Button
-              onClick={() =>
-                this.register_or_drop_course(
-                  c,
-                  c.course.url,
-                  'R',
-                  c.course.course_name
-                )
-              }
-            >
-              Register
+            <td>
+              <Button
+                onClick={() =>
+                  this.register_or_drop_course(
+                    c,
+                    c.course.url,
+                    'R',
+                    c.course.course_name
+                  )
+                }
+              >
+                Register
             </Button>
-          </td>
-        )}
+            </td>
+          )}
         {c.status === 'R' ? <td>{c.section}</td> : <td></td>}
       </tr>
       // </li>
@@ -170,7 +188,7 @@ class Registration extends Component {
         form.append('admission_fee', '');
         form.append(
           'semester',
-          'FALL2019_BS(CS)_ComputerSciences_MainCampus_Karachi'
+          this.state.semester
         );
         form.append('action', value);
         axios.post('/student/updateChallan/', form).then((response) => {
