@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
+import { Initial } from 'react-initial';
 import D from '../../assets/img/d.png';
-import { Table, CardBody, CardTitle, Popover, PopoverBody } from 'reactstrap';
+import { Table, CardBody, Media, CardTitle, Popover, PopoverBody } from 'reactstrap';
 import {
   Navbar,
   Container,
@@ -43,17 +44,17 @@ class Registration extends Component {
     this.setState({ popoverOpen: !this.state.popoverOpen });
   }
   componentDidMount() {
-    axios.get('/management/getCurrentSemester/').then(response => {
+    axios.get('/management/getCurrentSemester/').then((response) => {
       this.setState({
-        semester: response.data
-      })
-    })
+        semester: response.data,
+      });
+    });
 
     axios.get('/management/get_csrf').then((response) => {
       Cookies.set('csrftoken', response.data.csrfToken);
       this.setState((oldState) => ({
         csrf_token: Cookies.get('csrftoken'),
-      }))
+      }));
     });
     console.log(this.props);
     console.log(this.props.student.user_data, 'Component did mount');
@@ -108,8 +109,28 @@ class Registration extends Component {
   );
   registrationTable(c) {
     return (
-      <tr>
-        <td key={'rowCol' + c.course.course_name}>{c.course.course_name}</td>
+      <tr key={'rowCol' + c.course.course_name}>
+        <th scope="row" style={{ textAlign: 'center' }}>
+          <Media className="align-items-center">
+            <a className="avatar rounded-circle mr-3">
+              <Initial
+                useWords={true}
+                radius={55}
+                height={40}
+                width={40}
+                seed={1}
+                charCount={2}
+                fontSize={16}
+                name={c.course.course_name}
+              />
+            </a>
+            <Media>
+              <span style={{ textAlign: 'center' }} className="mb-0 text-sm">
+                {c.course.course_name}
+              </span>
+            </Media>
+          </Media>
+        </th>
         <td>{c.course.credit_hour}</td>
         <td>{c.course.course_type === 1 ? 'Core' : 'Elective'}</td>
         <td>Register! 5-New Offered Course new (Recommended)</td>
@@ -130,21 +151,21 @@ class Registration extends Component {
             </Button>
           </td>
         ) : (
-            <td>
-              <Button
-                onClick={() =>
-                  this.register_or_drop_course(
-                    c,
-                    c.course.url,
-                    'R',
-                    c.course.course_name
-                  )
-                }
-              >
-                Register
+          <td>
+            <Button
+              onClick={() =>
+                this.register_or_drop_course(
+                  c,
+                  c.course.url,
+                  'R',
+                  c.course.course_name
+                )
+              }
+            >
+              Register
             </Button>
-            </td>
-          )}
+          </td>
+        )}
         {c.status === 'R' ? <td>{c.section}</td> : <td></td>}
       </tr>
       // </li>
@@ -186,10 +207,7 @@ class Registration extends Component {
         form.append('csrfmiddlewaretoken', this.state.csrf_token);
         form.append('code', course_name);
         form.append('admission_fee', '');
-        form.append(
-          'semester',
-          this.state.semester
-        );
+        form.append('semester', this.state.semester);
         form.append('action', value);
         axios.post('/student/updateChallan/', form).then((response) => {
           console.log(response);
@@ -428,25 +446,44 @@ class Registration extends Component {
                 </Row>
               </Card.Body>
             </Card>
-            <Card>
-              {this.renderRegistrationStatus()}
+            {this.renderRegistrationStatus()}
+            <Card style={{ margin: '2rem', border: '1px solid black' }}>
+              <Card.Header
+                as="h4"
+                style={{ height: '4rem', backgroundColor: 'black' }}
+              >
+                <span
+                  style={{
+                    fontWeight: 'bold',
+                    paddingRight: '1rem',
+                    marginTop: '-4px',
+                    color: 'white',
+                  }}
+                  className="toggleiconHeight"
+                >
+                  {/* <FaMoneyBillAlt size={'2em'} /> */}
+                </span>
+                <span
+                  style={{ fontWeight: 'bold', marginTop: '-4px', color: 'white' }}
+                  className="toggletextSize"
+                >
+                  {' '}
+                  Course Registration
+                </span>
+              </Card.Header>
 
               <Card.Body>
-                {/* <MuiThemeProvider> */}
                 <Table
                   className="align-items-center table-dark table-flush"
                   responsive
                 >
-                  {/* <th style={{ backgroundColor: 'black', fontSize: '5px' }}></th> */}
                   <thead className="thead-dark">
-                    <th style={{ fontWeight: '700', fontSize: '15px' }}>
-                      Course Name
-                    </th>
-                    <th style={{ fontWeight: '700', fontSize: '15px' }}>Cr.Hrs</th>
-                    <th style={{ fontWeight: '700', fontSize: '15px' }}>Relation</th>
-                    <th style={{ fontWeight: '700', fontSize: '15px' }}>Comments</th>
-                    <th style={{ fontWeight: '700', fontSize: '15px' }}>Status</th>
-                    <th style={{ fontWeight: '700', fontSize: '15px' }}>Section</th>
+                    <th style={{ fontWeight: '700' }}>Course Name</th>
+                    <th style={{ fontWeight: '700' }}>Cr.Hrs</th>
+                    <th style={{ fontWeight: '700' }}>Relation</th>
+                    <th style={{ fontWeight: '700' }}>Comments</th>
+                    <th style={{ fontWeight: '700' }}>Status</th>
+                    <th style={{ fontWeight: '700' }}>Section</th>
                   </thead>
                   <tbody>{this.state.courses_nodes}</tbody>
                 </Table>

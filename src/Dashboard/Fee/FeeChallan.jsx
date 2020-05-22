@@ -5,6 +5,8 @@ import axios from 'axios';
 import Cookies from 'js-cookie';
 import NavbarPage from '../home/TopNav';
 import { Redirect } from 'react-router-dom';
+import { FaHome, FaMoneyBillAlt, FaUser, FaBookReader } from 'react-icons/fa';
+
 import { Card, Button, Container, Breadcrumb } from 'react-bootstrap';
 import { connect } from 'react-redux';
 import { Table } from 'reactstrap';
@@ -48,7 +50,7 @@ class FeeChallan extends Component {
       let form = new FormData();
       form.append('csrfmiddlewaretoken', Cookies.get('csrftoken'));
       //form.append('code', '');
-      form.append('code', response.data)
+      form.append('code', response.data);
       axios.post('/student/getChallan/', form).then((response) => {
         console.log(response);
         if (response.data !== 'No Challan' || response.data !== 'No All Challan') {
@@ -72,8 +74,7 @@ class FeeChallan extends Component {
             challan: response.data,
           });
         }
-      })
-
+      });
     });
   }
   render() {
@@ -96,13 +97,27 @@ class FeeChallan extends Component {
               </Breadcrumb>
             </div>
             <Card style={{ border: '1px solid black' }}>
-              <Card.Header style={{ height: '3rem', backgroundColor: 'black' }}>
-                <span>
-                  <h3
-                    style={{ fontWeight: 'bold', marginTop: '-8px', color: 'white' }}
-                  >
-                    Student Challan
-                  </h3>
+              <Card.Header
+                as="h4"
+                style={{ height: '4rem', backgroundColor: 'black' }}
+              >
+                <span
+                  style={{
+                    fontWeight: 'bold',
+                    paddingRight: '1rem',
+                    marginTop: '-4px',
+                    color: 'white',
+                  }}
+                  className="toggleiconHeight"
+                >
+                  <FaMoneyBillAlt size={'2em'} />
+                </span>
+                <span
+                  style={{ fontWeight: 'bold', marginTop: '-4px', color: 'white' }}
+                  className="toggletextSize"
+                >
+                  {' '}
+                  Student Challan
                 </span>
               </Card.Header>
               <Card.Body>

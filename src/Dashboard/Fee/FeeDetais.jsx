@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 import ChallanTemplate from './FeeTemplate';
 import axios from 'axios';
+import { FaHome, FaMoneyBillAlt, FaUser, FaBookReader } from 'react-icons/fa';
 import Cookies from 'js-cookie';
 import NavbarPage from '../home/TopNav';
 import { Redirect } from 'react-router-dom';
@@ -60,13 +61,27 @@ class FeeDetails extends Component {
               </Breadcrumb>
             </div>
             <Card style={{ border: '1px solid black' }}>
-              <Card.Header style={{ height: '3rem', backgroundColor: 'black' }}>
-                <span>
-                  <h3
-                    style={{ fontWeight: 'bold', marginTop: '-8px', color: 'white' }}
-                  >
-                    Fee Details
-                  </h3>
+              <Card.Header
+                as="h4"
+                style={{ height: '4rem', backgroundColor: 'black' }}
+              >
+                <span
+                  style={{
+                    fontWeight: 'bold',
+                    paddingRight: '1rem',
+                    marginTop: '-4px',
+                    color: 'white',
+                  }}
+                  className="toggleiconHeight"
+                >
+                  <FaMoneyBillAlt size={'2em'} />
+                </span>
+                <span
+                  style={{ fontWeight: 'bold', marginTop: '-4px', color: 'white' }}
+                  className="toggletextSize"
+                >
+                  {' '}
+                  Fee Details
                 </span>
               </Card.Header>
               <Card.Body>

@@ -235,19 +235,31 @@ class Home extends React.Component {
                         <label className="form-control-label" htmlFor="input-email">
                           Roll No.
                         </label>
-                        <ListGroupItem>{this.state.uid}</ListGroupItem>
+                        <span
+                          style={{
+                            fontWeight: '500',
+                            paddingLeft: '0.6rem',
+                            fontSize: '13px',
+                          }}
+                        >
+                          {' '}
+                          {this.state.uid}
+                        </span>
                       </Col>
                       <Col lg="6" style={{ paddingBottom: '1rem' }}>
                         <label className="form-control-label" htmlFor="input-email">
-                          Email address
+                          Email address:
                         </label>
-                        <ListGroupItem>{this.state.uni_mail}</ListGroupItem>
-                        {/* <Input
-                              className="form-control-alternative"
-                              id="input-email"
-                              value={this.state.uni_mail}
-                              type="email"
-                            /> */}
+                        <span
+                          style={{
+                            fontWeight: '500',
+                            paddingLeft: '0.6rem',
+                            fontSize: '13px',
+                          }}
+                        >
+                          {' '}
+                          {this.state.uni_mail}
+                        </span>
                       </Col>
                     </Row>
                     <Row>
@@ -258,9 +270,16 @@ class Home extends React.Component {
                         >
                           First name
                         </label>
-                        <ListGroupItem>
+                        <span
+                          style={{
+                            fontWeight: '500',
+                            paddingLeft: '0.6rem',
+                            fontSize: '13px',
+                          }}
+                        >
+                          {' '}
                           {this.state.user_data.first_name}
-                        </ListGroupItem>
+                        </span>
                       </Col>
                       <Col lg="6">
                         <label
@@ -269,9 +288,16 @@ class Home extends React.Component {
                         >
                           Last name
                         </label>
-                        <ListGroupItem>
+                        <span
+                          style={{
+                            fontWeight: '500',
+                            paddingLeft: '0.6rem',
+                            fontSize: '13px',
+                          }}
+                        >
+                          {' '}
                           {this.state.user_data.last_name}
-                        </ListGroupItem>
+                        </span>
                       </Col>
                     </Row>
                   </div>
@@ -282,46 +308,78 @@ class Home extends React.Component {
                   </h6>
                   <div className="pl-lg-4">
                     <Row>
-                      <Col md="12">
+                      <Col md="6">
                         <label
                           className="form-control-label"
                           htmlFor="input-address"
                         >
                           Address
                         </label>
-                        <ListGroupItem>
+                        <span
+                          style={{
+                            fontWeight: '500',
+                            paddingLeft: '0.6rem',
+                            fontSize: '13px',
+                          }}
+                        >
+                          {' '}
                           {this.state.user_data.current_address}
-                        </ListGroupItem>
+                        </span>
                       </Col>
-                    </Row>
-                    <Row>
-                      <Col lg="4">
+
+                      <Col lg="6">
                         <label className="form-control-label" htmlFor="input-city">
                           City
                         </label>
-                        <ListGroupItem>
+                        <span
+                          style={{
+                            fontWeight: '500',
+                            paddingLeft: '0.6rem',
+                            fontSize: '13px',
+                          }}
+                        >
+                          {' '}
                           {this.state.user_data.current_city}
-                        </ListGroupItem>
+                        </span>
                       </Col>
-                      <Col lg="4">
+                    </Row>
+                    <Row style={{ paddingTop: '1rem   ' }}>
+                      {' '}
+                      <Col lg="6">
                         <label
                           className="form-control-label"
                           htmlFor="input-country"
                         >
                           Country
                         </label>
-                        <ListGroupItem>
+                        <span
+                          style={{
+                            fontWeight: '500',
+                            paddingLeft: '0.6rem',
+                            fontSize: '13px',
+                          }}
+                        >
+                          {' '}
                           {this.state.user_data.current_country}
-                        </ListGroupItem>
+                        </span>
                       </Col>
-                      <Col lg="4">
+                      <Col lg="6">
                         <label
                           className="form-control-label"
                           htmlFor="input-country"
                         >
                           CNIC
                         </label>
-                        <ListGroupItem>{this.state.user_data.CNIC}</ListGroupItem>
+                        <span
+                          style={{
+                            fontWeight: '500',
+                            paddingLeft: '0.6rem',
+                            fontSize: '13px',
+                          }}
+                        >
+                          {' '}
+                          {this.state.user_data.CNIC}
+                        </span>
                       </Col>
                     </Row>
                   </div>
