@@ -1,22 +1,5 @@
-/*!
-
-=========================================================
-* Argon Dashboard React - v1.0.0
-=========================================================
-
-* Product Page: https://www.creative-tim.com/product/argon-dashboard-react
-* Copyright 2019 Creative Tim (https://www.creative-tim.com)
-* Licensed under MIT (https://github.com/creativetimofficial/argon-dashboard-react/blob/master/LICENSE.md)
-
-* Coded by Creative Tim
-
-=========================================================
-
-* The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
-
-*/
 import React from 'react';
-
+import { FaHome, FaMobileAlt } from 'react-icons/fa';
 // reactstrap components
 import {
   Button,
@@ -142,26 +125,7 @@ class Home extends React.Component {
                   </Col>
                 </Row>
                 <CardHeader className="text-center border-0 pt-8 pt-md-4 pb-0 pb-md-4">
-                  <div className="d-flex justify-content-between">
-                    {/* <Button
-                      className="mr-4"
-                      color="info"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
-                      size="sm"
-                    >
-                      Connect
-                    </Button> */}
-                    {/* <Button
-                      className="float-right"
-                      color="default"
-                      href="#pablo"
-                      onClick={(e) => e.preventDefault()}
-                      size="sm"
-                    >
-                      Message
-                    </Button> */}
-                  </div>
+                  <div className="d-flex justify-content-between"></div>
                 </CardHeader>
                 <CardBody className="pt-0 pt-md-4">
                   <Row>
@@ -215,20 +179,16 @@ class Home extends React.Component {
                     <Col xs="8">
                       <h3 className="mb-0">My profile</h3>
                     </Col>
-                    {/* <Col className="text-right" xs="4">
-                      <Button
-                        color="primary"
-                        href="#pablo"
-                        onClick={(e) => e.preventDefault()}
-                        size="sm"
-                      >
-                        Settings
-                      </Button>
-                    </Col> */}
+                    <hr style={{ marginTop: '10px', width: '500%' }} />
                   </Row>
                 </CardHeader>
-                <CardBody>
-                  <h6 className="heading-small text-muted mb-4">User information</h6>
+                <CardBody style={{ marginTop: '-60px' }}>
+                  <h6 className="heading-small text-muted mb-4">
+                    <span style={{ paddingRight: '0.7rem' }}>
+                      <FaHome />
+                    </span>
+                    User information
+                  </h6>
                   <div className="pl-lg-4">
                     <Row>
                       <Col lg="6">
@@ -304,6 +264,9 @@ class Home extends React.Component {
                   <hr className="my-4" />
                   {/* Address */}
                   <h6 className="heading-small text-muted mb-4">
+                    <span style={{ paddingRight: '0.8rem' }}>
+                      <FaMobileAlt />
+                    </span>{' '}
                     Contact information
                   </h6>
                   <div className="pl-lg-4">
