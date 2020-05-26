@@ -29,26 +29,27 @@ import Attendance from './Dashboard/Attendance/attendance';
 import ChallanTemplate from './Dashboard/Fee/FeeTemplate';
 import CustomLogin from './login';
 import FeeChallan from './Dashboard/Fee/FeeChallan';
+import Transcript from './Dashboard/Transcript/Transcript.jsx';
 
 var routes = [
   {
     path: '/home',
     name: 'Home',
-    icon: 'ni ni-circle-08 text-pink',
+    icon: 'fas fa-home text-white',
     component: DashboardHome,
     layout: '/dashboard',
   },
   {
     path: '/student-registration',
     name: 'Course Registration',
-    icon: 'ni ni-single-02 text-yellow',
+    icon: 'far fa-registered text-white',
     component: Registration,
     layout: '/admin',
   },
   {
     path: '/student-attendance',
     name: 'Attendance',
-    icon: 'ni ni-single-02 text-yellow',
+    icon: 'ni ni-single-02 text-white',
     component: Attendance,
     layout: '/admin',
   },
@@ -59,24 +60,31 @@ var routes = [
   //   component: Index,
   //   layout: '/admin',
   // },
+  // {
+  //   path: '/icons',
+  //   name: 'Icons',
+  //   icon: 'ni ni-planet text-blue',
+  //   component: Icons,
+  //   layout: '/admin',
+  // },
   {
-    path: '/icons',
-    name: 'Icons',
-    icon: 'ni ni-planet text-blue',
-    component: Icons,
+    path: '/transcript',
+    name: 'Transcript',
+    icon: 'far fa-registered text-white',
+    component: Transcript,
     layout: '/admin',
   },
   {
     path: '/fee-challan',
     name: 'Fee Challan',
-    icon: 'ni ni-tv-2 text-primary',
+    icon: 'fas fa-coins text-white',
     component: FeeChallan,
     layout: '/admin',
   },
   {
     path: '/fee-details',
     name: 'Fee Details',
-    icon: 'ni ni-tv-2 text-primary',
+    icon: 'fas fa-hand-holding-usd text-white',
     component: FeeDetails,
     layout: '/admin',
   },
@@ -133,7 +141,7 @@ var routes = [
   {
     path: '/login',
     name: 'Login',
-    icon: 'ni ni-circle-08 text-pink',
+    icon: 'ni ni-circle-08 text-white',
     component: CustomLogin,
     layout: '/auth',
   },

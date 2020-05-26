@@ -497,8 +497,6 @@ class Registration extends Component {
   }
 }
 const mapStateToProps = (state) => {
-  console.log('map k ander');
-  console.log(state.student);
   return {
     student: state.student,
   };
