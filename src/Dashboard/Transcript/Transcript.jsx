@@ -20,16 +20,20 @@ class Transcript extends Component {
       student: [],
       user: [],
       csrf_token: '',
+      TranscriptData: [],
     };
     this.getTranscriptData = this.getTranscriptData.bind(this);
   }
   getTranscriptData() {
+    console.log(this.state.student);
     let form = new FormData();
     form.append('csrfmiddlewaretoken', this.state.csrf_token);
-    axios.post('/management/get_transcript/').then((response) => {
-      console.log(response.data);
-      //     this.setState({
-      // });
+    form.append('id', this.state.student.uid);
+    axios.post('/management/get_transcript/', form).then((response) => {
+      console.log(response);
+      this.setState({
+        TranscriptData: response.data,
+      });
     });
   }
   componentDidMount() {
@@ -46,13 +50,11 @@ class Transcript extends Component {
         user: this.props.student.user_data,
       },
       () => {
-        console.log(this.state.student, 'registration');
+        this.getTranscriptData();
       }
     );
-    this.getTranscriptData();
   }
   render() {
-    console.log('render k ander');
     console.log(this.state.student);
     if (this.props.student === undefined) {
       return <Redirect to="/axioslogin" />;
@@ -66,7 +68,7 @@ class Transcript extends Component {
             <div style={{ width: 'auto', paddingBottom: '2rem' }}>
               <Breadcrumb>
                 <Breadcrumb.Item href="/dashboard/home">Home</Breadcrumb.Item>
-                <Breadcrumb.Item active>Fee Details</Breadcrumb.Item>
+                <Breadcrumb.Item active>Transcript</Breadcrumb.Item>
               </Breadcrumb>
             </div>
             <Card style={{ border: '1px solid black' }}>
@@ -95,7 +97,7 @@ class Transcript extends Component {
               </Card.Header>
               <Card.Body>
                 <Row>
-                  <Col md="3">
+                  {/* <Col md="3">
                     <h5 style={{ fontWeight: 'bolder', textAlign: 'left' }}>
                       Fall 2017
                     </h5>
@@ -115,16 +117,14 @@ class Transcript extends Component {
                   <Col md="2">
                     <span style={{ textAlign: 'left' }}>SGPA:</span>
                     <span style={{ textAlign: 'left' }}>2.49</span>
-                  </Col>
+                  </Col> */}
                 </Row>
-                <Table responsive striped bordered hover size="sm">
-                  <thead
-                    style={{
-                      fontWeight: 'bolder',
-                      color: 'white',
-                      backgroundColor: 'black',
-                    }}
-                  >
+                <Table
+                  className="align-items-center table-dark table-flush"
+                  responsive
+                  size="sm"
+                >
+                  <thead className="thead-dark">
                     <tr>
                       <th>Code</th>
                       <th>Course Title</th>
@@ -135,62 +135,23 @@ class Transcript extends Component {
                     </tr>
                   </thead>
                   <tbody>
-                    <tr>
-                      <td>CL101</td>
-                      <td>Introduction to Computing Lab</td>
-                      <td>1</td>
-                      <td>3.33</td>
-                      <td>B+</td>
-                      <td>Core</td>
-                    </tr>
-                    <tr>
-                      <td>CS101</td>
-                      <td>Introduction to Computing</td>
-                      <td>3</td>
-                      <td>1.67</td>
-                      <td>C-</td>
-                      <td>Core</td>
-                    </tr>
-                    <tr>
-                      <td>MT101</td>
-                      <td>Calculus</td>
-                      <td>3</td>
-                      <td>2.0</td>
-                      <td>C</td>
-                      <td>Core</td>
-                    </tr>
-                    <tr>
-                      <td>CS101</td>
-                      <td>English Language</td>
-                      <td>3</td>
-                      <td>3</td>
-                      <td>B</td>
-                      <td>Core</td>
-                    </tr>
-                    <tr>
-                      <td>SS111</td>
-                      <td>Islamic Studies</td>
-                      <td>3</td>
-                      <td>3</td>
-                      <td>B</td>
-                      <td>Core</td>
-                    </tr>
-                    <tr>
-                      <td>SL101</td>
-                      <td>English Language Lab</td>
-                      <td>1</td>
-                      <td>3</td>
-                      <td>B</td>
-                      <td>Core</td>
-                    </tr>
-                    <tr>
-                      <td>EE182</td>
-                      <td>Basic Electronics</td>
-                      <td>3</td>
-                      <td>2.33</td>
-                      <td>C+</td>
-                      <td>Core</td>
-                    </tr>
+                    {this.state.TranscriptData !== undefined &&
+                    this.state.TranscriptData !== [] &&
+                    this.state.TranscriptData !== null
+                      ? this.state.TranscriptData.map((obj, i) => {
+                          let info = obj.scsddc.split('_');
+                          return (
+                            <tr key={i}>
+                              <td>{info[1]}</td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                              <td></td>
+                            </tr>
+                          );
+                        })
+                      : null}
                   </tbody>
                 </Table>
               </Card.Body>
