@@ -55,7 +55,7 @@ class Auth extends React.Component {
           {...this.props}
           routes={routes}
           logo={{
-            innerLink: '/admin/index',
+            innerLink: '/portal/index',
             imgSrc: require('assets/img/brand/argon-react.png'),
             imgAlt: '...',
           }}

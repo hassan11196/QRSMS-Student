@@ -63,7 +63,7 @@ ReactDOM.render(
     <BrowserRouter>
       <Switch>
         {/* {localStorage.data ? (
-        <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
+        <Route path="/portal" render={(props) => <AdminLayout {...props} />} />
       ) : (
         <Redirect from="/" to="/auth/login" />
       )}
@@ -81,11 +81,11 @@ ReactDOM.render(
         <Redirect from="/" to="/auth/login" />
       )}
       {localStorage.data ? (
-        <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
+        <Route path="/portal" render={(props) => <AdminLayout {...props} />} />
       ) : (
         <Redirect from="/" to="/auth/login" />
       )} */}
-        <Route path="/admin" render={(props) => <AdminLayout {...props} />} />
+        <Route path="/portal" render={(props) => <AdminLayout {...props} />} />
         <Route path="/auth" render={(props) => <AuthLayout {...props} />} />
         <Route
           path="/dashboard"

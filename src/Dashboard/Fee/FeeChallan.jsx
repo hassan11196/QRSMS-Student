@@ -144,7 +144,7 @@ class FeeChallan extends Component {
 
                         <td>
                           <Button
-                            href="/admin/feechallan"
+                            href="/portal/feechallan"
                             variant="primary"
                             size="sm"
                           >
