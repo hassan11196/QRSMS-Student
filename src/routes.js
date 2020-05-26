@@ -145,5 +145,12 @@ var routes = [
     component: CustomLogin,
     layout: '/auth',
   },
+  {
+    path: '/feechallan',
+    name: 'Challan',
+    icon: 'ni ni-circle-08 text-white',
+    component: ChallanTemplate,
+    layout: '/admin',
+  },
 ];
 export default routes;
