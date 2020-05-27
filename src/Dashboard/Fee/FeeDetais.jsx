@@ -6,9 +6,10 @@ import { FaHome, FaMoneyBillAlt, FaUser, FaBookReader } from 'react-icons/fa';
 import Cookies from 'js-cookie';
 import NavbarPage from '../home/TopNav';
 import { Redirect } from 'react-router-dom';
-import { Card, Container, Breadcrumb } from 'react-bootstrap';
+import { Card, Badge, Container, Breadcrumb } from 'react-bootstrap';
 import { connect } from 'react-redux';
-import { Table, Badge } from 'reactstrap';
+import { Table } from 'reactstrap';
+import { Label } from 'semantic-ui-react';
 class FeeDetails extends Component {
   constructor(props) {
     super(props);
@@ -42,8 +43,8 @@ class FeeDetails extends Component {
     this.getFeeDetails();
   }
   render() {
-    if (this.props.student === undefined) {
-      return <Redirect to="/axioslogin" />;
+    if (this.props.student === []) {
+      return <Redirect to="/auth/login" />;
     } else
       return (
         <div className="App2">
@@ -115,9 +116,9 @@ class FeeDetails extends Component {
                                 <td>{obj.payment_date}</td>
                                 <td>
                                   {obj.status === true ? (
-                                    <Badge variant="success">Paid</Badge>
+                                    <Label color="green">Paid</Label>
                                   ) : (
-                                    <Badge variant="danger">Unpaid</Badge>
+                                    <Label color="red">Unpaid</Label>
                                   )}
                                 </td>
                               </tr>

@@ -6,7 +6,7 @@ import D from '../../assets/img/d.png';
 import NavbarPage from '../home/TopNav';
 // import 'mdbreact/dist/css/mdb.css';
 // import NavbarPage from './NavBar';
-import { BrowserRouter as Router, Redirect } from 'react-router-dom';
+import { BrowserRouter as Router, Redirect, NavLink } from 'react-router-dom';
 import { Card, Breadcrumb, ProgressBar } from 'react-bootstrap';
 import {
   Navbar,
@@ -34,6 +34,7 @@ class Attendance extends Component {
       noData: true,
       Percentage: 0,
     };
+    this.toggleCollapse = this.toggleCollapse.bind(this);
     this.assignCourse = this.assignCourse.bind(this);
   }
   assignCourse(course) {
@@ -83,8 +84,8 @@ class Attendance extends Component {
     this.setState({ isOpen: !this.state.isOpen });
   };
   render() {
-    if (this.props.student === null) {
-      return <Redirect to="/axioslogin" />;
+    if (this.props.student === []) {
+      return <Redirect to="/auth/login" />;
     } else
       return (
         <div className="App2">
@@ -100,7 +101,12 @@ class Attendance extends Component {
               <Card.Header style={{ height: '3rem', backgroundColor: 'black' }}>
                 <Router>
                   <Navbar color="black" dark expand="md">
-                    <NavbarToggler onClick={this.toggleCollapse} />
+                    <NavbarToggler
+                      style={{ marginTop: '-30px' }}
+                      onClick={() => {
+                        this.toggleCollapse();
+                      }}
+                    />
                     <Collapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
                       <Nav
                         right
@@ -115,24 +121,29 @@ class Attendance extends Component {
                         {this.state.studentCourses.map((c, i) => {
                           return (
                             <NavItem
-                              onClick={() => {
-                                this.assignCourse(c.course_code);
-                              }}
-                              className="btn"
+                              style={{ marginTop: '-10px' }}
                               key={i}
-                              style={{
-                                marginTop: '-22px',
-                                maxHeight: '2rem',
-                                minHeight: '2rem',
-                                float: 'right',
-                                padding: '0',
-                                color: '#eee2dc',
-                                fontSize: '15px',
-                                backgroundColor: 'black',
-                              }}
-                              id="att"
+                              className="btn"
                             >
-                              {c.course_code}
+                              <NavLink
+                                to="#"
+                                onClick={() => {
+                                  this.assignCourse(c.course_code);
+                                }}
+                                style={{
+                                  marginTop: '-22px',
+                                  maxHeight: '2rem',
+                                  minHeight: '2rem',
+                                  float: 'right',
+                                  padding: '0',
+                                  color: '#eee2dc',
+                                  fontSize: '15px',
+                                  backgroundColor: 'black',
+                                }}
+                                id="att"
+                              >
+                                {c.course_code}
+                              </NavLink>
                             </NavItem>
                           );
                         })}
@@ -197,7 +208,6 @@ class Attendance extends Component {
   }
 }
 const mapStateToProps = (state) => {
-  console.log(state.student);
   return {
     student: state.student,
   };

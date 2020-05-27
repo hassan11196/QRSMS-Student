@@ -82,8 +82,8 @@ class ChallanTemplate extends Component {
     // });
   }
   render() {
-    if (this.props.student === null) {
-      return <Redirect to="/axioslogin" />;
+    if (this.props.student === []) {
+      return <Redirect to="/auth/login" />;
     } else
       return (
         <div
@@ -1366,8 +1366,6 @@ class ChallanTemplate extends Component {
 }
 
 const mapStateToProps = (state) => {
-  console.log('map k ander');
-  console.log(state.student);
   return {
     student: state.student,
   };

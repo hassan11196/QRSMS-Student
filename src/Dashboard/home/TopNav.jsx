@@ -45,6 +45,13 @@ class NavbarPage extends Component {
     );
   }
   render() {
+    if (
+      this.props.student === null ||
+      this.props.student === [] ||
+      this.props.student === undefined
+    ) {
+      return <Redirect to="/auth/login" />;
+    }
     return (
       <div>
         <Navbar bg="dark" variant="dark" style={{ height: '6rem' }}>
@@ -75,9 +82,14 @@ class NavbarPage extends Component {
                   }}
                 >
                   <img
-                    onClick={() => {
-                      this.toggle();
-                    }}
+                    onClick={
+                      (() => {
+                        this.toggle();
+                      },
+                      () => {
+                        console.log(this.state.popoverOpen);
+                      })
+                    }
                     id="Popover1"
                     src={D}
                     style={{
@@ -99,7 +111,13 @@ class NavbarPage extends Component {
           target="Popover1"
           toggle={this.toggle}
         >
-          <PopoverBody style={{ wordSpacing: '1rem' }}>
+          <PopoverBody
+            className="btn"
+            style={{ wordSpacing: '1rem' }}
+            onClick={() => {
+              this.props.logout([]);
+            }}
+          >
             <i className="fas fa-power-off"></i>
             <span type="button" style={{ paddingLeft: '0.7rem' }}>
               Logout
@@ -110,10 +128,16 @@ class NavbarPage extends Component {
     );
   }
 }
+const mapDispatchToProps = (dispatch) => {
+  return {
+    logout: (s) => {
+      dispatch({ type: 'logout', payload: { s } });
+    },
+  };
+};
 const mapStateToProps = (state) => {
-  console.log(state.student);
   return {
     student: state.student,
   };
 };
-export default connect(mapStateToProps)(NavbarPage);
+export default connect(mapStateToProps, mapDispatchToProps)(NavbarPage);

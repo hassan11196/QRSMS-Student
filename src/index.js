@@ -21,13 +21,9 @@ const reducer = (state = istate, action) => {
   if (action.type === 'ChangeId')
     return {
       student: action.payload.s,
-      // ...state,
-      // id:action.payload.id,
-      // p:action.payload.p
     };
   else if (action.type === 'logout') {
-    // console.log("hello")
-    state = undefined;
+    state = [];
   }
   return state;
 };

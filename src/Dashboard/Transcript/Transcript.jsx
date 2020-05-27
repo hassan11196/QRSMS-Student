@@ -55,13 +55,11 @@ class Transcript extends Component {
     );
   }
   render() {
-    console.log(this.state.student);
-    if (this.props.student === undefined) {
-      return <Redirect to="/axioslogin" />;
+    if (this.props.student === []) {
+      return <Redirect to="/auth/login" />;
     } else
       return (
         <div className="Settings">
-          {/* <NavbarPage /> */}
           <NavbarPage />
 
           <Container fluid style={{ paddingTop: '2rem' }}>

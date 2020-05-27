@@ -14,12 +14,13 @@ import {
   Button,
   Breadcrumb,
 } from 'react-bootstrap';
+import { FaRegistered } from 'react-icons/fa';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import Axios from 'axios';
 import Cookies from 'js-cookie';
-
+import NavbarPage from './TopNav';
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
 
@@ -121,7 +122,7 @@ class Registration extends Component {
                 seed={1}
                 charCount={2}
                 fontSize={16}
-                name={c.course.course_name}
+                name={c.course.course_short}
               />
             </a>
             <Media>
@@ -232,73 +233,13 @@ class Registration extends Component {
   };
 
   render() {
-    if (this.props.student)
+    if (this.props.student === []) {
+      return <Redirect to="/auth/login" />;
+    } else
       return (
         <div className="Settings">
-          {/* <Navbarpage /> */}
+          <NavbarPage />
           <Container bsPrefix="cont">
-            <Navbar bg="dark" variant="dark" style={{ height: '6rem' }}>
-              <Navbar.Brand href="#home">
-                <img
-                  alt=""
-                  src="/logo.svg"
-                  width="30"
-                  height="30"
-                  className="d-inline-block align-top"
-                />{' '}
-              </Navbar.Brand>
-              <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-              <Navbar.Collapse id="responsive-navbar-nav">
-                <Nav className="ml-auto">
-                  <div
-                    style={{ display: 'inline-flex', float: 'right' }}
-                    bg="dark"
-                    variant="dark"
-                    float="right"
-                  >
-                    <h3
-                      style={{
-                        paddingTop: '1rem',
-                        paddingRight: '1rem',
-                        color: 'white',
-                        wordSpacing: '2px',
-                      }}
-                    >
-                      <img
-                        onClick={() => {
-                          this.toggle();
-                        }}
-                        id="Popover1"
-                        src={D}
-                        style={{
-                          width: '3.5rem',
-                          height: '3.5rem',
-                          borderRadius: '50%',
-                          margin: '1rem',
-                        }}
-                      />
-                      Howdy, {this.state.user.first_name} {this.state.user.last_name}{' '}
-                    </h3>
-                  </div>
-                </Nav>
-              </Navbar.Collapse>
-            </Navbar>
-            {console.log(this.state.popoverOpen)}
-            <Popover
-              placement="bottom"
-              isOpen={this.state.popoverOpen}
-              target="Popover1"
-              toggle={this.toggle}
-            >
-              <PopoverBody style={{ wordSpacing: '1rem' }}>
-                <i className="fas fa-power-off"></i>
-                <span type="button" style={{ paddingLeft: '0.7rem' }}>
-                  Logout
-                </span>
-              </PopoverBody>
-            </Popover>
-            {/* <Navbarpage/> */}
-            {/* <Header /> */}
             <div className="header bg-gradient-info pb-5 pt-5 pt-md-5">
               <Container fluid>
                 <div style={{ width: 'auto', paddingBottom: '2rem' }}>
@@ -414,14 +355,12 @@ class Registration extends Component {
                 </div>
               </Container>
             </div>
-            <Card>
+            <Card style={{ margin: '0.75rem', border: '1px solid grey' }}>
               <Card.Body
                 style={{
                   fontFamily: 'Cursive',
                   fontSize: '15px',
-                  lineHeight: '40px',
                   textAlign: 'left',
-                  backgroundColor: '#eee2dc',
                 }}
               >
                 <Row>
@@ -461,7 +400,7 @@ class Registration extends Component {
                   }}
                   className="toggleiconHeight"
                 >
-                  {/* <FaMoneyBillAlt size={'2em'} /> */}
+                  <FaRegistered size={'2em'} />
                 </span>
                 <span
                   style={{ fontWeight: 'bold', marginTop: '-4px', color: 'white' }}
@@ -493,7 +432,6 @@ class Registration extends Component {
           </Container>
         </div>
       );
-    else return <Redirect to="/auth/login" />;
   }
 }
 const mapStateToProps = (state) => {
