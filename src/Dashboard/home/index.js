@@ -77,15 +77,11 @@ class Home extends React.Component {
     return (
       <>
         <div>
-          <div style={{ marginTop: '-80px' }}>
+          <div>
             <NavbarPage />
           </div>
           {/* <AdminNavbar /> */}
-          <Container
-            className="mt-7"
-            fluid
-            style={{ paddingTop: '10rem', paddingBottom: '3rem' }}
-          >
+          <Container className="mt-7" fluid style={{ paddingBottom: '3rem' }}>
             <Row>
               <Col className="order-xl-2 mb-5 mb-xl-0" xl="4">
                 <Card className="card-profile shadow">

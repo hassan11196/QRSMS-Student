@@ -99,7 +99,12 @@ class FeeChallan extends Component {
             <Card style={{ border: '1px solid black' }}>
               <Card.Header
                 as="h4"
-                style={{ height: '4rem', backgroundColor: 'black' }}
+                style={{
+                  marginTop: '-1px',
+                  marginLeft: '-1px',
+                  height: '4rem',
+                  backgroundColor: 'black',
+                }}
               >
                 <span
                   style={{
