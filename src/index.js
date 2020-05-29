@@ -91,7 +91,6 @@ ReactDOM.render(
       </Switch>
     </BrowserRouter>
   </Provider>,
-  // <Provider store={store}><Qrsms /></Provider>
 
   document.getElementById('root')
 );

@@ -12,6 +12,7 @@ import {
   Row,
   Col,
 } from 'reactstrap';
+import AdminNavbar from '../../components/Navbars/AdminNavbar';
 import { Redirect } from 'react-router-dom';
 import D from '../../assets/img/d.png';
 import { CardTitle } from 'reactstrap';
@@ -77,7 +78,13 @@ class Home extends React.Component {
       <>
         <div>
           <NavbarPage />
-          <Container className="mt-7" fluid style={{ paddingBottom: '3rem' }}>
+
+          {/* <AdminNavbar /> */}
+          <Container
+            className="mt-7"
+            fluid
+            style={{ paddingTop: '10rem', paddingBottom: '3rem' }}
+          >
             <Row>
               <Col className="order-xl-2 mb-5 mb-xl-0" xl="4">
                 <Card className="card-profile shadow">

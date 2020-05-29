@@ -55,6 +55,8 @@
     "react-copy-to-clipboard": "5.0.1",
     "react-datetime": "2.16.3",
     "react-dom": "16.8.4",
+    "react-drag-and-drop": "^3.0.0",
+    "react-drag-drop-container": "^6.1.1",
     "react-google-maps": "9.4.5",
     "react-icons": "^3.10.0",
     "react-initial": "^1.0.12",
