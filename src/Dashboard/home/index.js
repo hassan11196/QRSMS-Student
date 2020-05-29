@@ -77,8 +77,9 @@ class Home extends React.Component {
     return (
       <>
         <div>
-          <NavbarPage />
-
+          <div style={{ marginTop: '-80px' }}>
+            <NavbarPage />
+          </div>
           {/* <AdminNavbar /> */}
           <Container
             className="mt-7"
@@ -91,7 +92,7 @@ class Home extends React.Component {
                   <Row className="justify-content-center">
                     <Col className="order-lg-2" lg="3">
                       <div className="card-profile-image">
-                        <a href="#pablo" onClick={(e) => e.preventDefault()}>
+                        <a onClick={(e) => e.preventDefault()}>
                           <img alt="..." className="rounded-circle" src={D} />
                         </a>
                       </div>

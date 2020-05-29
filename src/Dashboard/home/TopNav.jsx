@@ -72,153 +72,82 @@ class NavbarPage extends Component {
     }
     return (
       <div>
-        <Navbar className="navbar-top navbar-dark" expand="md" id="navbar-main">
-          <Container fluid>
-            <Link
-              className="h4 mb-0 text-white text-uppercase d-none d-lg-inline-block"
-              to="/"
-            >
-              {this.props.brandText}
-            </Link>
-            {/* <Form className="navbar-search navbar-search-dark form-inline mr-3 d-none d-md-flex ml-lg-auto">
-              <FormGroup className="mb-0">
-                <InputGroup className="input-group-alternative">
-                  <InputGroupAddon addonType="prepend">
-                    <InputGroupText>
-                      <i className="fas fa-search" />
-                    </InputGroupText>
-                  </InputGroupAddon>
-                  <Input placeholder="Search" type="text" />
-                </InputGroup>
-              </FormGroup>
-            </Form> */}
-            <Nav className="align-items-center d-none d-md-flex" navbar>
-              <UncontrolledDropdown nav>
-                <DropdownToggle className="pr-0" nav>
-                  <Media className="align-items-center">
-                    <span className="avatar avatar-sm rounded-circle">
-                      <img
-                        alt="..."
-                        // src={require('assets/img/theme/team-4-800x800.jpg')}
-                        src={D}
-                      />
-                    </span>
-                    <Media className="ml-2 d-none d-lg-block">
-                      <span className="mb-0 text-sm font-weight-bold">
-                        Howdy, {this.state.user.first_name}{' '}
-                        {this.state.user.last_name} {/* Jessica Jones */}
-                      </span>
-                    </Media>
-                  </Media>
-                </DropdownToggle>
-                <DropdownMenu className="dropdown-menu-arrow" right>
-                  <DropdownItem className="noti-title" header tag="div">
-                    <h6 className="text-overflow m-0">Welcome!</h6>
-                  </DropdownItem>
-                  <DropdownItem to="/portal/user-profile" tag={Link}>
-                    <i className="ni ni-single-02" />
-                    <span>My profile</span>
-                  </DropdownItem>
-                  <DropdownItem to="/portal/user-profile" tag={Link}>
-                    <i className="ni ni-settings-gear-65" />
-                    <span>Settings</span>
-                  </DropdownItem>
-                  <DropdownItem to="/portal/user-profile" tag={Link}>
-                    <i className="ni ni-calendar-grid-58" />
-                    <span>Activity</span>
-                  </DropdownItem>
-                  <DropdownItem to="/portal/user-profile" tag={Link}>
-                    <i className="ni ni-support-16" />
-                    <span>Support</span>
-                  </DropdownItem>
-                  <DropdownItem divider />
-                  <DropdownItem href="#pablo" onClick={(e) => e.preventDefault()}>
-                    <i className="ni ni-user-run" />
-                    <span>Logout</span>
-                  </DropdownItem>
-                </DropdownMenu>
-              </UncontrolledDropdown>
+        <Navbar
+          position="fixed"
+          bg="dark"
+          variant="dark"
+          style={{ marginTop: '-10px', height: '6rem' }}
+        >
+          <Navbar.Brand href="#home">
+            <img
+              alt=""
+              src="/logo.svg"
+              width="30"
+              height="30"
+              className="d-inline-block align-top"
+            />{' '}
+          </Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="ml-auto">
+              <div
+                style={{ display: 'inline-flex', float: 'right' }}
+                bg="dark"
+                variant="dark"
+                float="right"
+              >
+                <h3
+                  style={{
+                    paddingTop: '1rem',
+                    paddingRight: '1rem',
+                    color: 'white',
+                    wordSpacing: '2px',
+                  }}
+                >
+                  <img
+                    onClick={
+                      (() => {
+                        this.toggle();
+                      },
+                      () => {
+                        console.log(this.state.popoverOpen);
+                      })
+                    }
+                    id="Popover1"
+                    src={D}
+                    style={{
+                      width: '3.5rem',
+                      height: '3.5rem',
+                      borderRadius: '50%',
+                      margin: '1rem',
+                    }}
+                  />
+                  Howdy, {this.state.user.first_name} {this.state.user.last_name}{' '}
+                </h3>
+              </div>
             </Nav>
-          </Container>
+          </Navbar.Collapse>
         </Navbar>
+        <Popover
+          placement="bottom"
+          isOpen={this.state.popoverOpen}
+          target="Popover1"
+          toggle={this.toggle}
+        >
+          <PopoverBody
+            className="btn"
+            style={{ wordSpacing: '1rem' }}
+            onClick={() => {
+              this.props.logout([]);
+            }}
+          >
+            <i className="fas fa-power-off"></i>
+            <span type="button" style={{ paddingLeft: '0.7rem' }}>
+              Logout
+            </span>
+          </PopoverBody>
+        </Popover>
       </div>
-      // <div>
-      //   <Navbar
-      //     position="fixed"
-      //     bg="dark"
-      //     variant="dark"
-      //     style={{ marginTop: '-10px', height: '6rem' }}
-      //   >
-      //     <Navbar.Brand href="#home">
-      //       <img
-      //         alt=""
-      //         src="/logo.svg"
-      //         width="30"
-      //         height="30"
-      //         className="d-inline-block align-top"
-      //       />{' '}
-      //     </Navbar.Brand>
-      //     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-      //     <Navbar.Collapse id="responsive-navbar-nav">
-      //       <Nav className="ml-auto">
-      //         <div
-      //           style={{ display: 'inline-flex', float: 'right' }}
-      //           bg="dark"
-      //           variant="dark"
-      //           float="right"
-      //         >
-      //           <h3
-      //             style={{
-      //               paddingTop: '1rem',
-      //               paddingRight: '1rem',
-      //               color: 'white',
-      //               wordSpacing: '2px',
-      //             }}
-      //           >
-      //             <img
-      //               onClick={
-      //                 (() => {
-      //                   this.toggle();
-      //                 },
-      //                 () => {
-      //                   console.log(this.state.popoverOpen);
-      //                 })
-      //               }
-      //               id="Popover1"
-      //               src={D}
-      //               style={{
-      //                 width: '3.5rem',
-      //                 height: '3.5rem',
-      //                 borderRadius: '50%',
-      //                 margin: '1rem',
-      //               }}
-      //             />
-      //             Howdy, {this.state.user.first_name} {this.state.user.last_name}{' '}
-      //           </h3>
-      //         </div>
-      //       </Nav>
-      //     </Navbar.Collapse>
-      //   </Navbar>
-      //   <Popover
-      //     placement="bottom"
-      //     isOpen={this.state.popoverOpen}
-      //     target="Popover1"
-      //     toggle={this.toggle}
-      //   >
-      //     <PopoverBody
-      //       className="btn"
-      //       style={{ wordSpacing: '1rem' }}
-      //       onClick={() => {
-      //         this.props.logout([]);
-      //       }}
-      //     >
-      //       <i className="fas fa-power-off"></i>
-      //       <span type="button" style={{ paddingLeft: '0.7rem' }}>
-      //         Logout
-      //       </span>
-      //     </PopoverBody>
-      //   </Popover>
-      // </div>
     );
   }
 }

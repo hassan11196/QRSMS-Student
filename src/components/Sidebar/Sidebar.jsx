@@ -113,7 +113,6 @@ class Sidebar extends React.Component {
     }
     return (
       <Navbar
-        // style={{ minWidth: '15rem', maxWidth: '15rem' }}
         className="navbar-vertical fixed-left navbar-dark bg-dark"
         expand="md"
         id="sidenav-main"

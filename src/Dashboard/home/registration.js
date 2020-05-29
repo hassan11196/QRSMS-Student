@@ -249,7 +249,9 @@ class Registration extends Component {
     } else
       return (
         <div className="Settings">
-          <NavbarPage />
+          <div>
+            <NavbarPage />
+          </div>
           <Container bsPrefix="cont">
             <div className="header bg-gradient-info pb-5 pt-5 pt-md-5">
               <Container fluid>
