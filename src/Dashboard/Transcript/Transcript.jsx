@@ -207,7 +207,7 @@ class Transcript extends Component {
                                               textAlign: 'left',
                                             }}
                                           >
-                                            {obj.cgpa}
+                                            {obj.cgpa.toFixed(2)}
                                           </span>
                                         </Col>
                                         <Col
@@ -229,7 +229,7 @@ class Transcript extends Component {
                                               textAlign: 'left',
                                             }}
                                           >
-                                            {obj.sgpa}
+                                            {obj.sgpa.toFixed(2)}
                                           </span>
                                         </Col>
                                       </Row>
@@ -274,7 +274,7 @@ class Transcript extends Component {
                                                   {object.course.credit_hour}
                                                 </td>
                                                 <td style={{ textAlign: 'center' }}>
-                                                  {object.gpa}
+                                                  {object.gpa.toFixed(2)}
                                                 </td>
 
                                                 <td style={{ textAlign: 'center' }}>
