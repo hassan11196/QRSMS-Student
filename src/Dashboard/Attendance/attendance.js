@@ -188,7 +188,7 @@ class Attendance extends Component {
                       {this.state.currentAttendance.map((object, i) => {
                         return (
                           <tr key={i}>
-                            <td>{i}</td>
+                            <td>{1 + i}</td>
                             <td>{object.class_date}</td>
                             <td>{object.duration_hour} Hours(s)</td>
                             <td>{object.state}</td>
