@@ -145,6 +145,7 @@ var routes = [
     component: CustomLogin,
     layout: '/auth',
   },
+
   {
     path: '/feechallan',
     name: 'Challan',
