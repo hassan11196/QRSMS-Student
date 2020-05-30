@@ -41,6 +41,9 @@ class FeeDetails extends Component {
   }
   componentDidMount() {
     this.getFeeDetails();
+    axios.get('/student/get_scsddc').then((response) => {
+      console.log(response)
+    })
   }
   render() {
     if (this.props.student === []) {
@@ -105,25 +108,25 @@ class FeeDetails extends Component {
                     <tbody>
                       {this.state.Details.length > 0
                         ? this.state.Details.map((obj, i) => {
-                            let semester = obj.semester_id.split('_');
-                            return (
-                              <tr key={i}>
-                                <td>{i + 1}</td>
-                                <td>{semester[0]}</td>
-                                <td>{obj.challan_no}</td>
-                                <td>{obj.total_fee}</td>
-                                <td>{obj.due_date}</td>
-                                <td>{obj.payment_date}</td>
-                                <td>
-                                  {obj.status === true ? (
-                                    <Label color="green">Paid</Label>
-                                  ) : (
+                          let semester = obj.semester_id.split('_');
+                          return (
+                            <tr key={i}>
+                              <td>{i + 1}</td>
+                              <td>{semester[0]}</td>
+                              <td>{obj.challan_no}</td>
+                              <td>{obj.total_fee}</td>
+                              <td>{obj.due_date}</td>
+                              <td>{obj.payment_date}</td>
+                              <td>
+                                {obj.status === true ? (
+                                  <Label color="green">Paid</Label>
+                                ) : (
                                     <Label color="red">Unpaid</Label>
                                   )}
-                                </td>
-                              </tr>
-                            );
-                          })
+                              </td>
+                            </tr>
+                          );
+                        })
                         : null}
                     </tbody>
                   </Table>

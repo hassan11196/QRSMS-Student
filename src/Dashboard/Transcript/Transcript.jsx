@@ -29,7 +29,7 @@ class Transcript extends Component {
     let form = new FormData();
     form.append('csrfmiddlewaretoken', this.state.csrf_token);
     form.append('id', this.state.student.uid);
-    axios.post('/management/get_transcript/', form).then((response) => {
+    axios.post('/student/get_transcript/', form).then((response) => {
       console.log(response);
       this.setState({
         TranscriptData: response.data,
@@ -133,22 +133,22 @@ class Transcript extends Component {
                     </tr>
                   </thead>
                   <tbody>
-                    {this.state.TranscriptData !== undefined &&
-                    this.state.TranscriptData !== [] &&
-                    this.state.TranscriptData !== null
+                    {this.state.TranscriptData !== undefined && this.state.TranscriptData !== "No Transcript" &&
+                      this.state.TranscriptData !== [] &&
+                      this.state.TranscriptData !== null
                       ? this.state.TranscriptData.map((obj, i) => {
-                          let info = obj.scsddc.split('_');
-                          return (
-                            <tr key={i}>
-                              <td>{info[1]}</td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                              <td></td>
-                            </tr>
-                          );
-                        })
+                        let info = obj.scsddc.split('_');
+                        return (
+                          <tr key={i}>
+                            <td>{info[1]}</td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                          </tr>
+                        );
+                      })
                       : null}
                   </tbody>
                 </Table>
