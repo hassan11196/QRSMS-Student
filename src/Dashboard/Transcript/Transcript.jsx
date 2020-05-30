@@ -257,6 +257,9 @@ class Transcript extends Component {
                                             <th style={{ textAlign: 'center' }}>
                                               Grades
                                             </th>
+                                            <th style={{ textAlign: 'center' }}>
+                                              Obtained Marks
+                                            </th>
                                             <th>type</th>
                                           </tr>
                                         </thead>
@@ -265,11 +268,11 @@ class Transcript extends Component {
                                             // let info = obj.scsddc.split('_');
                                             return (
                                               <tr key={j}>
-                                                <td>{object.course}</td>
-                                                <td></td>
-                                                <td
-                                                  style={{ textAlign: 'center' }}
-                                                ></td>
+                                                <td>{object.course.course_code}</td>
+                                                <td>{object.course.course_name}</td>
+                                                <td style={{ textAlign: 'center' }}>
+                                                  {object.course.credit_hour}
+                                                </td>
                                                 <td style={{ textAlign: 'center' }}>
                                                   {object.gpa}
                                                 </td>
@@ -277,7 +280,14 @@ class Transcript extends Component {
                                                 <td style={{ textAlign: 'center' }}>
                                                   {object.grade}
                                                 </td>
-                                                <td></td>
+                                                <td style={{ textAlign: 'center' }}>
+                                                  {object.obtained_marks}
+                                                </td>
+                                                {object.course.course_type === 1 ? (
+                                                  <td>Core</td>
+                                                ) : (
+                                                  <td>Elective</td>
+                                                )}
                                               </tr>
                                             );
                                           })}
