@@ -30,7 +30,7 @@ import ChallanTemplate from './Dashboard/Fee/FeeTemplate';
 import CustomLogin from './login';
 import FeeChallan from './Dashboard/Fee/FeeChallan';
 import Transcript from './Dashboard/Transcript/Transcript.jsx';
-
+import Marks from './Dashboard/Marks/Marks';
 var routes = [
   {
     path: '/home',
@@ -51,6 +51,13 @@ var routes = [
     name: 'Attendance',
     icon: 'ni ni-single-02 text-white',
     component: Attendance,
+    layout: '/portal',
+  },
+  {
+    path: '/student-marks',
+    name: 'Marks',
+    icon: 'ni ni-single-02 text-white',
+    component: Marks,
     layout: '/portal',
   },
   // {
