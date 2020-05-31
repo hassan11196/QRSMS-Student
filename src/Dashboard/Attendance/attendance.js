@@ -45,7 +45,7 @@ class Attendance extends Component {
       .get(`/student/attendance/${course}/${this.state.section}`)
       .then((response) => {
         console.log(response.data);
-        if (response.data.length !== 0) {
+        if (response.data[0].attendance.length !== 0) {
           this.setState(
             {
               currentAttendance: response.data[0].attendance,
@@ -76,7 +76,36 @@ class Attendance extends Component {
         {
           studentCourses: response.data,
         },
-        () => {}
+        () => {
+          var count = 0;
+          var Total = 0;
+          axios
+            .get(
+              `/student/attendance/${this.state.studentCourses[0].course_code}/${this.state.section}`
+            )
+            .then((response) => {
+              console.log(response.data[0].attendance.length);
+              if (response.data[0].attendance.length !== 0) {
+                this.setState(
+                  {
+                    currentAttendance: response.data[0].attendance,
+                  },
+                  () => {
+                    response.data[0].attendance.map((obj) => {
+                      if (obj.state === 'P') {
+                        count++;
+                      }
+                      Total++;
+                    });
+                    var Percentage = (count / Total) * 100;
+                    this.setState({ noData: false, Percentage: Percentage });
+                  }
+                );
+              } else {
+                this.setState({ noData: true });
+              }
+            });
+        }
       );
     });
   }

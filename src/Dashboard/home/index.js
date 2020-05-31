@@ -48,6 +48,7 @@ class Home extends React.Component {
       if (response.data.status === 'success') {
         this.setState({
           user_data: response.data.user_data,
+
           uid: response.data.student_data[0].uid,
           batch: response.data.student_data[0].batch,
           degree_name_enrolled: response.data.student_data[0].degree_name_enrolled,
@@ -108,9 +109,9 @@ class Home extends React.Component {
                             </span>
                           </div>
                           <div>
-                            <span className="description">Semester</span>
+                            <span className="description">Year</span>
                             <span className="heading">
-                              {this.state.current_semester}
+                              {this.state.student_year}
                             </span>
                           </div>
                           <div>

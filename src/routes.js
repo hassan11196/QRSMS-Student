@@ -56,7 +56,7 @@ var routes = [
   {
     path: '/student-marks',
     name: 'Marks',
-    icon: 'ni ni-single-02 text-white',
+    icon: 'fas fa-file-invoice text-white',
     component: Marks,
     layout: '/portal',
   },
@@ -77,7 +77,7 @@ var routes = [
   {
     path: '/transcript',
     name: 'Transcript',
-    icon: 'far fa-registered text-white',
+    icon: 'fas fa-file-contract text-white',
     component: Transcript,
     layout: '/portal',
   },
