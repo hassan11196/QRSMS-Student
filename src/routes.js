@@ -30,7 +30,8 @@ import ChallanTemplate from './Dashboard/Fee/FeeTemplate';
 import CustomLogin from './login';
 import FeeChallan from './Dashboard/Fee/FeeChallan';
 import Transcript from './Dashboard/Transcript/Transcript.jsx';
-import Marks from './Dashboard/Marks/marks.jsx'
+import Marks from './Dashboard/Marks/marks.jsx';
+import Marks1 from './Dashboard/Marks/Marks';
 var routes = [
   {
     path: '/home',
@@ -53,11 +54,18 @@ var routes = [
     component: Attendance,
     layout: '/portal',
   },
+  // {
+  //   path: '/student-marks',
+  //   name: 'Marks',
+  //   icon: 'fas fa-file-invoice text-white',
+  //   component: Marks,
+  //   layout: '/portal',
+  // },
   {
-    path: '/student-marks',
+    path: '/student-marks1',
     name: 'Marks',
     icon: 'fas fa-file-invoice text-white',
-    component: Marks,
+    component: Marks1,
     layout: '/portal',
   },
   // {
@@ -74,13 +82,13 @@ var routes = [
   //   component: Icons,
   //   layout: '/portal',
   // },
-  {
-    path: '/marks',
-    name: 'Marks',
-    icon: 'far fa-registered text-white',
-    component: Marks,
-    layout: '/portal',
-  },
+  // {
+  //   path: '/marks',
+  //   name: 'Marks',
+  //   icon: 'far fa-registered text-white',
+  //   component: Marks,
+  //   layout: '/portal',
+  // },
   {
     path: '/transcript',
     name: 'Transcript',

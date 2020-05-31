@@ -13,7 +13,7 @@ import { Table, Container, Media } from 'reactstrap';
 import axios from 'axios';
 import { connect } from 'react-redux';
 import Cookies from 'js-cookie';
-class Marks extends Component {
+class Marks1 extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -73,6 +73,10 @@ class Marks extends Component {
                   TotalWtg: tw,
                   TotalObtWtg: ow,
                 });
+              } else {
+                this.setState({
+                  currentMarks: [],
+                });
               }
             }
           );
@@ -108,33 +112,52 @@ class Marks extends Component {
                 console.log(response.data);
               })
               .then(() => {
-                axios.post('/student/get_marks/', form).then((response) => {
-                  console.log(response.data);
-                  this.setState(
-                    {
-                      currentMarks: response.data.marks_info,
-                      currentCourse: this.state.studentCourses[0].course_name,
-                    },
-                    () => {
-                      if (this.state.currentMarks.length > 0) {
-                        var len = this.state.currentMarks.length;
-                        var i = 0;
-                        for (i = 0; i < len; i++) {
-                          tm = tm + this.state.currentMarks[i].total_marks;
-                          om = om + this.state.currentMarks[i].obtained_marks;
-                          tw = tw + this.state.currentMarks[i].weightage;
-                          ow = ow + this.state.currentMarks[i].obtained_weightage;
+                axios
+                  .post('/student/get_marks/', form)
+
+                  .then((response) => {
+                    // if (response.Status !== 'Succes') {
+                    //   this.setState({
+                    //     currentMarks: [],
+                    //     currentCourse: this.state.studentCourses[0].course_name,
+                    //   });
+                    // }
+                    this.setState(
+                      {
+                        currentMarks: response.data.marks_info,
+                        currentCourse: this.state.studentCourses[0].course_name,
+                      },
+                      () => {
+                        if (this.state.currentMarks.length > 0) {
+                          var len = this.state.currentMarks.length;
+                          var i = 0;
+                          for (i = 0; i < len; i++) {
+                            tm = tm + this.state.currentMarks[i].total_marks;
+                            om = om + this.state.currentMarks[i].obtained_marks;
+                            tw = tw + this.state.currentMarks[i].weightage;
+                            ow = ow + this.state.currentMarks[i].obtained_weightage;
+                          }
+                          this.setState({
+                            TotalMarks: tm,
+                            TotalObtMarks: om,
+                            TotalWtg: tw,
+                            TotalObtWtg: ow,
+                          });
                         }
-                        this.setState({
-                          TotalMarks: tm,
-                          TotalObtMarks: om,
-                          TotalWtg: tw,
-                          TotalObtWtg: ow,
-                        });
                       }
-                    }
-                  );
+                    );
+                  });
+              })
+              .then((json) => json)
+              .catch((err) => {
+                console.log('Ahsan', err);
+                this.setState({
+                  currentMarks: [],
                 });
+                // alert('Invalid ID or Password');
+                // this.invalidpassword()
+                // window.location.reload()
+                //
               });
           }
         }
@@ -159,7 +182,34 @@ class Marks extends Component {
               </Breadcrumb>
             </div>
             <Card>
-              <Card.Header style={{ height: '3rem', backgroundColor: 'black' }}>
+              <Card.Header style={{ backgroundColor: 'black' }}>
+                {/* <Button
+                  style={{
+                    border: 'black',
+                    marginTop: '-10px',
+                    // marginBottom: '-10px',
+                    maxHeight: '2rem',
+                    minHeight: '2rem',
+                    float: 'left',
+                    padding: '0',
+                    color: '#eee2dc',
+                    fontSize: '15px',
+                    backgroundColor: 'black',
+                  }}
+                >
+                  Student Marks
+                </Button> */}
+                {/* <span><h3
+                  style={{
+                    marginTop: '-7px',
+                    fontWeight: 'bold',
+                    color: 'white',
+                    marginBottom: '1rem',
+                  }}
+                >
+                  Student Marks
+                </h3>
+                </span> */}
                 {this.state.studentCourses.map((c, i) => {
                   return (
                     <Button
@@ -169,9 +219,11 @@ class Marks extends Component {
                       }}
                       style={{
                         border: 'black',
-                        marginTop: '-10px',
+                        // marginTop: '-10px',
                         maxHeight: '2rem',
+                        // marginBottom: '4rem',
                         minHeight: '2rem',
+                        marginRight: '0.5rem',
                         float: 'right',
                         padding: '0',
                         color: '#eee2dc',
@@ -211,15 +263,40 @@ class Marks extends Component {
                           <th>Obt. Wtg</th>
                           <th>Marks Mean</th>
                           <th>Wtg Mean</th>
-                          <th>Marks Std. Dev.</th>
-                          <th>Wtg Std. Dev.</th>
+                          <th>Marks SD.</th>
+                          <th>Wtg SD.</th>
                         </tr>
                       </thead>
                       <tbody>
                         {this.state.currentMarks.map((object, i) => {
                           return (
                             <tr key={i}>
-                              <td>{object.marks_type}</td>
+                              <th scope="row" style={{ textAlign: 'center' }}>
+                                <Media className="align-items-center">
+                                  <a
+                                    className="avatar rounded-circle mr-3"
+                                    onClick={(e) => e.preventDefault()}
+                                  >
+                                    <Initial
+                                      radius={55}
+                                      height={40}
+                                      width={40}
+                                      seed={1}
+                                      fontSize={20}
+                                      name={object.marks_type}
+                                    />
+                                  </a>
+                                  <Media>
+                                    <span
+                                      style={{ textAlign: 'center' }}
+                                      className="mb-0 text-sm"
+                                    >
+                                      {object.marks_type}
+                                    </span>
+                                  </Media>
+                                </Media>
+                              </th>
+                              {/* <td>{object.marks_type}</td> */}
                               <td style={{ textAlign: 'center' }}>
                                 {object.total_marks}
                               </td>
@@ -248,7 +325,32 @@ class Marks extends Component {
                           );
                         })}
                         <tr>
-                          <td style={{ color: 'red', fontWeight: '900' }}>Total</td>
+                          <th scope="row" style={{ textAlign: 'center' }}>
+                            <Media className="align-items-center">
+                              <a
+                                className="avatar rounded-circle mr-3"
+                                onClick={(e) => e.preventDefault()}
+                              >
+                                <Initial
+                                  radius={55}
+                                  height={40}
+                                  width={40}
+                                  seed={1}
+                                  fontSize={20}
+                                  name="Total"
+                                />
+                              </a>
+                              <Media>
+                                <span
+                                  style={{ color: 'red', fontWeight: '900' }}
+                                  className="mb-0 text-sm"
+                                >
+                                  Total
+                                </span>
+                              </Media>
+                            </Media>
+                          </th>
+                          {/* <td style={{ color: 'red', fontWeight: '900' }}>Total</td> */}
                           <td
                             style={{
                               color: 'red',
@@ -306,4 +408,4 @@ const mapStateToProps = (state) => {
     student: state.student,
   };
 };
-export default connect(mapStateToProps)(Marks);
+export default connect(mapStateToProps)(Marks1);
