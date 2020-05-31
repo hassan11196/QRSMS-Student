@@ -248,12 +248,12 @@ class Marks extends Component {
                           );
                         })}
                         <tr>
-                          <td style={{ color: 'red', fontWeight: 'bold' }}>Total</td>
+                          <td style={{ color: 'red', fontWeight: '900' }}>Total</td>
                           <td
                             style={{
                               color: 'red',
                               textAlign: 'center',
-                              fontWeight: 'bold',
+                              fontWeight: '900',
                             }}
                           >
                             {this.state.TotalMarks}
@@ -262,7 +262,7 @@ class Marks extends Component {
                             style={{
                               color: 'red',
                               textAlign: 'center',
-                              fontWeight: 'bold',
+                              fontWeight: '900',
                             }}
                           >
                             {this.state.TotalObtMarks}
@@ -271,7 +271,7 @@ class Marks extends Component {
                             style={{
                               color: 'red',
                               textAlign: 'center',
-                              fontWeight: 'bold',
+                              fontWeight: '900',
                             }}
                           >
                             {this.state.TotalWtg}
@@ -280,7 +280,7 @@ class Marks extends Component {
                             style={{
                               color: 'red',
                               textAlign: 'center',
-                              fontWeight: 'bold',
+                              fontWeight: '900',
                             }}
                           >
                             {this.state.TotalObtWtg}
