@@ -221,7 +221,7 @@ class Registration extends Component {
         } else {
           this.setState({
             type: 'success',
-            snackMessage: course_name + 'Dropped!',
+            snackMessage: course_name + ' Dropped!',
           });
           this.notifyB();
         }
