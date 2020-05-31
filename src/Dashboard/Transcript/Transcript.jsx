@@ -112,196 +112,196 @@ class Transcript extends Component {
                 <Row>
                   <Col lg={12}>
                     {this.state.TranscriptData !== [] ||
-                    this.state.TranscriptData !== null
+                      this.state.TranscriptData !== null
                       ? this.state.TranscriptData.map((obj, i) => {
-                          let sem = obj.semester.split('_');
-                          return (
-                            <div key={i}>
-                              <Accordion defaultActiveKey="0">
-                                <Card>
-                                  <Card.Header>
-                                    <Accordion.Toggle
-                                      as={Button}
-                                      variant="link"
-                                      eventKey={i}
-                                      style={{ width: '100%' }}
-                                    >
-                                      <Row>
-                                        <Col
-                                          xs="12"
-                                          md="4"
+                        let sem = obj.semester.split('_');
+                        return (
+                          <div key={i}>
+                            <Accordion defaultActiveKey="0">
+                              <Card>
+                                <Card.Header>
+                                  <Accordion.Toggle
+                                    as={Button}
+                                    variant="link"
+                                    eventKey={i}
+                                    style={{ width: '100%' }}
+                                  >
+                                    <Row>
+                                      <Col
+                                        xs="12"
+                                        md="4"
+                                        style={{
+                                          paddingRight: '0',
+                                          marginRight: '0',
+                                        }}
+                                      >
+                                        <h5
                                           style={{
-                                            paddingRight: '0',
-                                            marginRight: '0',
+                                            fontWeight: 'bolder',
+                                            textAlign: 'left',
                                           }}
                                         >
-                                          <h5
-                                            style={{
-                                              fontWeight: 'bolder',
-                                              textAlign: 'left',
-                                            }}
-                                          >
-                                            {sem[0]}
-                                          </h5>
-                                        </Col>
-                                        <Col
-                                          xs="6"
-                                          md="2"
-                                          style={{ padding: '0', margin: '0' }}
-                                        >
-                                          <span
-                                            style={{
-                                              fontSize: '12px',
-                                              textAlign: 'left',
-                                            }}
-                                          >
-                                            Cr. Att:
-                                          </span>
-                                          <span
-                                            style={{
-                                              fontSize: '12px',
-                                              textAlign: 'left',
-                                            }}
-                                          >
-                                            {obj.credit_hours_attempted}
-                                          </span>
-                                        </Col>
-                                        <Col
-                                          xs="6"
-                                          md="2"
-                                          style={{ padding: '0', margin: '0' }}
-                                        >
-                                          <span
-                                            style={{
-                                              fontSize: '12px',
-                                              textAlign: 'left',
-                                            }}
-                                          >
-                                            Cr. Ernd:
-                                          </span>
-                                          <span
-                                            style={{
-                                              fontSize: '12px',
-                                              textAlign: 'left',
-                                            }}
-                                          >
-                                            {obj.credit_hours_earned}
-                                          </span>
-                                        </Col>
-                                        <Col
-                                          xs="6"
-                                          md="2"
-                                          style={{ padding: '0', margin: '0' }}
-                                        >
-                                          <span
-                                            style={{
-                                              fontSize: '12px',
-                                              textAlign: 'left',
-                                            }}
-                                          >
-                                            CGPA:
-                                          </span>
-                                          <span
-                                            style={{
-                                              fontSize: '12px',
-                                              textAlign: 'left',
-                                            }}
-                                          >
-                                            {obj.cgpa.toFixed(2)}
-                                          </span>
-                                        </Col>
-                                        <Col
-                                          xs="6"
-                                          md="2"
-                                          style={{ padding: '0', margin: '0' }}
-                                        >
-                                          <span
-                                            style={{
-                                              fontSize: '12px',
-                                              textAlign: 'left',
-                                            }}
-                                          >
-                                            SGPA:
-                                          </span>
-                                          <span
-                                            style={{
-                                              fontSize: '12px',
-                                              textAlign: 'left',
-                                            }}
-                                          >
-                                            {obj.sgpa.toFixed(2)}
-                                          </span>
-                                        </Col>
-                                      </Row>
-                                    </Accordion.Toggle>
-                                  </Card.Header>
-                                  <Accordion.Collapse eventKey={i}>
-                                    <Card.Body>
-                                      {' '}
-                                      <Table
-                                        style={{ paddingLeft: '0' }}
-                                        className="align-items-center table-dark table-flush"
-                                        responsive
-                                        size="sm"
+                                          {sem[0]}
+                                        </h5>
+                                      </Col>
+                                      <Col
+                                        xs="6"
+                                        md="2"
+                                        style={{ padding: '0', margin: '0' }}
                                       >
-                                        <thead className="thead-dark">
-                                          <tr>
-                                            <th>Code</th>
-                                            <th>Course Title</th>
-                                            <th style={{ textAlign: 'center' }}>
-                                              CrdHrs
+                                        <span
+                                          style={{
+                                            fontSize: '12px',
+                                            textAlign: 'left',
+                                          }}
+                                        >
+                                          Cr. Att:
+                                          </span>
+                                        <span
+                                          style={{
+                                            fontSize: '12px',
+                                            textAlign: 'left',
+                                          }}
+                                        >
+                                          {obj.credit_hours_attempted}
+                                        </span>
+                                      </Col>
+                                      <Col
+                                        xs="6"
+                                        md="2"
+                                        style={{ padding: '0', margin: '0' }}
+                                      >
+                                        <span
+                                          style={{
+                                            fontSize: '12px',
+                                            textAlign: 'left',
+                                          }}
+                                        >
+                                          Cr. Ernd:
+                                          </span>
+                                        <span
+                                          style={{
+                                            fontSize: '12px',
+                                            textAlign: 'left',
+                                          }}
+                                        >
+                                          {obj.credit_hours_earned}
+                                        </span>
+                                      </Col>
+                                      <Col
+                                        xs="6"
+                                        md="2"
+                                        style={{ padding: '0', margin: '0' }}
+                                      >
+                                        <span
+                                          style={{
+                                            fontSize: '12px',
+                                            textAlign: 'left',
+                                          }}
+                                        >
+                                          CGPA:
+                                          </span>
+                                        <span
+                                          style={{
+                                            fontSize: '12px',
+                                            textAlign: 'left',
+                                          }}
+                                        >
+                                          {obj.cgpa.toFixed(2)}
+                                        </span>
+                                      </Col>
+                                      <Col
+                                        xs="6"
+                                        md="2"
+                                        style={{ padding: '0', margin: '0' }}
+                                      >
+                                        <span
+                                          style={{
+                                            fontSize: '12px',
+                                            textAlign: 'left',
+                                          }}
+                                        >
+                                          SGPA:
+                                          </span>
+                                        <span
+                                          style={{
+                                            fontSize: '12px',
+                                            textAlign: 'left',
+                                          }}
+                                        >
+                                          {obj.sgpa.toFixed(2)}
+                                        </span>
+                                      </Col>
+                                    </Row>
+                                  </Accordion.Toggle>
+                                </Card.Header>
+                                <Accordion.Collapse eventKey={i}>
+                                  <Card.Body>
+                                    {' '}
+                                    <Table
+                                      style={{ paddingLeft: '0' }}
+                                      className="align-items-center table-dark table-flush"
+                                      responsive
+                                      size="sm"
+                                    >
+                                      <thead className="thead-dark">
+                                        <tr>
+                                          <th>Code</th>
+                                          <th>Course Title</th>
+                                          <th style={{ textAlign: 'center' }}>
+                                            CrdHrs
                                             </th>
-                                            <th style={{ textAlign: 'center' }}>
-                                              Points
+                                          <th style={{ textAlign: 'center' }}>
+                                            Points
                                             </th>
-                                            <th style={{ textAlign: 'center' }}>
-                                              Grades
+                                          <th style={{ textAlign: 'center' }}>
+                                            Grades
                                             </th>
-                                            <th style={{ textAlign: 'center' }}>
-                                              Obtained Marks
+                                          <th style={{ textAlign: 'center' }}>
+                                            Obtained Marks
                                             </th>
-                                            <th>type</th>
-                                          </tr>
-                                        </thead>
-                                        <tbody>
-                                          {obj.course_result.map((object, j) => {
-                                            // let info = obj.scsddc.split('_');
-                                            return (
-                                              <tr key={j}>
-                                                <td>{object.course.course_code}</td>
-                                                <td>{object.course.course_name}</td>
-                                                <td style={{ textAlign: 'center' }}>
-                                                  {object.course.credit_hour}
-                                                </td>
-                                                <td style={{ textAlign: 'center' }}>
-                                                  {object.gpa.toFixed(2)}
-                                                </td>
+                                          <th>type</th>
+                                        </tr>
+                                      </thead>
+                                      <tbody>
+                                        {obj.course_result.map((object, j) => {
+                                          // let info = obj.scsddc.split('_');
+                                          return (
+                                            <tr key={j}>
+                                              <td>{object.course.course_code}</td>
+                                              <td>{object.course.course_name}</td>
+                                              <td style={{ textAlign: 'center' }}>
+                                                {object.course.credit_hour}
+                                              </td>
+                                              <td style={{ textAlign: 'center' }}>
+                                                {object.gpa.toFixed(2)}
+                                              </td>
 
-                                                <td style={{ textAlign: 'center' }}>
-                                                  {object.grade}
-                                                </td>
-                                                <td style={{ textAlign: 'center' }}>
-                                                  {object.obtained_marks}
-                                                </td>
-                                                {object.course.course_type === 1 ? (
-                                                  <td>Core</td>
-                                                ) : (
+                                              <td style={{ textAlign: 'center' }}>
+                                                {object.grade}
+                                              </td>
+                                              <td style={{ textAlign: 'center' }}>
+                                                {object.obtained_marks}
+                                              </td>
+                                              {object.course.course_type === 1 ? (
+                                                <td>Core</td>
+                                              ) : (
                                                   <td>Elective</td>
                                                 )}
-                                              </tr>
-                                            );
-                                          })}
-                                        </tbody>
-                                      </Table>
-                                    </Card.Body>
-                                  </Accordion.Collapse>
-                                </Card>
-                              </Accordion>
-                              {/* <Card.Body> */}
-                              {/* </Card.Body> */}
-                            </div>
-                          );
-                        })
+                                            </tr>
+                                          );
+                                        })}
+                                      </tbody>
+                                    </Table>
+                                  </Card.Body>
+                                </Accordion.Collapse>
+                              </Card>
+                            </Accordion>
+                            {/* <Card.Body> */}
+                            {/* </Card.Body> */}
+                          </div>
+                        );
+                      })
                       : null}
                   </Col>
                 </Row>
@@ -341,11 +341,9 @@ class Transcript extends Component {
                 </Row>
               </Card.Body>
             </Card>
-
             <Card>
               <Card.Header style={{ backgroundColor: 'black' }}>
               </Card.Header>
-
               <Card.Body style={{ backgroundColor: '#eee2dc' }}>
                 <Row>
                   <Col></Col>

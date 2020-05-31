@@ -18,13 +18,16 @@ class FeeDetails extends Component {
     };
     this.getFeeDetails = this.getFeeDetails.bind(this);
   }
-  getFeeDetails() {
+  componentWillMount() {
     axios.get('/management/get_csrf').then((response) => {
       Cookies.set('csrftoken', response.data.csrfToken);
     });
     this.setState((oldState) => ({
       csrf_token: Cookies.get('csrftoken'),
     }));
+  }
+  getFeeDetails() {
+
     let newDate = new Date();
 
     let form = new FormData();
@@ -40,7 +43,21 @@ class FeeDetails extends Component {
     });
   }
   componentDidMount() {
-    this.getFeeDetails();
+    this.getFeeDetails()
+    let form = new FormData();
+    form.append('csrfmiddlewaretoken', Cookies.get('csrftoken'))
+    form.append('section', 'D')
+    form.append('code', 'CS303')
+    axios.post('/student/get_scsddc/', form).then((response) => {
+      console.log(response.data)
+    }).then(() => {
+      axios.post('/student/get_marks/', form).then((response) => {
+        console.log(response.data)
+      })
+    })
+
+
+
   }
   render() {
     if (this.props.student === []) {
@@ -110,25 +127,25 @@ class FeeDetails extends Component {
                     <tbody>
                       {this.state.Details.length > 0
                         ? this.state.Details.map((obj, i) => {
-                            let semester = obj.semester_id.split('_');
-                            return (
-                              <tr key={i}>
-                                <td>{i + 1}</td>
-                                <td>{semester[0]}</td>
-                                <td>{obj.challan_no}</td>
-                                <td>{obj.total_fee}</td>
-                                <td>{obj.due_date}</td>
-                                <td>{obj.payment_date}</td>
-                                <td>
-                                  {obj.status === true ? (
-                                    <Label color="green">Paid</Label>
-                                  ) : (
+                          let semester = obj.semester_id.split('_');
+                          return (
+                            <tr key={i}>
+                              <td>{i + 1}</td>
+                              <td>{semester[0]}</td>
+                              <td>{obj.challan_no}</td>
+                              <td>{obj.total_fee}</td>
+                              <td>{obj.due_date}</td>
+                              <td>{obj.payment_date}</td>
+                              <td>
+                                {obj.status === true ? (
+                                  <Label color="green">Paid</Label>
+                                ) : (
                                     <Label color="red">Unpaid</Label>
                                   )}
-                                </td>
-                              </tr>
-                            );
-                          })
+                              </td>
+                            </tr>
+                          );
+                        })
                         : null}
                     </tbody>
                   </Table>
