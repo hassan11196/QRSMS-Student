@@ -20,6 +20,8 @@ import Cookies from 'js-cookie';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import SweetAlert from 'sweetalert2-react';
+
 // reactstrap components
 import {
   Button,
@@ -42,6 +44,7 @@ class FacultyLogin extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
+      show: false,
       loading: false,
       username: '',
       password: '',
@@ -85,11 +88,6 @@ class FacultyLogin extends React.Component {
     axios
       .post(this.state.loginURL, formd)
       .then((res) => {
-        // this.setState(
-        //   {status:res.data.status,
-        //     teacherdata:res.data}
-        //   )
-        // console.log('login horaha hai');
         axios.get(this.state.home_jsonURL).then((response) => {
           console.log(response.data);
           if (response.data.status === 'success') {
@@ -103,10 +101,15 @@ class FacultyLogin extends React.Component {
               status: response.data.status,
               facultydata: response.data,
             });
+          } else {
+            this.setState({
+              show: true,
+            });
           }
         });
       })
       .finally((response) => {
+        console.log(response);
         this.setState({ loading: false });
       });
   }
@@ -217,6 +220,12 @@ class FacultyLogin extends React.Component {
             </Col>
           </Row>
         </Col>
+        <SweetAlert
+          show={this.state.show}
+          title="Demo"
+          text="Invalid ID or password"
+          onConfirm={() => this.setState({ show: false })}
+        />
       </>
     );
   }

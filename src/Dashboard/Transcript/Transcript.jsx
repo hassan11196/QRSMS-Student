@@ -207,7 +207,7 @@ class Transcript extends Component {
                                             textAlign: 'left',
                                           }}
                                         >
-                                          {obj.cgpa}
+                                          {obj.cgpa.toFixed(2)}
                                         </span>
                                       </Col>
                                       <Col
@@ -229,7 +229,7 @@ class Transcript extends Component {
                                             textAlign: 'left',
                                           }}
                                         >
-                                          {obj.sgpa}
+                                          {obj.sgpa.toFixed(2)}
                                         </span>
                                       </Col>
                                     </Row>
@@ -257,6 +257,9 @@ class Transcript extends Component {
                                           <th style={{ textAlign: 'center' }}>
                                             Grades
                                             </th>
+                                          <th style={{ textAlign: 'center' }}>
+                                            Obtained Marks
+                                            </th>
                                           <th>type</th>
                                         </tr>
                                       </thead>
@@ -265,19 +268,26 @@ class Transcript extends Component {
                                           // let info = obj.scsddc.split('_');
                                           return (
                                             <tr key={j}>
-                                              <td>{object.course}</td>
-                                              <td></td>
-                                              <td
-                                                style={{ textAlign: 'center' }}
-                                              ></td>
+                                              <td>{object.course.course_code}</td>
+                                              <td>{object.course.course_name}</td>
                                               <td style={{ textAlign: 'center' }}>
-                                                {object.gpa}
+                                                {object.course.credit_hour}
+                                              </td>
+                                              <td style={{ textAlign: 'center' }}>
+                                                {object.gpa.toFixed(2)}
                                               </td>
 
                                               <td style={{ textAlign: 'center' }}>
                                                 {object.grade}
                                               </td>
-                                              <td></td>
+                                              <td style={{ textAlign: 'center' }}>
+                                                {object.obtained_marks}
+                                              </td>
+                                              {object.course.course_type === 1 ? (
+                                                <td>Core</td>
+                                              ) : (
+                                                  <td>Elective</td>
+                                                )}
                                             </tr>
                                           );
                                         })}
@@ -331,11 +341,9 @@ class Transcript extends Component {
                 </Row>
               </Card.Body>
             </Card>
-
             <Card>
               <Card.Header style={{ backgroundColor: 'black' }}>
               </Card.Header>
-
               <Card.Body style={{ backgroundColor: '#eee2dc' }}>
                 <Row>
                   <Col></Col>

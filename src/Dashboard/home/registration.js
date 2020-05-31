@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
+import { NotificationContainer, NotificationManager } from 'react-notifications';
 import { Initial } from 'react-initial';
+import 'react-notifications/lib/notifications.css';
 import D from '../../assets/img/d.png';
 import { Table, CardBody, Media, CardTitle, Popover, PopoverBody } from 'reactstrap';
 import {
@@ -22,6 +24,8 @@ import { connect } from 'react-redux';
 import Axios from 'axios';
 import Cookies from 'js-cookie';
 import NavbarPage from './TopNav';
+import { ToastContainer, toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 axios.defaults.xsrfCookieName = 'csrftoken';
 axios.defaults.xsrfHeaderName = 'X-CSRFTOKEN';
 
@@ -42,6 +46,11 @@ class Registration extends Component {
     };
     this.toggle = this.toggle.bind(this);
   }
+
+  notifyB = () => {
+    toast.success(this.state.snackMessage, { containerId: 'B' });
+  };
+
   toggle() {
     this.setState({ popoverOpen: !this.state.popoverOpen });
   }
@@ -203,10 +212,40 @@ class Registration extends Component {
     })
       .then((response) => {
         if (course_option === 'R') {
-          alert('Course :' + course_name + ' Registered!');
+          this.setState({
+            type: 'success',
+            snackMessage: course_name + ' Registered!',
+          });
+          this.notifyB();
+          // alert('Course :' + course_name + ' Registered!');
         } else {
-          alert('Course :' + course_name + ' DROPPED');
+          this.setState({
+            type: 'success',
+            snackMessage: course_name + 'Dropped!',
+          });
+          this.notifyB();
         }
+
+        axios.get('/student/registration/available_courses/').then((response) => {
+          console.log('courses');
+          console.log(Array(response.data));
+
+          if (response.data.condition === false) {
+            alert('Condition Not True. Contact Administrator');
+          }
+          this.setState({
+            CourseInfo: Array(response.data.regular_courses[0].courses_offered),
+          });
+          let nodey = [];
+          this.state.CourseInfo[0].forEach((element) => {
+            nodey.push(this.registrationTable(element));
+          });
+
+          console.log(nodey);
+          this.setState({
+            courses_nodes: nodey,
+          });
+        });
       })
       .then(() => {
         var value = '';
@@ -261,6 +300,7 @@ class Registration extends Component {
                     <Breadcrumb.Item active>Course Registration</Breadcrumb.Item>
                   </Breadcrumb>
                 </div>
+                <NotificationContainer />
 
                 <div className="header-body">
                   <Row>
@@ -399,6 +439,11 @@ class Registration extends Component {
               </Card.Body>
             </Card>
             {this.renderRegistrationStatus()}
+            <ToastContainer
+              enableMultiContainer
+              containerId={'B'}
+              position={toast.POSITION.TOP_RIGHT}
+            />
             <Card style={{ margin: '2rem', border: '1px solid black' }}>
               <Card.Header
                 as="h4"
