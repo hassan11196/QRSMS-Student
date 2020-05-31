@@ -11,9 +11,10 @@ import {
   Card,
   Row,
   Col,
-  Button,
+  // Button,
   Breadcrumb,
 } from 'react-bootstrap';
+import { Button } from 'semantic-ui-react';
 import { FaRegistered } from 'react-icons/fa';
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
@@ -122,7 +123,7 @@ class Registration extends Component {
                 seed={1}
                 charCount={2}
                 fontSize={16}
-                name={c.course.course_short}
+                name={c.course.course_name}
               />
             </a>
             <Media>
@@ -132,12 +133,16 @@ class Registration extends Component {
             </Media>
           </Media>
         </th>
-        <td>{c.course.credit_hour}</td>
-        <td>{c.course.course_type === 1 ? 'Core' : 'Elective'}</td>
+        <td style={{ textAlign: 'center' }}>{c.course.credit_hour}</td>
+        <td style={{ textAlign: 'center' }}>
+          {c.course.course_type === 1 ? 'Core' : 'Elective'}
+        </td>
         <td>Register! 5-New Offered Course new (Recommended)</td>
         {c.status === 'R' ? (
-          <td>
+          <td style={{ textAlign: 'center' }}>
             <Button
+              size="mini"
+              color="red"
               variant="danger"
               onClick={() =>
                 this.register_or_drop_course(
@@ -152,8 +157,10 @@ class Registration extends Component {
             </Button>
           </td>
         ) : (
-          <td>
+          <td style={{ textAlign: 'center' }}>
             <Button
+              size="mini"
+              color="blue"
               onClick={() =>
                 this.register_or_drop_course(
                   c,
@@ -167,7 +174,11 @@ class Registration extends Component {
             </Button>
           </td>
         )}
-        {c.status === 'R' ? <td>{c.section}</td> : <td></td>}
+        {c.status === 'R' ? (
+          <td style={{ textAlign: 'center' }}>{c.section}</td>
+        ) : (
+          <td></td>
+        )}
       </tr>
       // </li>
     );
@@ -238,7 +249,9 @@ class Registration extends Component {
     } else
       return (
         <div className="Settings">
-          <NavbarPage />
+          <div>
+            <NavbarPage />
+          </div>
           <Container bsPrefix="cont">
             <div className="header bg-gradient-info pb-5 pt-5 pt-md-5">
               <Container fluid>
@@ -421,7 +434,9 @@ class Registration extends Component {
                     <th style={{ fontWeight: '700' }}>Cr.Hrs</th>
                     <th style={{ fontWeight: '700' }}>Relation</th>
                     <th style={{ fontWeight: '700' }}>Comments</th>
-                    <th style={{ fontWeight: '700' }}>Status</th>
+                    <th style={{ fontWeight: '700', textAlign: 'center' }}>
+                      Action
+                    </th>
                     <th style={{ fontWeight: '700' }}>Section</th>
                   </thead>
                   <tbody>{this.state.courses_nodes}</tbody>

@@ -18,13 +18,16 @@ class FeeDetails extends Component {
     };
     this.getFeeDetails = this.getFeeDetails.bind(this);
   }
-  getFeeDetails() {
+  componentWillMount() {
     axios.get('/management/get_csrf').then((response) => {
       Cookies.set('csrftoken', response.data.csrfToken);
     });
     this.setState((oldState) => ({
       csrf_token: Cookies.get('csrftoken'),
     }));
+  }
+  getFeeDetails() {
+
     let newDate = new Date();
 
     let form = new FormData();
@@ -40,10 +43,21 @@ class FeeDetails extends Component {
     });
   }
   componentDidMount() {
-    this.getFeeDetails();
-    axios.get('/student/get_scsddc').then((response) => {
-      console.log(response)
+    this.getFeeDetails()
+    let form = new FormData();
+    form.append('csrfmiddlewaretoken', Cookies.get('csrftoken'))
+    form.append('section', 'D')
+    form.append('code', 'CS303')
+    axios.post('/student/get_scsddc/', form).then((response) => {
+      console.log(response.data)
+    }).then(() => {
+      axios.post('/student/get_marks/', form).then((response) => {
+        console.log(response.data)
+      })
     })
+
+
+
   }
   render() {
     if (this.props.student === []) {
@@ -67,7 +81,12 @@ class FeeDetails extends Component {
             <Card style={{ border: '1px solid black' }}>
               <Card.Header
                 as="h4"
-                style={{ height: '4rem', backgroundColor: 'black' }}
+                style={{
+                  marginTop: '-1px',
+                  marginLeft: '-1px',
+                  height: '4rem',
+                  backgroundColor: 'black',
+                }}
               >
                 <span
                   style={{

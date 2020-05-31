@@ -12,6 +12,7 @@ import {
   Row,
   Col,
 } from 'reactstrap';
+import AdminNavbar from '../../components/Navbars/AdminNavbar';
 import { Redirect } from 'react-router-dom';
 import D from '../../assets/img/d.png';
 import { CardTitle } from 'reactstrap';
@@ -76,7 +77,10 @@ class Home extends React.Component {
     return (
       <>
         <div>
-          <NavbarPage />
+          <div>
+            <NavbarPage />
+          </div>
+          {/* <AdminNavbar /> */}
           <Container className="mt-7" fluid style={{ paddingBottom: '3rem' }}>
             <Row>
               <Col className="order-xl-2 mb-5 mb-xl-0" xl="4">
@@ -84,7 +88,7 @@ class Home extends React.Component {
                   <Row className="justify-content-center">
                     <Col className="order-lg-2" lg="3">
                       <div className="card-profile-image">
-                        <a href="#pablo" onClick={(e) => e.preventDefault()}>
+                        <a onClick={(e) => e.preventDefault()}>
                           <img alt="..." className="rounded-circle" src={D} />
                         </a>
                       </div>

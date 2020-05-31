@@ -16,6 +16,24 @@ import {
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
+// reactstrap components
+import {
+  DropdownMenu,
+  DropdownItem,
+  UncontrolledDropdown,
+  DropdownToggle,
+  Form,
+  FormGroup,
+  InputGroupAddon,
+  InputGroupText,
+  Input,
+  InputGroup,
+  // Navbar,
+  // Nav,
+  // Container,
+  Media,
+} from 'reactstrap';
 
 class NavbarPage extends Component {
   constructor(props) {
@@ -54,7 +72,7 @@ class NavbarPage extends Component {
     }
     return (
       <div>
-        <Navbar bg="dark" variant="dark" style={{ height: '6rem' }}>
+        <Navbar position="fixed" bg="dark" variant="dark" style={{ height: '5rem' }}>
           <Navbar.Brand href="#home">
             <img
               alt=""
@@ -67,7 +85,7 @@ class NavbarPage extends Component {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="ml-auto">
-              <div
+              {/* <div
                 style={{ display: 'inline-flex', float: 'right' }}
                 bg="dark"
                 variant="dark"
@@ -101,11 +119,72 @@ class NavbarPage extends Component {
                   />
                   Howdy, {this.state.user.first_name} {this.state.user.last_name}{' '}
                 </h3>
-              </div>
+              </div> */}
+              <UncontrolledDropdown nav style={{ marginLeft: '-50px' }}>
+                <DropdownToggle className="pr-2" nav>
+                  <Media className="align-items-center">
+                    <span
+                      style={{ marginLeft: '-160px' }}
+                      className="avatar avatar-sm rounded-circle"
+                    >
+                      <img
+                        src={D}
+                        style={{
+                          width: '3.5rem',
+                          height: '3.5rem',
+                          borderRadius: '50%',
+                        }}
+                      />
+                    </span>
+                    <Media
+                      style={{ marginLeft: '2rem !important' }}
+                      className="ml-2 d-none d-lg-block"
+                    >
+                      <span
+                        className="mb-0 text-sm font-weight-bold"
+                        style={{ marginLeft: '1rem' }}
+                      >
+                        Howdy, {this.state.user.first_name}{' '}
+                        {this.state.user.last_name}{' '}
+                      </span>
+                    </Media>
+                  </Media>
+                </DropdownToggle>
+                <DropdownMenu className="dropdown-menu-arrow" right>
+                  <DropdownItem className="noti-title" header tag="div">
+                    <h6 className="text-overflow m-0">Welcome!</h6>
+                  </DropdownItem>
+                  <DropdownItem to="/dashboard/home" tag={Link}>
+                    <i className="ni ni-single-02" />
+                    <span>My profile</span>
+                  </DropdownItem>
+                  <DropdownItem to="/portal/user-profile" tag={Link}>
+                    <i className="ni ni-settings-gear-65" />
+                    <span>Settings</span>
+                  </DropdownItem>
+                  {/* <DropdownItem to="/portal/user-profile" tag={Link}>
+                    <i className="ni ni-calendar-grid-58" />
+                    <span>Activity</span>
+                  </DropdownItem>
+                  <DropdownItem to="/portal/user-profile" tag={Link}>
+                    <i className="ni ni-support-16" />
+                    <span>Support</span>
+                  </DropdownItem> */}
+                  <DropdownItem divider />
+                  <DropdownItem
+                    onClick={() => {
+                      this.props.logout([]);
+                    }}
+                  >
+                    <i className="ni ni-user-run" />
+                    <span>Logout</span>
+                  </DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-        <Popover
+        {/* <Popover
           placement="bottom"
           isOpen={this.state.popoverOpen}
           target="Popover1"
@@ -123,7 +202,7 @@ class NavbarPage extends Component {
               Logout
             </span>
           </PopoverBody>
-        </Popover>
+        </Popover> */}
       </div>
     );
   }
