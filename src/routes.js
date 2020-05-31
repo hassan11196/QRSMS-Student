@@ -53,6 +53,13 @@ var routes = [
     component: Attendance,
     layout: '/portal',
   },
+  {
+    path: '/student-marks',
+    name: 'Marks',
+    icon: 'fas fa-file-invoice text-white',
+    component: Marks,
+    layout: '/portal',
+  },
   // {
   //   path: '/index',
   //   name: 'Dashboard',
@@ -77,7 +84,7 @@ var routes = [
   {
     path: '/transcript',
     name: 'Transcript',
-    icon: 'far fa-registered text-white',
+    icon: 'fas fa-file-contract text-white',
     component: Transcript,
     layout: '/portal',
   },

@@ -7,7 +7,7 @@ import NavbarPage from '../home/TopNav';
 // import 'mdbreact/dist/css/mdb.css';
 // import NavbarPage from './NavBar';
 import { BrowserRouter as Router, Redirect, NavLink } from 'react-router-dom';
-import { Card, Breadcrumb, ProgressBar } from 'react-bootstrap';
+import { Card, Breadcrumb, ProgressBar, Button } from 'react-bootstrap';
 import {
   Navbar,
   Collapse,
@@ -45,7 +45,7 @@ class Attendance extends Component {
       .get(`/student/attendance/${course}/${this.state.section}`)
       .then((response) => {
         console.log(response.data);
-        if (response.data.length !== 0) {
+        if (response.data[0].attendance.length !== 0) {
           this.setState(
             {
               currentAttendance: response.data[0].attendance,
@@ -76,7 +76,36 @@ class Attendance extends Component {
         {
           studentCourses: response.data,
         },
-        () => {}
+        () => {
+          var count = 0;
+          var Total = 0;
+          axios
+            .get(
+              `/student/attendance/${this.state.studentCourses[0].course_code}/${this.state.section}`
+            )
+            .then((response) => {
+              console.log(response.data[0].attendance.length);
+              if (response.data[0].attendance.length !== 0) {
+                this.setState(
+                  {
+                    currentAttendance: response.data[0].attendance,
+                  },
+                  () => {
+                    response.data[0].attendance.map((obj) => {
+                      if (obj.state === 'P') {
+                        count++;
+                      }
+                      Total++;
+                    });
+                    var Percentage = (count / Total) * 100;
+                    this.setState({ noData: false, Percentage: Percentage });
+                  }
+                );
+              } else {
+                this.setState({ noData: true });
+              }
+            });
+        }
       );
     });
   }
@@ -99,58 +128,29 @@ class Attendance extends Component {
             </div>
             <Card>
               <Card.Header style={{ height: '3rem', backgroundColor: 'black' }}>
-                <Router>
-                  <Navbar color="black" dark expand="md">
-                    <NavbarToggler
-                      style={{ marginTop: '-30px' }}
+                {this.state.studentCourses.map((c, i) => {
+                  return (
+                    <Button
+                      key={i}
                       onClick={() => {
-                        this.toggleCollapse();
+                        this.assignCourse(c.course_code);
                       }}
-                    />
-                    <Collapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
-                      <Nav
-                        right
-                        style={{
-                          minHeight: '3rem',
-                          maxHeight: '3rem',
-                          color: '#eee2dc',
-                          float: 'right',
-                        }}
-                        navbar
-                      >
-                        {this.state.studentCourses.map((c, i) => {
-                          return (
-                            <NavItem
-                              style={{ marginTop: '-10px' }}
-                              key={i}
-                              className="btn"
-                            >
-                              <NavLink
-                                to="#"
-                                onClick={() => {
-                                  this.assignCourse(c.course_code);
-                                }}
-                                style={{
-                                  marginTop: '-22px',
-                                  maxHeight: '2rem',
-                                  minHeight: '2rem',
-                                  float: 'right',
-                                  padding: '0',
-                                  color: '#eee2dc',
-                                  fontSize: '15px',
-                                  backgroundColor: 'black',
-                                }}
-                                id="att"
-                              >
-                                {c.course_code}
-                              </NavLink>
-                            </NavItem>
-                          );
-                        })}
-                      </Nav>
-                    </Collapse>
-                  </Navbar>
-                </Router>
+                      style={{
+                        border: 'black',
+                        marginTop: '-10px',
+                        maxHeight: '2rem',
+                        minHeight: '2rem',
+                        float: 'right',
+                        padding: '0',
+                        color: '#eee2dc',
+                        fontSize: '15px',
+                        backgroundColor: 'black',
+                      }}
+                    >
+                      {c.course_code}
+                    </Button>
+                  );
+                })}
               </Card.Header>
               <Card.Body
                 style={{
