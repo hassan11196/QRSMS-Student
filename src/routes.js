@@ -30,7 +30,7 @@ import ChallanTemplate from './Dashboard/Fee/FeeTemplate';
 import CustomLogin from './login';
 import FeeChallan from './Dashboard/Fee/FeeChallan';
 import Transcript from './Dashboard/Transcript/Transcript.jsx';
-
+import Marks from './Dashboard/Marks/marks.jsx'
 var routes = [
   {
     path: '/home',
@@ -67,6 +67,13 @@ var routes = [
   //   component: Icons,
   //   layout: '/portal',
   // },
+  {
+    path: '/marks',
+    name: 'Marks',
+    icon: 'far fa-registered text-white',
+    component: Marks,
+    layout: '/portal',
+  },
   {
     path: '/transcript',
     name: 'Transcript',
