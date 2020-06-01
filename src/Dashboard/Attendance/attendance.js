@@ -28,7 +28,7 @@ class Attendance extends Component {
     this.state = {
       isOpen: false,
       studentCourses: [],
-      currentCourse: {},
+      currentCourseName: '',
       currentAttendance: [],
       section: '',
       noData: true,
@@ -39,7 +39,7 @@ class Attendance extends Component {
   }
   assignCourse(course, name) {
     this.setState({
-      currentCourse: name,
+      currentCourseName: name,
     });
     var count = 0;
     var Total = 0;
@@ -61,7 +61,11 @@ class Attendance extends Component {
                 Total++;
               });
               var Percentage = (count / Total) * 100;
-              this.setState({ noData: false, Percentage: Percentage });
+              this.setState({
+                noData: false,
+                Percentage: Percentage,
+                currentCourseName: response.data[0].course.course_name,
+              });
             }
           );
         } else {
@@ -101,7 +105,11 @@ class Attendance extends Component {
                       Total++;
                     });
                     var Percentage = (count / Total) * 100;
-                    this.setState({ noData: false, Percentage: Percentage });
+                    this.setState({
+                      noData: false,
+                      Percentage: Percentage,
+                      currentCourseName: response.data[0].course.course_name,
+                    });
                   }
                 );
               } else {
@@ -164,7 +172,7 @@ class Attendance extends Component {
                 }}
               >
                 <h2 style={{ textAlign: 'center', marginTop: '-15px' }}>
-                  {this.state.currentCourse}
+                  {this.state.currentCourseName}
                 </h2>
                 {this.state.noData === false ? (
                   <Row>
