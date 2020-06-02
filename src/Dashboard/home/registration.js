@@ -60,7 +60,10 @@ class Registration extends Component {
         semester: response.data,
       });
     });
-
+    axios.get('/student/get_credit_hour_info/').then((response) => {
+      console.log("Infomatiopn")
+      console.log(response.data)
+    })
     axios.get('/management/get_csrf').then((response) => {
       Cookies.set('csrftoken', response.data.csrfToken);
       this.setState((oldState) => ({
@@ -166,28 +169,28 @@ class Registration extends Component {
             </Button>
           </td>
         ) : (
-          <td style={{ textAlign: 'center' }}>
-            <Button
-              size="mini"
-              color="blue"
-              onClick={() =>
-                this.register_or_drop_course(
-                  c,
-                  c.course.url,
-                  'R',
-                  c.course.course_name
-                )
-              }
-            >
-              Register
+            <td style={{ textAlign: 'center' }}>
+              <Button
+                size="mini"
+                color="blue"
+                onClick={() =>
+                  this.register_or_drop_course(
+                    c,
+                    c.course.url,
+                    'R',
+                    c.course.course_name
+                  )
+                }
+              >
+                Register
             </Button>
-          </td>
-        )}
+            </td>
+          )}
         {c.status === 'R' ? (
           <td style={{ textAlign: 'center' }}>{c.section}</td>
         ) : (
-          <td></td>
-        )}
+            <td></td>
+          )}
       </tr>
       // </li>
     );

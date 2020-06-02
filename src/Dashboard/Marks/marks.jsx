@@ -56,6 +56,7 @@ class Marks extends Component {
             noData: true,
             Percentage: 0,
             marksInfo: "",
+            totals: "",
 
             grandTotal: [{
                 "GrandTotal": 0,
@@ -188,6 +189,9 @@ class Marks extends Component {
                                             <th style={{ textAlign: 'center' }}>
                                                 Standard Deviation
                             </th>
+                                            <th style={{ textAlign: 'center' }}>Max</th>
+                                            <th style={{ textAlign: 'center' }}>Min</th>
+
                                         </thead>
                                         <tbody>
                                             {this.state.marksInfo != "" && this.state.marksInfo != null ? this.state.marksInfo.marks_info.map((obj, i) => {
@@ -274,14 +278,29 @@ class Marks extends Component {
                                                         >
                                                             {obj.marks_std_dev != null ? obj.marks_std_dev.toFixed(2) : "null"}
                                                         </td>
-
+                                                        <td
+                                                            style={{
+                                                                textAlign: 'center',
+                                                                paddingTop: '2rem',
+                                                            }}
+                                                        >
+                                                            {obj.max_marks}
+                                                        </td>
+                                                        <td
+                                                            style={{
+                                                                textAlign: 'center',
+                                                                paddingTop: '2rem',
+                                                            }}
+                                                        >
+                                                            {obj.min_marks}
+                                                        </td>
                                                     </tr>
                                                 );
                                             }) : <div></div>}
 
                                             {/*  */}
                                             {
-                                                GrandTotal != 0 ? this.state.grandTotal.map((c) => {
+                                                this.state.marksInfo ? this.state.grandTotal.map((c) => {
                                                     console.log(GrandTotal + ' ' + TotalWeightage + ' ' + WeightageTotal + ' ' + WeightageTotal)
                                                     return (
                                                         <tr >
@@ -333,7 +352,7 @@ class Marks extends Component {
                                                                     paddingTop: '2rem',
                                                                 }}
                                                             >
-                                                                {TotalWeightage}
+                                                                {this.state.marksInfo.total[0].total_marks}
                                                             </td>
                                                             <td
                                                                 style={{
@@ -341,7 +360,7 @@ class Marks extends Component {
                                                                     paddingTop: '2rem',
                                                                 }}
                                                             >
-                                                                {WeightageTotal}
+                                                                {this.state.marksInfo.total[0].obtained_total}
                                                             </td>
                                                             <td
                                                                 style={{
