@@ -24,6 +24,10 @@ const reducer = (state = istate, action) => {
     };
   else if (action.type === 'logout') {
     state = [];
+  } else if (action.type === 'logout') {
+    return {
+      state: [],
+    };
   }
   return state;
 };

@@ -34,6 +34,10 @@ class Registration extends Component {
     super(props);
     this.state = {
       popoverOpen: false,
+      creditHoursAttempted: '',
+      creditHoursEarned: '',
+      sgpa: '',
+      cgpa: '',
       status: false,
       student: [],
       user: [],
@@ -55,6 +59,15 @@ class Registration extends Component {
     this.setState({ popoverOpen: !this.state.popoverOpen });
   }
   componentDidMount() {
+    axios.get('/student/get_credit_hour_info/').then((response) => {
+      console.log('Ahsan', response);
+      this.setState({
+        cgpa: response.data[0].cgpa,
+        sgpa: response.data[0].sgpa,
+        creditHoursAttempted: response.data[0].credit_hours_attempted,
+        creditHoursEarned: response.data[0].credit_hours_earned,
+      });
+    });
     axios.get('/management/getCurrentSemester/').then((response) => {
       this.setState({
         semester: response.data,
@@ -321,7 +334,9 @@ class Registration extends Component {
                               >
                                 CGPA
                               </CardTitle>
-                              <span className="h2 font-weight-bold mb-0">3.15</span>
+                              <span className="h2 font-weight-bold mb-0">
+                                {this.state.cgpa}
+                              </span>
                             </div>
                             <Col className="col-auto">
                               <div className="icon icon-shape bg-danger text-white rounded-circle shadow">
@@ -346,7 +361,9 @@ class Registration extends Component {
                               >
                                 Warning Count
                               </CardTitle>
-                              <span className="h2 font-weight-bold mb-0">0</span>
+                              <span className="h2 font-weight-bold mb-0">
+                                {this.state.student.warning_count}
+                              </span>
                             </div>
                             <Col className="col-auto">
                               <div className="icon icon-shape bg-warning text-white rounded-circle shadow">
@@ -371,7 +388,9 @@ class Registration extends Component {
                               >
                                 Cr. Hrs. Earned
                               </CardTitle>
-                              <span className="h2 font-weight-bold mb-0">67</span>
+                              <span className="h2 font-weight-bold mb-0">
+                                {this.state.creditHoursEarned}
+                              </span>
                             </div>
                             <Col className="col-auto">
                               <div className="icon icon-shape bg-yellow text-white rounded-circle shadow">
@@ -396,7 +415,9 @@ class Registration extends Component {
                               >
                                 Cr. Hrs. Limit
                               </CardTitle>
-                              <span className="h2 font-weight-bold mb-0">19</span>
+                              <span className="h2 font-weight-bold mb-0">
+                                {this.state.creditHoursAttempted}
+                              </span>
                             </div>
                             <Col className="col-auto">
                               <div className="icon icon-shape bg-info text-white rounded-circle shadow">

@@ -88,13 +88,9 @@ class FacultyLogin extends React.Component {
     axios
       .post(this.state.loginURL, formd)
       .then((res) => {
+        console.log(res.code);
         axios.get(this.state.home_jsonURL).then((response) => {
-          console.log(response.data);
           if (response.data.status === 'success') {
-            localStorage.setItem(
-              'data',
-              JSON.stringify(response.data.student_data[0].uid)
-            );
             this.props.changeid(response.data);
             console.log(this.props);
             this.setState({
@@ -107,6 +103,9 @@ class FacultyLogin extends React.Component {
             });
           }
         });
+      })
+      .catch((error) => {
+        console.log(error);
       })
       .finally((response) => {
         console.log(response);

@@ -28,7 +28,7 @@ class Attendance extends Component {
     this.state = {
       isOpen: false,
       studentCourses: [],
-      currentCourse: {},
+      currentCourseName: '',
       currentAttendance: [],
       section: '',
       noData: true,
@@ -37,7 +37,10 @@ class Attendance extends Component {
     this.toggleCollapse = this.toggleCollapse.bind(this);
     this.assignCourse = this.assignCourse.bind(this);
   }
-  assignCourse(course) {
+  assignCourse(course, name) {
+    this.setState({
+      currentCourseName: name,
+    });
     var count = 0;
     var Total = 0;
     console.log(course);
@@ -58,11 +61,15 @@ class Attendance extends Component {
                 Total++;
               });
               var Percentage = (count / Total) * 100;
-              this.setState({ noData: false, Percentage: Percentage });
+              this.setState({
+                noData: false,
+                Percentage: Percentage,
+                currentCourseName: response.data[0].course.course_name,
+              });
             }
           );
         } else {
-          this.setState({ noData: true });
+          this.setState({ currentAttendance: [], noData: true });
         }
       });
   }
@@ -98,7 +105,11 @@ class Attendance extends Component {
                       Total++;
                     });
                     var Percentage = (count / Total) * 100;
-                    this.setState({ noData: false, Percentage: Percentage });
+                    this.setState({
+                      noData: false,
+                      Percentage: Percentage,
+                      currentCourseName: response.data[0].course.course_name,
+                    });
                   }
                 );
               } else {
@@ -127,17 +138,18 @@ class Attendance extends Component {
               </Breadcrumb>
             </div>
             <Card>
-              <Card.Header style={{ height: '3rem', backgroundColor: 'black' }}>
+              <Card.Header style={{ backgroundColor: 'black' }}>
                 {this.state.studentCourses.map((c, i) => {
                   return (
                     <Button
                       key={i}
                       onClick={() => {
-                        this.assignCourse(c.course_code);
+                        this.assignCourse(c.course_code, c.course_name);
                       }}
                       style={{
+                        marginRight: '1rem',
                         border: 'black',
-                        marginTop: '-10px',
+                        // marginTop: '-10px',
                         maxHeight: '2rem',
                         minHeight: '2rem',
                         float: 'right',
@@ -159,6 +171,9 @@ class Attendance extends Component {
                   borderBottomRightRadius: '0.5rem',
                 }}
               >
+                <h2 style={{ textAlign: 'center', marginTop: '-15px' }}>
+                  {this.state.currentCourseName}
+                </h2>
                 {this.state.noData === false ? (
                   <Row>
                     <Col md="12" style={{ paddingBottom: '0.7rem' }}>
@@ -166,7 +181,7 @@ class Attendance extends Component {
                         style={{ height: '1rem' }}
                         animated
                         now={this.state.Percentage}
-                        label={this.state.Percentage}
+                        label={this.state.Percentage + ' %'}
                       />
                     </Col>
                   </Row>
