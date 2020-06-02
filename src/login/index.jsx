@@ -17,6 +17,8 @@
 */
 import React from 'react';
 import Cookies from 'js-cookie';
+import { Message } from 'semantic-ui-react';
+
 import axios from 'axios';
 import { Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
@@ -105,7 +107,11 @@ class FacultyLogin extends React.Component {
         });
       })
       .catch((error) => {
-        console.log(error);
+        console.log(error.response.data.status);
+        this.setState({
+          invalidLogin: true,
+          error: error.response.data.status,
+        });
       })
       .finally((response) => {
         console.log(response);
@@ -132,6 +138,19 @@ class FacultyLogin extends React.Component {
     return (
       <>
         <Col lg="5" md="7">
+          <div style={{ marginBottom: '1rem' }}>
+            {this.state.invalidLogin === true ? (
+              <Message negative>
+                <Message.Header style={{ textAlign: 'center' }}>
+                  <i
+                    className="fas fa-exclamation-triangle"
+                    style={{ marginRight: '1rem' }}
+                  ></i>
+                  <span style={{ textAlign: 'center' }}>Invalid ID or Password</span>
+                </Message.Header>
+              </Message>
+            ) : null}
+          </div>
           <Card className="bg-secondary shadow border-0">
             <CardHeader className="bg-transparent pb-5">
               <div className="text-muted text-center mt-2 mb-3">
@@ -201,7 +220,7 @@ class FacultyLogin extends React.Component {
             </CardBody>
           </Card>
           <Row className="mt-3">
-            <Col xs="6">
+            {/* <Col xs="6">
               <a
                 className="text-light"
                 href="#pablo"
@@ -216,7 +235,7 @@ class FacultyLogin extends React.Component {
                 href="#pablo"
                 onClick={(e) => e.preventDefault()}
               ></a>
-            </Col>
+            </Col> */}
           </Row>
         </Col>
         <SweetAlert
