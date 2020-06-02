@@ -28,6 +28,7 @@ class Marks1 extends Component {
       section: '',
       noData: true,
       Percentage: 0,
+      noMarks: true,
     };
     this.toggleCollapse = this.toggleCollapse.bind(this);
     this.assignCourse = this.assignCourse.bind(this);
@@ -53,33 +54,39 @@ class Marks1 extends Component {
       .then(() => {
         axios.post('/student/get_marks/', form).then((response) => {
           console.log(response.data);
-          this.setState(
-            {
-              currentMarks: response.data.marks_info,
-            },
-            () => {
-              if (this.state.currentMarks.length > 0) {
-                var len = this.state.currentMarks.length;
-                var i = 0;
-                for (i = 0; i < len; i++) {
-                  tm = tm + this.state.currentMarks[i].total_marks;
-                  om = om + this.state.currentMarks[i].obtained_marks;
-                  tw = tw + this.state.currentMarks[i].weightage;
-                  ow = ow + this.state.currentMarks[i].obtained_weightage;
+          if (response.data.Status === "Success") {
+            this.setState(
+              {
+                noMarks: false,
+                currentMarks: response.data.marks_info,
+              },
+              () => {
+                if (this.state.currentMarks.length > 0) {
+                  var len = this.state.currentMarks.length;
+                  var i = 0;
+                  for (i = 0; i < len; i++) {
+                    tm = tm + this.state.currentMarks[i].total_marks;
+                    om = om + this.state.currentMarks[i].obtained_marks;
+                    tw = tw + this.state.currentMarks[i].weightage;
+                    ow = ow + this.state.currentMarks[i].obtained_weightage;
+                  }
+                  this.setState({
+                    TotalMarks: tm,
+                    TotalObtMarks: om,
+                    TotalWtg: tw,
+                    TotalObtWtg: ow,
+                  });
+                } else {
+                  this.setState({
+                    currentMarks: [],
+                  });
                 }
-                this.setState({
-                  TotalMarks: tm,
-                  TotalObtMarks: om,
-                  TotalWtg: tw,
-                  TotalObtWtg: ow,
-                });
-              } else {
-                this.setState({
-                  currentMarks: [],
-                });
               }
-            }
-          );
+            );
+          }
+          else {
+            this.setState({ noMarks: true });
+          }
         });
       });
     console.log(course);
@@ -128,7 +135,7 @@ class Marks1 extends Component {
                         currentCourse: this.state.studentCourses[0].course_name,
                       },
                       () => {
-                        if (this.state.currentMarks.length > 0) {
+                        if (this.state.noMarks === false) {
                           var len = this.state.currentMarks.length;
                           var i = 0;
                           for (i = 0; i < len; i++) {
@@ -243,159 +250,159 @@ class Marks1 extends Component {
                   borderBottomRightRadius: '0.5rem',
                 }}
               >
-                {this.state.currentMarks.length === 0 ? (
+                {this.state.noMarks ? (
                   <div>No marks Data</div>
                 ) : (
-                  <div>
-                    <h2 style={{ textAlign: 'center', marginTop: '-15px' }}>
-                      {this.state.currentCourse}
-                    </h2>
-                    <Table
-                      className="align-items-center table-dark table-flush"
-                      responsive
-                    >
-                      <thead className="thead-dark">
-                        <tr>
-                          <th>Type</th>
-                          <th>Total Marks</th>
-                          <th>Obt. Marks</th>
-                          <th>Total Wtg</th>
-                          <th>Obt. Wtg</th>
-                          <th>Marks Mean</th>
-                          <th>Wtg Mean</th>
-                          <th>Marks SD.</th>
-                          <th>Wtg SD.</th>
-                        </tr>
-                      </thead>
-                      <tbody>
-                        {this.state.currentMarks.map((object, i) => {
-                          return (
-                            <tr key={i}>
-                              <th scope="row" style={{ textAlign: 'center' }}>
-                                <Media className="align-items-center">
-                                  <a
-                                    className="avatar rounded-circle mr-3"
-                                    onClick={(e) => e.preventDefault()}
-                                  >
-                                    <Initial
-                                      radius={55}
-                                      height={40}
-                                      width={40}
-                                      seed={1}
-                                      fontSize={20}
-                                      name={object.marks_type}
-                                    />
-                                  </a>
-                                  <Media>
-                                    <span
-                                      style={{ textAlign: 'center' }}
-                                      className="mb-0 text-sm"
+                    <div>
+                      <h2 style={{ textAlign: 'center', marginTop: '-15px' }}>
+                        {this.state.currentCourse}
+                      </h2>
+                      <Table
+                        className="align-items-center table-dark table-flush"
+                        responsive
+                      >
+                        <thead className="thead-dark">
+                          <tr>
+                            <th>Type</th>
+                            <th>Total Marks</th>
+                            <th>Obt. Marks</th>
+                            <th>Total Wtg</th>
+                            <th>Obt. Wtg</th>
+                            <th>Marks Mean</th>
+                            <th>Wtg Mean</th>
+                            <th>Marks SD.</th>
+                            <th>Wtg SD.</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          {this.state.noMarks != true ? this.state.currentMarks.map((object, i) => {
+                            return (
+                              <tr key={i}>
+                                <th scope="row" style={{ textAlign: 'center' }}>
+                                  <Media className="align-items-center">
+                                    <a
+                                      className="avatar rounded-circle mr-3"
+                                      onClick={(e) => e.preventDefault()}
                                     >
-                                      {object.marks_type}
-                                    </span>
+                                      <Initial
+                                        radius={55}
+                                        height={40}
+                                        width={40}
+                                        seed={1}
+                                        fontSize={20}
+                                        name={object.marks_type}
+                                      />
+                                    </a>
+                                    <Media>
+                                      <span
+                                        style={{ textAlign: 'center' }}
+                                        className="mb-0 text-sm"
+                                      >
+                                        {object.marks_type}
+                                      </span>
+                                    </Media>
                                   </Media>
-                                </Media>
-                              </th>
-                              {/* <td>{object.marks_type}</td> */}
-                              <td style={{ textAlign: 'center' }}>
-                                {object.total_marks}
-                              </td>
-                              <td style={{ textAlign: 'center' }}>
-                                {object.obtained_marks}
-                              </td>
-                              <td style={{ textAlign: 'center' }}>
-                                {object.weightage}
-                              </td>
-                              <td style={{ textAlign: 'center' }}>
-                                {object.obtained_weightage}
-                              </td>
-                              <td style={{ textAlign: 'center' }}>
-                                {object.marks_mean.toFixed(2)}
-                              </td>
-                              <td style={{ textAlign: 'center' }}>
-                                {object.weightage_mean.toFixed(2)}
-                              </td>
-                              <td style={{ textAlign: 'center' }}>
-                                {object.marks_std_dev.toFixed(2)}
-                              </td>
-                              <td style={{ textAlign: 'center' }}>
-                                {object.weightage_std_dev.toFixed(2)}
-                              </td>
-                            </tr>
-                          );
-                        })}
-                        <tr>
-                          <th scope="row" style={{ textAlign: 'center' }}>
-                            <Media className="align-items-center">
-                              <a
-                                className="avatar rounded-circle mr-3"
-                                onClick={(e) => e.preventDefault()}
-                              >
-                                <Initial
-                                  radius={55}
-                                  height={40}
-                                  width={40}
-                                  seed={1}
-                                  fontSize={20}
-                                  name="Total"
-                                />
-                              </a>
-                              <Media>
-                                <span
-                                  style={{ color: 'red', fontWeight: '900' }}
-                                  className="mb-0 text-sm"
+                                </th>
+                                {/* <td>{object.marks_type}</td> */}
+                                <td style={{ textAlign: 'center' }}>
+                                  {object.total_marks}
+                                </td>
+                                <td style={{ textAlign: 'center' }}>
+                                  {object.obtained_marks}
+                                </td>
+                                <td style={{ textAlign: 'center' }}>
+                                  {object.weightage}
+                                </td>
+                                <td style={{ textAlign: 'center' }}>
+                                  {object.obtained_weightage}
+                                </td>
+                                <td style={{ textAlign: 'center' }}>
+                                  {object.marks_mean.toFixed(2)}
+                                </td>
+                                <td style={{ textAlign: 'center' }}>
+                                  {object.weightage_mean.toFixed(2)}
+                                </td>
+                                <td style={{ textAlign: 'center' }}>
+                                  {object.marks_std_dev.toFixed(2)}
+                                </td>
+                                <td style={{ textAlign: 'center' }}>
+                                  {object.weightage_std_dev.toFixed(2)}
+                                </td>
+                              </tr>
+                            );
+                          }) : <div></div>}
+                          <tr>
+                            <th scope="row" style={{ textAlign: 'center' }}>
+                              <Media className="align-items-center">
+                                <a
+                                  className="avatar rounded-circle mr-3"
+                                  onClick={(e) => e.preventDefault()}
                                 >
-                                  Total
+                                  <Initial
+                                    radius={55}
+                                    height={40}
+                                    width={40}
+                                    seed={1}
+                                    fontSize={20}
+                                    name="Total"
+                                  />
+                                </a>
+                                <Media>
+                                  <span
+                                    style={{ color: 'red', fontWeight: '900' }}
+                                    className="mb-0 text-sm"
+                                  >
+                                    Total
                                 </span>
+                                </Media>
                               </Media>
-                            </Media>
-                          </th>
-                          {/* <td style={{ color: 'red', fontWeight: '900' }}>Total</td> */}
-                          <td
-                            style={{
-                              color: 'red',
-                              textAlign: 'center',
-                              fontWeight: '900',
-                            }}
-                          >
-                            {this.state.TotalMarks}
-                          </td>
-                          <td
-                            style={{
-                              color: 'red',
-                              textAlign: 'center',
-                              fontWeight: '900',
-                            }}
-                          >
-                            {this.state.TotalObtMarks}
-                          </td>
-                          <td
-                            style={{
-                              color: 'red',
-                              textAlign: 'center',
-                              fontWeight: '900',
-                            }}
-                          >
-                            {this.state.TotalWtg}
-                          </td>
-                          <td
-                            style={{
-                              color: 'red',
-                              textAlign: 'center',
-                              fontWeight: '900',
-                            }}
-                          >
-                            {this.state.TotalObtWtg}
-                          </td>
-                          <td style={{ color: 'red', textAlign: 'center' }}>-</td>
-                          <td style={{ color: 'red', textAlign: 'center' }}>-</td>
-                          <td style={{ color: 'red', textAlign: 'center' }}>-</td>
-                          <td style={{ color: 'red', textAlign: 'center' }}>-</td>
-                        </tr>
-                      </tbody>
-                    </Table>
-                  </div>
-                )}
+                            </th>
+                            {/* <td style={{ color: 'red', fontWeight: '900' }}>Total</td> */}
+                            <td
+                              style={{
+                                color: 'red',
+                                textAlign: 'center',
+                                fontWeight: '900',
+                              }}
+                            >
+                              {this.state.TotalMarks}
+                            </td>
+                            <td
+                              style={{
+                                color: 'red',
+                                textAlign: 'center',
+                                fontWeight: '900',
+                              }}
+                            >
+                              {this.state.TotalObtMarks}
+                            </td>
+                            <td
+                              style={{
+                                color: 'red',
+                                textAlign: 'center',
+                                fontWeight: '900',
+                              }}
+                            >
+                              {this.state.TotalWtg}
+                            </td>
+                            <td
+                              style={{
+                                color: 'red',
+                                textAlign: 'center',
+                                fontWeight: '900',
+                              }}
+                            >
+                              {this.state.TotalObtWtg}
+                            </td>
+                            <td style={{ color: 'red', textAlign: 'center' }}>-</td>
+                            <td style={{ color: 'red', textAlign: 'center' }}>-</td>
+                            <td style={{ color: 'red', textAlign: 'center' }}>-</td>
+                            <td style={{ color: 'red', textAlign: 'center' }}>-</td>
+                          </tr>
+                        </tbody>
+                      </Table>
+                    </div>
+                  )}
               </Card.Body>
             </Card>
           </Container>

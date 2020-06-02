@@ -57,6 +57,7 @@ class Marks extends Component {
             Percentage: 0,
             marksInfo: "",
             totals: "",
+            noMarks: true,
 
             grandTotal: [{
                 "GrandTotal": 0,
@@ -76,8 +77,12 @@ class Marks extends Component {
         form.append('section', this.state.section)
         form.append('code', course)
         axios.post('/student/get_marks/', form).then((response) => {
-
-            this.setState({ marksInfo: response.data })
+            if (response.data.Status == "Success") { this.setState({ noMarks: false, marksInfo: response.data }) }
+            else {
+                this.setState({
+                    noMarks: true
+                })
+            }
 
         })
     }
