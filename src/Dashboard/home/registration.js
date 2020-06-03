@@ -138,12 +138,21 @@ class Registration extends Component {
     });
     axios.get('/student/get_credit_hour_info/').then((response) => {
       console.log('Ahsan', response);
-      this.setState({
-        cgpa: response.data[0].cgpa,
-        sgpa: response.data[0].sgpa,
-        creditHoursAttempted: response.data[0].credit_hours_attempted,
-        creditHoursEarned: response.data[0].credit_hours_earned,
-      });
+      if (response.data === []) {
+        this.setState({
+          cgpa: 0.0,
+          sgpa: 0.0,
+          creditHoursAttempted: response.data[0].credit_hours_attempted,
+          creditHoursEarned: 0,
+        });
+      } else {
+        this.setState({
+          cgpa: response.data[0].cgpa,
+          sgpa: response.data[0].sgpa,
+          creditHoursAttempted: response.data[0].credit_hours_attempted,
+          creditHoursEarned: response.data[0].credit_hours_earned,
+        });
+      }
     });
     axios.get('/management/getCurrentSemester/').then((response) => {
       this.setState({
@@ -459,6 +468,39 @@ class Registration extends Component {
                           </CardBody>
                         </Card>
                       </Col>
+                      <Col lg="6" xl="3" className="centre">
+                        <Card
+                          style={{ width: '80%', height: '6rem' }}
+                          className="card-stats mb-4 mb-xl-0"
+                        >
+                          <CardBody>
+                            <Row>
+                              <div className="col">
+                                <CardTitle
+                                  tag="h5"
+                                  className="text-uppercase text-muted mb-0"
+                                >
+                                  SGPA
+                                </CardTitle>
+                                {this.state.sgpa === undefined ? (
+                                  <span className="h2 font-weight-bold mb-0">
+                                    {'0.0'}
+                                  </span>
+                                ) : (
+                                  <span className="h2 font-weight-bold mb-0">
+                                    {this.state.sgpa}
+                                  </span>
+                                )}
+                              </div>
+                              <Col className="col-auto">
+                                <div className="icon icon-shape bg-danger text-white rounded-circle shadow">
+                                  <i className="fas fa-chart-pie" />
+                                </div>
+                              </Col>
+                            </Row>
+                          </CardBody>
+                        </Card>
+                      </Col>
                       <Col lg="6" xl="3">
                         <Card
                           style={{ width: '80%', height: '6rem' }}
@@ -513,33 +555,6 @@ class Registration extends Component {
                               <Col className="col-auto">
                                 <div className="icon icon-shape bg-yellow text-white rounded-circle shadow">
                                   <i className="fas fa-users" />
-                                </div>
-                              </Col>
-                            </Row>
-                          </CardBody>
-                        </Card>
-                      </Col>
-                      <Col lg="6" xl="3">
-                        <Card
-                          style={{ width: '80%', height: '6rem' }}
-                          className="card-stats mb-4 mb-xl-0"
-                        >
-                          <CardBody>
-                            <Row>
-                              <div className="col">
-                                <CardTitle
-                                  tag="h5"
-                                  className="text-uppercase text-muted mb-0"
-                                >
-                                  Cr. Hrs. Limit
-                                </CardTitle>
-                                <span className="h2 font-weight-bold mb-0">
-                                  {'19'}
-                                </span>
-                              </div>
-                              <Col className="col-auto">
-                                <div className="icon icon-shape bg-info text-white rounded-circle shadow">
-                                  <i className="fas fa-percent" />
                                 </div>
                               </Col>
                             </Row>
