@@ -48,6 +48,16 @@ class Attendance extends Component {
       .get(`/student/attendance/${course}/${this.state.section}`)
       .then((response) => {
         console.log(response.data);
+        if (response.data.length === 0) {
+          this.setState(
+            {
+              currentAttendance: [],
+              noData: true,
+            },
+            () => []
+          );
+          return;
+        }
         if (response.data[0].attendance.length !== 0) {
           this.setState(
             {
