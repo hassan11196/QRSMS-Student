@@ -167,6 +167,16 @@ var routes = [
     component: CustomLogin,
     layout: '/auth',
   },
+  {
+    path: '/forum',
+    name: 'Forum',
+    icon: 'ni ni-circle-08 text-white',
+    component: () => {
+      window.location.href = 'https://nuforum1.netlify.app/';
+      return null;
+    },
+    layout: '/portal',
+  },
 
   {
     path: '/feechallan',
