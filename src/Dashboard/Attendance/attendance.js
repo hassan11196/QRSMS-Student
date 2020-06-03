@@ -31,7 +31,7 @@ class Attendance extends Component {
       currentCourseName: '',
       currentAttendance: [],
       section: '',
-      noData: true,
+      noData: false,
       Percentage: 0,
     };
     this.toggleCollapse = this.toggleCollapse.bind(this);
@@ -48,6 +48,16 @@ class Attendance extends Component {
       .get(`/student/attendance/${course}/${this.state.section}`)
       .then((response) => {
         console.log(response.data);
+        if (response.data.length === 0) {
+          this.setState(
+            {
+              currentAttendance: [],
+              noData: true,
+            },
+            () => []
+          );
+          return;
+        }
         if (response.data[0].attendance.length !== 0) {
           this.setState(
             {
@@ -91,6 +101,9 @@ class Attendance extends Component {
               `/student/attendance/${this.state.studentCourses[0].course_code}/${this.state.section}`
             )
             .then((response) => {
+              this.setState({
+                currentCourseName: this.state.studentCourses[0].course_name,
+              });
               console.log(response.data[0].attendance.length);
               if (response.data[0].attendance.length !== 0) {
                 this.setState(
@@ -113,7 +126,7 @@ class Attendance extends Component {
                   }
                 );
               } else {
-                this.setState({ noData: true });
+                this.setState({ currentAttendance: [], noData: true });
               }
             });
         }
@@ -171,8 +184,17 @@ class Attendance extends Component {
                   borderBottomRightRadius: '0.5rem',
                 }}
               >
-                <h2 style={{ textAlign: 'center', marginTop: '-15px' }}>
+                <h2
+                  style={{
+                    textAlign: 'center',
+                    marginTop: '-15px',
+                  }}
+                >
                   {this.state.currentCourseName}
+                  <br />
+                  {this.state.noData === false ? (
+                    <div>{this.state.Percentage}%</div>
+                  ) : null}
                 </h2>
                 {this.state.noData === false ? (
                   <Row>
@@ -213,7 +235,7 @@ class Attendance extends Component {
                     </tbody>
                   </Table>
                 ) : (
-                  <p>No attendance Found</p>
+                  <h3 style={{ textAlign: 'center' }}>No attendance Found</h3>
                 )}
               </Card.Body>
             </Card>

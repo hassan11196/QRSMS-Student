@@ -16,6 +16,9 @@ import {
   // Button,
   Breadcrumb,
 } from 'react-bootstrap';
+import { css } from '@emotion/core';
+import BarLoader from 'react-spinners/RingLoader';
+
 import { Button } from 'semantic-ui-react';
 import { FaRegistered } from 'react-icons/fa';
 import axios from 'axios';
@@ -33,6 +36,7 @@ class Registration extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      loading: true,
       popoverOpen: false,
       creditHoursAttempted: '',
       creditHoursEarned: '',
@@ -50,15 +54,88 @@ class Registration extends Component {
     };
     this.toggle = this.toggle.bind(this);
   }
+  notifyDanger = () => {
+    toast.error(
+      <div
+        style={{
+          paddingLeft: '1rem',
+          borderRadius: '50%',
+          height: '2rem',
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
+        <div style={{ marginLeft: '-6px', marginRight: '8px', marginTop: '-26px' }}>
+          <i className="fas fa-exclamation-triangle"></i>
+        </div>
+        <div>
+          <h5 style={{ marginTop: '0.8rem' }}>
+            <b style={{ fontSize: '16px' }}>{'An Error Occured'}</b>
+          </h5>
 
+          <h6
+            style={{
+              marginBottom: '1rem',
+              fontSize: '13px',
+              marginLeft: '-20px',
+              width: '200px',
+              whiteSpace: 'nowrap',
+              textOverflow: 'ellipsis',
+              overflow: 'hidden',
+            }}
+          >
+            {this.state.snackMessage}
+          </h6>
+        </div>
+      </div>,
+      { containerId: 'A' }
+    );
+  };
   notifyB = () => {
-    toast.success(this.state.snackMessage, { containerId: 'B' });
+    toast.success(
+      <div
+        style={{
+          paddingLeft: '1rem',
+          borderRadius: '50%',
+          height: '2rem',
+          display: 'flex',
+          alignItems: 'center',
+        }}
+      >
+        <div style={{ marginLeft: '-6px', marginRight: '8px', marginTop: '-32px' }}>
+          <i className="fas fa-check-circle"></i>
+        </div>
+        <div>
+          <h5 style={{ marginTop: '0.8rem' }}>
+            <b style={{ fontSize: '16px' }}>{'Action Successful'}</b>
+          </h5>
+
+          <h6
+            style={{
+              paddingBottom: '1rem',
+              fontSize: '13px',
+              marginLeft: '-20px',
+              width: '200px',
+              whiteSpace: 'nowrap',
+              textOverflow: 'ellipsis',
+              overflow: 'hidden',
+            }}
+          >
+            {this.state.snackMessage}
+          </h6>
+        </div>
+      </div>,
+      { containerId: 'B' }
+    );
   };
 
   toggle() {
     this.setState({ popoverOpen: !this.state.popoverOpen });
   }
   componentDidMount() {
+    this.setState({
+      loading: true,
+    });
     axios.get('/student/get_credit_hour_info/').then((response) => {
       console.log('Ahsan', response);
       this.setState({
@@ -73,7 +150,10 @@ class Registration extends Component {
         semester: response.data,
       });
     });
-
+    axios.get('/student/get_credit_hour_info/').then((response) => {
+      console.log('Infomatiopn');
+      console.log(response.data);
+    });
     axios.get('/management/get_csrf').then((response) => {
       Cookies.set('csrftoken', response.data.csrfToken);
       this.setState((oldState) => ({
@@ -119,6 +199,7 @@ class Registration extends Component {
         console.log(response.data.message);
         this.setState({
           CourseRegistrationPeriodActive: response.data.condition,
+          loading: false,
         });
       })
       .catch((error) => {
@@ -224,6 +305,7 @@ class Registration extends Component {
       },
     })
       .then((response) => {
+        console.log(response);
         if (course_option === 'R') {
           this.setState({
             type: 'success',
@@ -260,6 +342,19 @@ class Registration extends Component {
           });
         });
       })
+      .catch((error) => {
+        console.log(error.response);
+        this.setState(
+          {
+            type: 'error',
+            snackMessage: 'Unable to register! please try again',
+          },
+          () => {
+            this.notifyDanger();
+          }
+        );
+      })
+
       .then(() => {
         var value = '';
         if (course_option === 'R') {
@@ -296,6 +391,11 @@ class Registration extends Component {
   };
 
   render() {
+    const override = css`
+      display: block;
+      margin: 20% auto;
+      border-color: white;
+    `;
     if (this.props.student === []) {
       return <Redirect to="/auth/login" />;
     } else
@@ -304,213 +404,228 @@ class Registration extends Component {
           <div>
             <NavbarPage />
           </div>
-          <Container bsPrefix="cont">
-            <div className="header bg-gradient-info pb-5 pt-5 pt-md-5">
-              <Container fluid>
-                <div style={{ width: 'auto', paddingBottom: '2rem' }}>
-                  <Breadcrumb>
-                    <Breadcrumb.Item href="/dashboard/home">Home</Breadcrumb.Item>
-                    <Breadcrumb.Item active>Course Registration</Breadcrumb.Item>
-                  </Breadcrumb>
-                </div>
-                <NotificationContainer />
-
-                <div className="header-body">
+          {this.state.loading === true ? (
+            <div className="sweet-loading">
+              <BarLoader css={override} loading={this.state.loading} />
+            </div>
+          ) : (
+            <Container bsPrefix="cont">
+              <div className="header bg-gradient-info pb-5 pt-5 pt-md-5">
+                <Container fluid>
+                  <div style={{ width: 'auto', paddingBottom: '2rem' }}>
+                    <Breadcrumb>
+                      <Breadcrumb.Item href="/dashboard/home">Home</Breadcrumb.Item>
+                      <Breadcrumb.Item active>Course Registration</Breadcrumb.Item>
+                    </Breadcrumb>
+                  </div>
+                  <NotificationContainer />
+                  <ToastContainer
+                    enableMultiContainer
+                    containerId={'A'}
+                    position={toast.POSITION.TOP_RIGHT}
+                  />{' '}
+                  <div className="header-body">
+                    <Row>
+                      <Col lg="6" xl="3" className="centre">
+                        <Card
+                          style={{ width: '80%', height: '6rem' }}
+                          className="card-stats mb-4 mb-xl-0"
+                        >
+                          <CardBody>
+                            <Row>
+                              <div className="col">
+                                <CardTitle
+                                  tag="h5"
+                                  className="text-uppercase text-muted mb-0"
+                                >
+                                  CGPA
+                                </CardTitle>
+                                <span className="h2 font-weight-bold mb-0">
+                                  {this.state.cgpa}
+                                </span>
+                              </div>
+                              <Col className="col-auto">
+                                <div className="icon icon-shape bg-danger text-white rounded-circle shadow">
+                                  <i className="fas fa-chart-bar" />
+                                </div>
+                              </Col>
+                            </Row>
+                          </CardBody>
+                        </Card>
+                      </Col>
+                      <Col lg="6" xl="3">
+                        <Card
+                          style={{ width: '80%', height: '6rem' }}
+                          className="card-stats mb-4 mb-xl-0"
+                        >
+                          <CardBody>
+                            <Row>
+                              <div className="col">
+                                <CardTitle
+                                  tag="h5"
+                                  className="text-uppercase text-muted mb-0"
+                                >
+                                  Warning Count
+                                </CardTitle>
+                                <span className="h2 font-weight-bold mb-0">
+                                  {this.state.student.warning_count}
+                                </span>
+                              </div>
+                              <Col className="col-auto">
+                                <div className="icon icon-shape bg-warning text-white rounded-circle shadow">
+                                  <i className="fas fa-chart-pie" />
+                                </div>
+                              </Col>
+                            </Row>
+                          </CardBody>
+                        </Card>
+                      </Col>
+                      <Col lg="6" xl="3">
+                        <Card
+                          style={{ width: '80%', height: '6rem' }}
+                          className="card-stats mb-4 mb-xl-0"
+                        >
+                          <CardBody>
+                            <Row>
+                              <div className="col">
+                                <CardTitle
+                                  tag="h5"
+                                  className="text-uppercase text-muted mb-0"
+                                >
+                                  Cr. Hrs. Earned
+                                </CardTitle>
+                                <span className="h2 font-weight-bold mb-0">
+                                  {this.state.creditHoursEarned}
+                                </span>
+                              </div>
+                              <Col className="col-auto">
+                                <div className="icon icon-shape bg-yellow text-white rounded-circle shadow">
+                                  <i className="fas fa-users" />
+                                </div>
+                              </Col>
+                            </Row>
+                          </CardBody>
+                        </Card>
+                      </Col>
+                      <Col lg="6" xl="3">
+                        <Card
+                          style={{ width: '80%', height: '6rem' }}
+                          className="card-stats mb-4 mb-xl-0"
+                        >
+                          <CardBody>
+                            <Row>
+                              <div className="col">
+                                <CardTitle
+                                  tag="h5"
+                                  className="text-uppercase text-muted mb-0"
+                                >
+                                  Cr. Hrs. Limit
+                                </CardTitle>
+                                <span className="h2 font-weight-bold mb-0">
+                                  {this.state.creditHoursAttempted}
+                                </span>
+                              </div>
+                              <Col className="col-auto">
+                                <div className="icon icon-shape bg-info text-white rounded-circle shadow">
+                                  <i className="fas fa-percent" />
+                                </div>
+                              </Col>
+                            </Row>
+                          </CardBody>
+                        </Card>
+                      </Col>
+                    </Row>
+                  </div>
+                </Container>
+              </div>
+              <Card style={{ margin: '0.75rem', border: '1px solid grey' }}>
+                <Card.Body
+                  style={{
+                    fontFamily: 'Cursive',
+                    fontSize: '15px',
+                    textAlign: 'left',
+                  }}
+                >
                   <Row>
-                    <Col lg="6" xl="3" className="centre">
-                      <Card
-                        style={{ width: '80%', height: '6rem' }}
-                        className="card-stats mb-4 mb-xl-0"
-                      >
-                        <CardBody>
-                          <Row>
-                            <div className="col">
-                              <CardTitle
-                                tag="h5"
-                                className="text-uppercase text-muted mb-0"
-                              >
-                                CGPA
-                              </CardTitle>
-                              <span className="h2 font-weight-bold mb-0">
-                                {this.state.cgpa}
-                              </span>
-                            </div>
-                            <Col className="col-auto">
-                              <div className="icon icon-shape bg-danger text-white rounded-circle shadow">
-                                <i className="fas fa-chart-bar" />
-                              </div>
-                            </Col>
-                          </Row>
-                        </CardBody>
-                      </Card>
+                    <Col md="3">
+                      <span style={{ fontWeight: 'bold' }}>Name: </span>
+                      <span>
+                        {this.state.user.first_name} {this.state.user.last_name}
+                      </span>
                     </Col>
-                    <Col lg="6" xl="3">
-                      <Card
-                        style={{ width: '80%', height: '6rem' }}
-                        className="card-stats mb-4 mb-xl-0"
-                      >
-                        <CardBody>
-                          <Row>
-                            <div className="col">
-                              <CardTitle
-                                tag="h5"
-                                className="text-uppercase text-muted mb-0"
-                              >
-                                Warning Count
-                              </CardTitle>
-                              <span className="h2 font-weight-bold mb-0">
-                                {this.state.student.warning_count}
-                              </span>
-                            </div>
-                            <Col className="col-auto">
-                              <div className="icon icon-shape bg-warning text-white rounded-circle shadow">
-                                <i className="fas fa-chart-pie" />
-                              </div>
-                            </Col>
-                          </Row>
-                        </CardBody>
-                      </Card>
+                    <Col md="3">
+                      <span style={{ fontWeight: 'bold' }}>Roll No: </span>
+                      <span>{this.state.student.uid}</span>
                     </Col>
-                    <Col lg="6" xl="3">
-                      <Card
-                        style={{ width: '80%', height: '6rem' }}
-                        className="card-stats mb-4 mb-xl-0"
-                      >
-                        <CardBody>
-                          <Row>
-                            <div className="col">
-                              <CardTitle
-                                tag="h5"
-                                className="text-uppercase text-muted mb-0"
-                              >
-                                Cr. Hrs. Earned
-                              </CardTitle>
-                              <span className="h2 font-weight-bold mb-0">
-                                {this.state.creditHoursEarned}
-                              </span>
-                            </div>
-                            <Col className="col-auto">
-                              <div className="icon icon-shape bg-yellow text-white rounded-circle shadow">
-                                <i className="fas fa-users" />
-                              </div>
-                            </Col>
-                          </Row>
-                        </CardBody>
-                      </Card>
+                    <Col md="3">
+                      <span style={{ fontWeight: 'bold' }}>Section: </span>
+                      <span>{this.state.student.admission_section}</span>
                     </Col>
-                    <Col lg="6" xl="3">
-                      <Card
-                        style={{ width: '80%', height: '6rem' }}
-                        className="card-stats mb-4 mb-xl-0"
-                      >
-                        <CardBody>
-                          <Row>
-                            <div className="col">
-                              <CardTitle
-                                tag="h5"
-                                className="text-uppercase text-muted mb-0"
-                              >
-                                Cr. Hrs. Limit
-                              </CardTitle>
-                              <span className="h2 font-weight-bold mb-0">
-                                {this.state.creditHoursAttempted}
-                              </span>
-                            </div>
-                            <Col className="col-auto">
-                              <div className="icon icon-shape bg-info text-white rounded-circle shadow">
-                                <i className="fas fa-percent" />
-                              </div>
-                            </Col>
-                          </Row>
-                        </CardBody>
-                      </Card>
+                    <Col md="3">
+                      <span style={{ fontWeight: 'bold' }}>Batch: </span>
+                      <span>{this.state.student.batch}</span>
                     </Col>
                   </Row>
-                </div>
-              </Container>
-            </div>
-            <Card style={{ margin: '0.75rem', border: '1px solid grey' }}>
-              <Card.Body
-                style={{
-                  fontFamily: 'Cursive',
-                  fontSize: '15px',
-                  textAlign: 'left',
-                }}
-              >
-                <Row>
-                  <Col md="3">
-                    <span style={{ fontWeight: 'bold' }}>Name: </span>
-                    <span>
-                      {this.state.user.first_name} {this.state.user.last_name}
-                    </span>
-                  </Col>
-                  <Col md="3">
-                    <span style={{ fontWeight: 'bold' }}>Roll No: </span>
-                    <span>{this.state.student.uid}</span>
-                  </Col>
-                  <Col md="3">
-                    <span style={{ fontWeight: 'bold' }}>Section: </span>
-                    <span>{this.state.student.admission_section}</span>
-                  </Col>
-                  <Col md="3">
-                    <span style={{ fontWeight: 'bold' }}>Batch: </span>
-                    <span>{this.state.student.batch}</span>
-                  </Col>
-                </Row>
-              </Card.Body>
-            </Card>
-            {this.renderRegistrationStatus()}
-            <ToastContainer
-              enableMultiContainer
-              containerId={'B'}
-              position={toast.POSITION.TOP_RIGHT}
-            />
-            <Card style={{ margin: '2rem', border: '1px solid black' }}>
-              <Card.Header
-                as="h4"
-                style={{ height: '4rem', backgroundColor: 'black' }}
-              >
-                <span
+                </Card.Body>
+              </Card>
+              {this.renderRegistrationStatus()}
+              <ToastContainer
+                enableMultiContainer
+                containerId={'B'}
+                position={toast.POSITION.TOP_RIGHT}
+              />
+              <Card style={{ margin: '2rem', border: '1px solid black' }}>
+                <Card.Header
+                  as="h4"
                   style={{
-                    fontWeight: 'bold',
-                    paddingRight: '1rem',
-                    marginTop: '-4px',
-                    color: 'white',
+                    marginTop: '-1px',
+                    height: '4rem',
+                    backgroundColor: 'black',
                   }}
-                  className="toggleiconHeight"
                 >
-                  <FaRegistered size={'2em'} />
-                </span>
-                <span
-                  style={{ fontWeight: 'bold', marginTop: '-4px', color: 'white' }}
-                  className="toggletextSize"
-                >
-                  {' '}
-                  Course Registration
-                </span>
-              </Card.Header>
+                  <span
+                    style={{
+                      fontWeight: 'bold',
+                      paddingRight: '1rem',
+                      marginTop: '-4px',
+                      color: 'white',
+                    }}
+                    className="toggleiconHeight"
+                  >
+                    <FaRegistered size={'2em'} />
+                  </span>
+                  <span
+                    style={{ fontWeight: 'bold', marginTop: '-4px', color: 'white' }}
+                    className="toggletextSize"
+                  >
+                    {' '}
+                    Course Registration
+                  </span>
+                </Card.Header>
 
-              <Card.Body>
-                <Table
-                  className="align-items-center table-dark table-flush"
-                  responsive
-                >
-                  <thead className="thead-dark">
-                    <th style={{ fontWeight: '700' }}>Course Name</th>
-                    <th style={{ fontWeight: '700' }}>Cr.Hrs</th>
-                    <th style={{ fontWeight: '700' }}>Relation</th>
-                    <th style={{ fontWeight: '700' }}>Comments</th>
-                    <th style={{ fontWeight: '700', textAlign: 'center' }}>
-                      Action
-                    </th>
-                    <th style={{ fontWeight: '700' }}>Section</th>
-                  </thead>
-                  <tbody>{this.state.courses_nodes}</tbody>
-                </Table>
-              </Card.Body>
-            </Card>
-            {/* {console.log(this.state.CourseInfo)} */}
-          </Container>
+                <Card.Body>
+                  <Table
+                    className="align-items-center table-dark table-flush"
+                    responsive
+                  >
+                    <thead className="thead-dark">
+                      <th style={{ fontWeight: '700' }}>Course Name</th>
+                      <th style={{ fontWeight: '700' }}>Cr.Hrs</th>
+                      <th style={{ fontWeight: '700' }}>Relation</th>
+                      <th style={{ fontWeight: '700' }}>Comments</th>
+                      <th style={{ fontWeight: '700', textAlign: 'center' }}>
+                        Action
+                      </th>
+                      <th style={{ fontWeight: '700' }}>Section</th>
+                    </thead>
+                    <tbody>{this.state.courses_nodes}</tbody>
+                  </Table>
+                </Card.Body>
+              </Card>
+
+              {/* {console.log(this.state.CourseInfo)} */}
+            </Container>
+          )}
         </div>
       );
   }
