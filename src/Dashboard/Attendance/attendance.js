@@ -94,6 +94,13 @@ class Attendance extends Component {
           studentCourses: response.data,
         },
         () => {
+          console.log(this.state);
+          if (response.data.length === 0) {
+            this.setState({
+              currentCourseName: 'No Courses Registered',
+            });
+            return;
+          }
           var count = 0;
           var Total = 0;
           axios

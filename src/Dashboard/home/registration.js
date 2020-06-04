@@ -142,16 +142,25 @@ class Registration extends Component {
         this.setState({
           cgpa: 0.0,
           sgpa: 0.0,
-          creditHoursAttempted: response.data[0].credit_hours_attempted,
+          creditHoursAttempted: 0,
           creditHoursEarned: 0,
         });
       } else {
-        this.setState({
-          cgpa: response.data[0].cgpa,
-          sgpa: response.data[0].sgpa,
-          creditHoursAttempted: response.data[0].credit_hours_attempted,
-          creditHoursEarned: response.data[0].credit_hours_earned,
-        });
+        if (response.data.length > 0) {
+          this.setState({
+            cgpa: response.data[0].cgpa,
+            sgpa: response.data[0].sgpa,
+            creditHoursAttempted: response.data[0].credit_hours_attempted,
+            creditHoursEarned: response.data[0].credit_hours_earned,
+          });
+        } else {
+          this.setState({
+            cgpa: 0,
+            sgpa: 0,
+            creditHoursAttempted: 0,
+            creditHoursEarned: 0,
+          });
+        }
       }
     });
     axios.get('/management/getCurrentSemester/').then((response) => {
