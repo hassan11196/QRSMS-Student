@@ -137,12 +137,10 @@ class Registration extends Component {
       loading: true,
     });
     axios.get('/student/get_credit_hour_info/').then((response) => {
-      console.log('Ahsan', response);
       if (response.data.length === 0) {
         this.setState({
           cgpa: 0.0,
           sgpa: 0.0,
-          creditHoursAttempted: response.data[0].credit_hours_attempted,
           creditHoursEarned: 0,
         });
       } else {
