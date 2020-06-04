@@ -138,7 +138,7 @@ class Registration extends Component {
     });
     axios.get('/student/get_credit_hour_info/').then((response) => {
       console.log('Ahsan', response);
-      if (response.data === []) {
+      if (response.data.length === 0) {
         this.setState({
           cgpa: 0.0,
           sgpa: 0.0,
